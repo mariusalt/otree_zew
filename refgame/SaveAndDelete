@@ -1,0 +1,22 @@
+if player.round_number>=1:
+
+
+{%  if player.round_number >= 1 %}
+{%  endif %}
+
+
+        <td>
+            <table>
+                {% for p in player1.in_all_rounds %}
+                <tr>
+                <td>{{ p.payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+
+<th>Auszahlung: Spieler 1</th>
+        <th>Auszahlung: Spieler 2</th>
+        <th>Auszahlung: Spieler 3</th>
+        <th>Auszahlung: Spieler 4</th>
+        <th>Auszahlung: Durchschnitt</th>

@@ -1,0 +1,157 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+
+       <table class="table table-light">
+        <tr>
+            <td>Ihre Anfangsausstattung:</td>
+            <td><b>{{ Constants.endowment }}</b></td>
+        </tr>
+        <tr>
+            <td>Ihr Beitrag:</td>
+            <td><b>{{ player.contribution }}</b></td>
+        </tr>
+        <tr>
+            <td>Ihre Auszahlung in dieser Runde:</td>
+            <td><b>{{ player.payoff }}</b></td>
+        </tr>
+        <tr>
+             <thead class="toast-header">
+                <th>Ihre kumulierte Auszahlung:</th>
+                <th><b>{{ player.cum_payoff }}</b></th>
+             </thead>
+        </tr>
+    </table>
+
+
+    <h5>Previous periods:</h5>
+    <table class="table table-strped table-hover">
+        <thead>
+        <th>Runde</th>
+        <th>Beitrag: Spieler 1</th>
+        <th>Beitrag: Spieler 2</th>
+        <th>Beitrag: Spieler 3</th>
+        <th>Beitrag: Spieler 4</th>
+        <th>Beitrag: Durchschnitt</th>
+        <th>Auszahlung: Spieler 1</th>
+        <th>Auszahlung: Spieler 2</th>
+        <th>Auszahlung: Spieler 3</th>
+        <th>Auszahlung: Spieler 4</th>
+        <th>Auszahlung: Durchschnitt</th>
+        </thead>
+        <tbody>
+
+
+         <td>
+            <table >
+                {% for p in  player1.in_all_rounds %}
+                <tr>
+                <td>{{ p.round_number }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+
+            <td>
+            <table >
+                {% for p in  player1.in_all_rounds %}
+                <tr>
+                <td>{{ p.contribution }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table >
+                {% for p in  player2.in_all_rounds %}
+                <tr>
+                <td>{{ p.contribution }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table >
+                {% for p in  player3.in_all_rounds %}
+                <tr>
+                <td>{{ p.contribution }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table >
+                {% for p in  player4.in_all_rounds %}
+                <tr>
+                <td>{{ p.contribution }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player.in_all_rounds %}
+                <tr>
+                <td>{{ p.group.avg_contribution }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player1.in_all_rounds %}
+                <tr>
+                <td>{{ p.payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player2.in_all_rounds %}
+                <tr>
+                <td>{{ p.payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player3.in_all_rounds %}
+                <tr>
+                <td>{{ p.payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player4.in_all_rounds %}
+                <tr>
+                <td>{{ p.payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td>
+            <table>
+                {% for p in player.in_all_rounds %}
+                <tr>
+                <td>{{ p.group.avg_payoff }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        </tbody>
+    </table>
+
+
+    {% next_button %}
+
+{% endblock %}

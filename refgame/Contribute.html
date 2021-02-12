@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Contribute
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Ihre Aufgabe (wie auch die Aufgabe Ihrer Mitspieler) besteht darin zu entscheiden,
+        wie viele LD sie zum <b>gemeinsam Projekt</b> beitragen möchten.
+    </p>
+
+    <p>
+        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD leigen.
+    </p>
+
+    <p>
+        <b>Mein Beitrag ist:</b>   {% formfield player.contribution label="" %}
+    </p>
+
+
+    {% next_button %}
+
+{% endblock %}
