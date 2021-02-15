@@ -11,10 +11,6 @@ from otree.api import (
     currency_range,
 )
 
-# Blablabla
-# Blablabla
-#Blub blub blub
-
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
@@ -165,7 +161,7 @@ class Kontrollfragen(Page):  # Control questions
 
 # Und wie machen wir das mit der payoff table?
 
-class Contribute(Page):
+class Beitragsentscheidung(Page):
     form_model = 'player'
     form_fields = ['contribution']
 
@@ -194,6 +190,6 @@ class Results(Page):
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
-                 Contribute,
+                 Beitragsentscheidung,
                  ResultsWaitPage,
                  Results]
