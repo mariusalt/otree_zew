@@ -2,13 +2,18 @@
 {% load otree %}
 
 {% block title %}
-    Results
+    Ergebnisse
 {% endblock %}
 
 {% block content %}
 
+    <p align="center">
+        <b><font size="5">Sie sind Spieler {{ player.id_in_group }} von {{ Constants.players_per_group }}
+            in Ihrer Gruppe</font></b>
+    </p>
 
-       <table class="table table-light">
+    <h5><b><font size="4">Runde {{ subsession.round_number }} von {{ Constants.num_rounds }}</font></b></h5>
+    <table class="table table-light">
         <tr>
             <td>Ihre Anfangsausstattung:</td>
             <td><b>{{ Constants.endowment }}</b></td>
@@ -16,6 +21,10 @@
         <tr>
             <td>Ihr Beitrag:</td>
             <td><b>{{ player.contribution }}</b></td>
+        </tr>
+        <tr>
+            <td>Durchschnittlicher Beitrag Ihrer Gruppemitglieder:</td>
+            <td><b>{{ player.avg_contribution_others }}</b></td>
         </tr>
         <tr>
             <td>Ihre Auszahlung in dieser Runde:</td>

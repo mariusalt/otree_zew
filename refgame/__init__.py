@@ -74,6 +74,9 @@ class Player(BasePlayer):
     # Cumulative payoff
     cum_payoff = models.CurrencyField()
 
+    # Avg. contribution other group members
+    avg_contribution_others = models.CurrencyField()
+
 # FUNCTIONS
 
 # Payoff function
@@ -82,6 +85,8 @@ def set_payoffs(group):
     contributions = [p.contribution for p in players]
     group.total_contribution = sum(contributions)
     group.avg_contribution = sum(contributions) / Constants.players_per_group
+    for p in players:  # avg. contributions of other group members
+        p.avg_contribution_others = (group.total_contribution - p.contribution) / (Constants.players_per_group - 1)
     # group.avg_contribution = (group.total_contribution / Constants.players_per_group)
     # group.individual_share = (    # template payoff for linear public goods game
     #        group.total_contribution / Constants.players_per_group
