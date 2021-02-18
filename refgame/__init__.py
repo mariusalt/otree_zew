@@ -14,7 +14,7 @@ from otree.api import (
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
-    num_rounds = 3
+    num_rounds = 2
     endowment = c(100)
     alpha = 4.4  # parameter for benefits from private account
     beta = 0.02  # parameter for benefits from private account
@@ -192,9 +192,17 @@ class Results(Page):
         )
 
 
+class FinalResults(Page):
+
+    def is_displayed(player):  # control questions only once
+        return player.round_number == Constants.num_rounds
+
+
+
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
                  Beitragsentscheidung,
                  ResultsWaitPage,
-                 Results]
+                 Results,
+                 FinalResults]
