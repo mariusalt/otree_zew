@@ -11,6 +11,8 @@ from otree.api import (
     currency_range,
 )
 
+# blablablbla
+
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
