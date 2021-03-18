@@ -11,7 +11,7 @@ from otree.api import (
     currency_range,
 )
 
-# blablablbla
+# no blabla
 
 class Constants(BaseConstants):
     name_in_url = 'refgame'
