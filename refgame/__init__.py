@@ -10,7 +10,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+# To clean
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
