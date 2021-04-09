@@ -60,7 +60,7 @@ class Player(BasePlayer):
 
     cq_6 = models.IntegerField(  # control question 6 (cq_6)
         choices=[
-            [1, "Aus den 5x5=25 Runden wir eine Runde ausgelost und ausgezahlt."],
+            [1, "Aus den 5x5=25 Runden wird eine Runde ausgelost und ausgezahlt."],
             [2, "Eine der fünf Phasen, die aus fünf Runden bestehen, wird ausgelost und ausgezahlt"],
             [3, "Alle 5x5=25 Runden werden ausgezahlt"],
         ], widget=widgets.RadioSelect()
