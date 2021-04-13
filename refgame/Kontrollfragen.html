@@ -7,32 +7,32 @@
 
 {% block styles %}
 <style type="text/css">
-    .calc{
-        position: fixed;
-        right: 0%;
-        width: 15%;
-        top:65%;
-        padding: 10px;
-    }
     #heading{
         position: fixed;
-        right: 4%;
+        right: 10%;
         width: 7%;
-        top:38%;
-        padding: 10px;
-    }
-    #Introbut{
-        position: fixed;
-        right: 3%;
-        width: 10%;
-        top:44%;
+        top:10%;
         padding: 10px;
     }
     #Introcalc{
         position: fixed;
         right: 1.6%;
         width: 11%;
-        top:60%;
+        top:17%;
+        padding: 10px;
+    }
+    .calc{
+        position: fixed;
+        right: 0%;
+        width: 15%;
+        top:20%;
+        padding: 10px;
+    }
+    #Introbut{
+        position: fixed;
+        right: 1.6%;
+        width: 15%;
+        top:48%;
         padding: 10px;
     }
 
@@ -40,7 +40,7 @@
     #button1 {
     position: fixed;
     right: 3%;
-    width: 10%;
+    width: 11%;
     top:53%;
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -94,23 +94,23 @@
 {% endblock %}
 
 {% block scripts %}
-<script language="javascript" type="text/javascript"> 
+<script language="javascript" type="text/javascript">
     document.getElementById("cont").style.display="none";
-    document.getElementById("Introbut").innerHTML="Instruktionen einblenden:";
+    document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
     function showhide(url)
         {
         var div = document.getElementById("cont");
         if (div.style.display === "none") {
         div.style.display = "block";
-        document.getElementById("Introbut").innerHTML="Instruktionen ausblenden:";
+        document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
         window.location='#cont';
         document.getElementById('cont').id = 'cont'
         } else {
         window.location='#firstques';
         div.style.display = "none";
-        document.getElementById("Introbut").innerHTML="Instruktionen einblenden:";
+        document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
         }
-        } 
+        }
 
     function update(value) {
     document.getElementById('screen').innerHTML += value;
@@ -171,10 +171,10 @@
     <div style="height: 200px;"></div>
     
       
-    <div id='heading'><u><strong>Hilfen:</strong></u></div>
+    <div id='heading'><strong>Hilfen:</strong></div>
     <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"></div>
-    <div id='button1'  onclick="showhide()">Instruktionen</div>
-    <div id='Introcalc'>Taschenrechner</div>
+    <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
+    <div id='Introcalc'><b>Taschenrechner</b></div>
     
     <div class="calc">
                     
