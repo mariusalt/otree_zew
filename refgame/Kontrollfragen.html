@@ -41,7 +41,7 @@
     position: fixed;
     right: 3%;
     width: 11%;
-    top:53%;
+    top:50%;
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
     -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -81,7 +81,7 @@
     position: fixed;
     right: 3%;
     width: 10%;
-    top:53%;
+    top:50%;
     padding: 10px;
     }
     #cont{
@@ -96,19 +96,19 @@
 {% block scripts %}
 <script language="javascript" type="text/javascript">
     document.getElementById("cont").style.display="none";
-    document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
+    document.getElementById("button1").innerHTML="<b>Bitte hier klicken</b>";
     function showhide(url)
         {
         var div = document.getElementById("cont");
         if (div.style.display === "none") {
         div.style.display = "block";
-        document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
+        document.getElementById("button1").innerHTML="<b>Instr. schließen</b>";
         window.location='#cont';
         document.getElementById('cont').id = 'cont'
         } else {
         window.location='#firstques';
         div.style.display = "none";
-        document.getElementById("Introbut").innerHTML="<b>Instruktionen</b>";
+        document.getElementById("button1").innerHTML="<b>Bitte hier klicken</b>";
         }
         }
 
@@ -167,13 +167,13 @@
     <div style="height: 500px;" id="cont">
         Hier Instruktionen einfügen
     </div>
-
-    <div style="height: 200px;"></div>
+ <div style="height: 400px;"></div>
+  
     
       
     <div id='heading'><strong>Hilfen:</strong></div>
-    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"></div>
-    <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
+    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Instruktionen</b></div>
+    <div id='button1'  onclick="showhide()"></div>
     <div id='Introcalc'><b>Taschenrechner</b></div>
     
     <div class="calc">
@@ -247,6 +247,6 @@
 
         </div>
 
-
+ 
 
 {% endblock %}
