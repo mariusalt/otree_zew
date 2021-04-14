@@ -96,19 +96,16 @@
 {% block scripts %}
 <script language="javascript" type="text/javascript">
     document.getElementById("cont").style.display="none";
-    document.getElementById("button1").innerHTML="<b>Bitte hier klicken</b>";
     function showhide(url)
         {
         var div = document.getElementById("cont");
         if (div.style.display === "none") {
         div.style.display = "block";
-        document.getElementById("button1").innerHTML="<b>Bitte hier klicken</b>";
         window.location='#cont';
         document.getElementById('cont').id = 'cont'
         } else {
         window.location='#firstques';
         div.style.display = "none";
-        document.getElementById("button1").innerHTML="<b>Bitte hier klicken</b>";
         }
         }
 
@@ -165,7 +162,7 @@
     {% next_button %}
 
     <div style="height: 500px;" id="cont">
-        Hier Instruktionen einfügen
+        {% include Constants.instructions_template %}
     </div>
  <div style="height: 400px;"></div>
   
@@ -173,7 +170,7 @@
       
     <div id='heading'><strong>Hilfen:</strong></div>
     <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Instruktionen</b></div>
-    <div id='button1'  onclick="showhide()"></div>
+    <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
     <div id='Introcalc'><b>Taschenrechner</b></div>
     
     <div class="calc">
