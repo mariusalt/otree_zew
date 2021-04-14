@@ -5,6 +5,108 @@
     Instruktionen
 {% endblock %}
 
+{% block styles %}
+<style type="text/css">
+    #heading{
+        position: fixed;
+        right: 10%;
+        width: 7%;
+        top:10%;
+        padding: 10px;
+    }
+     #Introbut{
+        position: fixed;
+        right: 1.6%;
+        width: 15%;
+        top:12.5%;
+        padding: 10px;
+    }
+    #button1 {
+    position: fixed;
+    right: 3%;
+    width: 11%;
+    top:16%;
+    padding: 10px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 36px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button1:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button1:active {
+    position: fixed;
+    right: 3%;
+    width: 10%;
+    top:16%;
+    padding: 10px;
+    }
+    #cont{
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+</style>
+{%  endblock %}
+
+{% block scripts %}
+<script language="javascript" type="text/javascript">
+    document.getElementById("cont").style.display="none";
+    function showhide(url)
+        {
+        var div = document.getElementById("cont");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        window.location='#cont';
+        document.getElementById('cont').id = 'cont'
+        } else {
+        window.location='#firstques';
+        div.style.display = "none";
+        }
+        }
+
+    function update(value) {
+    document.getElementById('screen').innerHTML += value;
+    }
+
+    function result() {
+        document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML);
+    }
+
+    function del() {
+        document.getElementById('screen').innerHTML = "";
+    }
+
+
+</script>
+{% endblock %}
+
 {% block content %}
 
     <!-- MathJax: Formeln -->
@@ -61,5 +163,11 @@
   
 
     {% next_button %}
+
+<div style="height: 400px;"></div>
+
+    <div id='heading'><strong>Hilfen:</strong></div>
+    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff Table</b></div>
+    <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
 
 {% endblock %}
