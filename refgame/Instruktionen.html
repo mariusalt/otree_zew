@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    Instruktionen
+    
 {% endblock %}
 
 {% block styles %}
@@ -23,9 +23,9 @@
     }
     #button1 {
     position: fixed;
-    right: 3%;
-    width: 11%;
-    top:16%;
+    right: 2%;
+    width: 14%;
+    top:18%;
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
     -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -63,30 +63,58 @@
     }
     #button1:active {
     position: fixed;
-    right: 3%;
-    width: 10%;
-    top:16%;
+    right: 2%;
+    width: 14%;
+    top:18%;
     padding: 10px;
     }
     #cont{
         padding-top: 20px;
         padding-bottom: 40px;
     }
+
+    .tg  {position:relative; left:-10%; border-collapse:collapse;border-spacing:0;width: 100%;}
+    .tg .rotate{width: 30%}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:6px 3px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:6px 3px;word-break:normal;}
+    .tg .tg-pb0m{border-color:transparent;text-align:center;vertical-align:middle}
+    .tg .tg-za14{border-color:transparent;text-align:left;vertical-align:middle}
+    .tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+    .tg .tg-nrix{text-align:center;vertical-align:middle}
+    .tg .rotate{border-color:transparent;text-align:center;vertical-align:middle}
+    
+    .rotate {
+      /* FF3.5+ */
+      -moz-transform: rotate(-90.0deg);
+      /* Opera 10.5 */
+      -o-transform: rotate(-90.0deg);
+      /* Saf3.1+, Chrome */
+      -webkit-transform: rotate(-90.0deg);
+      /* IE6,IE7 */
+      filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+      /* IE8 */
+      -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+      /* Standard */
+      transform: rotate(-90.0deg);
+      white-space: nowrap;
+    }
+
 </style>
 {%  endblock %}
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
-    document.getElementById("cont").style.display="none";
-    function showhide(url)
+    document.getElementById("table1").style.display="none";
+    function showhide()
         {
-        var div = document.getElementById("cont");
+        var div = document.getElementById("table1");
         if (div.style.display === "none") {
         div.style.display = "block";
-        window.location='#cont';
-        document.getElementById('cont').id = 'cont'
+        window.location='#table1';
         } else {
-        window.location='#firstques';
+        window.location='#rules';
         div.style.display = "none";
         }
         }
@@ -109,65 +137,562 @@
 
 {% block content %}
 
-    <!-- MathJax: Formeln -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <!-- I guess / fear, we need something like this to show formulars -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <p style="text-align:center"> 
-        <b>Regeln des Experiments</b>
-    </p> 
-
-    <p> 
-        Am Experiment nehmen insgesamt <b>vier Spieler</b> teil, d.h. neben Ihnen noch drei weitere Spieler. Die drei
-        Teilnehmer, mit denen Sie interagieren, sind über den gesamten Verlauf des Experiments die gleichen.
-    </p>
-
-    <p> 
-        Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche <b>Spiel</b>.
-        Jedes der Spiele besteht aus <b>fünf Runden</b>. Insgesamt spielen Sie also 5 x 5 = 25 Runden. Zu Beginn jeder
-        Runde bekommen Sie und Ihre drei Mitspieler jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben.
-        Über den Verlauf von fünf Runden bekommen Sie also insgesamt 500 LD pro Phase gutgeschrieben.
-    </p>
-
-    <p>
-        Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
-        <b>gemeinsamen Projekt</b> beitragen. Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.
-    </p>
-
-    <p> 
-        <b>Ihre Auszahlung pro Runde</b> ergibt sich folgendermaßen:
-    </p>
-
-    $$\begin{equation}
-        4.4(100 - Ihr \enspace Beitrag) - 0.02(100 - Ihr \enspace Beitrag)^2 + (Ihr \enspace Beitrag + Beiträge \enspace
-        der \enspace anderen \enspace drei \enspace Spieler) - 100
-    \end{equation}$$
-
-    <p> <!-- Wir müssen gut überlegen, wie wir das mit der payoff table machen wollen. Ist es möglich, die in einem eigenen Tab zu haben, den die Tln. die ganze Zeit offen lassen können / sollen -->
-        Um Ihnen die Berechnung Ihrer Auszahlung zu erleichtern, finden Sie auf der <font color="red">
-        ???nächsten Seite???</font> eine „<b>Payoff-Tabelle</b>“. In diese Payoff-Tabelle können Sie pro Runde den
-        <b>durchschnittlichen</b> Beitrag aller anderen Spieler (Spalte) und Ihren eigenen Beitrag (Zeile) festlegen
-        (jeweils in 5er Schritten). In der jeweiligen Zelle der Tabelle finden Sie dann Ihre Auszahlung pro Runde in LD.
-    </p>
-
-    <p>
-        Am Ende des Spiels erhalten Sie die <b>Auszahlung aus einer der fünf Phasen</b> in Euro ausgezahlt
-        (entsprechend dem oben genannten Umrechnungskurs). Die Phase, die ausgezahlt wird, wird <b>zufällig</b> bestimmt.
-        Daher sollten Sie sich in <b>jeder</b> Runde einer Phase so verhalten, als wäre sie auszahlungsrelevant.
-        Zu Beginn finden <b>zwei Proberunden</b> statt, die <b>nicht auszahlungsrelevant</b> sind.
-
-    <p>
-        Wenn Sie mit dem Lesen des Textes fertig sind und keine Fragen haben, klicken Sie bitte auf <b>Next</b>. 
-    </p>
-
+    {% include Constants.instructions_template %}
+    
   
 
     {% next_button %}
 
-<div style="height: 400px;"></div>
+
+
+
 
     <div id='heading'><strong>Hilfen:</strong></div>
     <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff Table</b></div>
     <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
 
+
+
+<table class="tg" id="table1">
+<thead>
+  <tr>
+    <th class="tg-za14"  rowspan="2"></th>
+    <th class="tg-pb0m" colspan="22"><b>durchschnittlicher Beitrag aller anderen<b><br></th>
+  </tr>
+
+  <tr>
+    <td class="tg-9wq8"></td>
+    <td class="tg-9wq8"><b>0</b></td>
+    <td class="tg-nrix"><b>5</b></td>
+    <td class="tg-nrix"><b>10</b></td>
+    <td class="tg-nrix"><b>15</b></td>
+    <td class="tg-nrix"><b>20</b></td>
+    <td class="tg-nrix"><b>25</b></td>
+    <td class="tg-nrix"><b>30</b></td>
+    <td class="tg-nrix"><b>35</b></td>
+    <td class="tg-nrix"><b>40</b></td>
+    <td class="tg-nrix"><b>45</b></td>
+    <td class="tg-nrix"><b>50</b></td>
+    <td class="tg-nrix"><b>55</b></td>
+    <td class="tg-nrix"><b>60</b></td>
+    <td class="tg-nrix"><b>65</b></td>
+    <td class="tg-nrix"><b>70</b></td>
+    <td class="tg-nrix"><b>75</b></td>
+    <td class="tg-nrix"><b>80</b></td>
+    <td class="tg-nrix"><b>85</b></td>
+    <td class="tg-nrix"><b>90</b></td>
+    <td class="tg-nrix"><b>95</b></td>
+    <td class="tg-nrix"><b>100</b></td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="rotate" rowspan="21"><b>eigener Beitrag<b></td>
+    <td class="tg-9wq8"><b>0</b></td>
+    <td class="tg-9wq8">140.0</td>
+    <td class="tg-nrix">155.0</td>
+    <td class="tg-nrix">170.0</td>
+    <td class="tg-nrix">185.0</td>
+    <td class="tg-nrix">200.0</td>
+    <td class="tg-nrix">215.0</td>
+    <td class="tg-nrix">230.0</td>
+    <td class="tg-nrix">245.0</td>
+    <td class="tg-nrix">260.0</td>
+    <td class="tg-nrix">275.0</td>
+    <td class="tg-nrix">290.0</td>
+    <td class="tg-nrix">305.0</td>
+    <td class="tg-nrix">320.0</td>
+    <td class="tg-nrix">335.0</td>
+    <td class="tg-nrix">350.0</td>
+    <td class="tg-nrix">365.0</td>
+    <td class="tg-nrix">380.0</td>
+    <td class="tg-nrix">395.0</td>
+    <td class="tg-nrix">410.0</td>
+    <td class="tg-nrix">425.0</td>
+    <td class="tg-nrix">440.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>5</b></td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+    <td class="tg-nrix">427.5</td>
+    <td class="tg-nrix">442.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>10</b></td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+    <td class="tg-nrix">399.0</td>
+    <td class="tg-nrix">414.0</td>
+    <td class="tg-nrix">429.0</td>
+    <td class="tg-nrix">444.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>15</b></td>
+    <td class="tg-nrix">144.5</td>
+    <td class="tg-nrix">159.5</td>
+    <td class="tg-nrix">174.5</td>
+    <td class="tg-nrix">189.5</td>
+    <td class="tg-nrix">204.5</td>
+    <td class="tg-nrix">219.5</td>
+    <td class="tg-nrix">234.5</td>
+    <td class="tg-nrix">249.5</td>
+    <td class="tg-nrix">264.5</td>
+    <td class="tg-nrix">279.5</td>
+    <td class="tg-nrix">294.5</td>
+    <td class="tg-nrix">309.5</td>
+    <td class="tg-nrix">324.5</td>
+    <td class="tg-nrix">339.5</td>
+    <td class="tg-nrix">354.5</td>
+    <td class="tg-nrix">369.5</td>
+    <td class="tg-nrix">384.5</td>
+    <td class="tg-nrix">399.5</td>
+    <td class="tg-nrix">414.5</td>
+    <td class="tg-nrix">429.5</td>
+    <td class="tg-nrix">444.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>20</b></td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+    <td class="tg-nrix">399.0</td>
+    <td class="tg-nrix">414.0</td>
+    <td class="tg-nrix">429.0</td>
+    <td class="tg-nrix">444.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>25</b></td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+    <td class="tg-nrix">427.5</td>
+    <td class="tg-nrix">442.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><<b>30</b></td>
+    <td class="tg-nrix">140.0</td>
+    <td class="tg-nrix">155.0</td>
+    <td class="tg-nrix">170.0</td>
+    <td class="tg-nrix">185.0</td>
+    <td class="tg-nrix">200.0</td>
+    <td class="tg-nrix">215.0</td>
+    <td class="tg-nrix">230.0</td>
+    <td class="tg-nrix">245.0</td>
+    <td class="tg-nrix">260.0</td>
+    <td class="tg-nrix">275.0</td>
+    <td class="tg-nrix">290.0</td>
+    <td class="tg-nrix">305.0</td>
+    <td class="tg-nrix">320.0</td>
+    <td class="tg-nrix">335.0</td>
+    <td class="tg-nrix">350.0</td>
+    <td class="tg-nrix">365.0</td>
+    <td class="tg-nrix">380.0</td>
+    <td class="tg-nrix">395.0</td>
+    <td class="tg-nrix">410.0</td>
+    <td class="tg-nrix">425.0</td>
+    <td class="tg-nrix">440.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>35</b></td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+    <td class="tg-nrix">331.5</td>
+    <td class="tg-nrix">346.5</td>
+    <td class="tg-nrix">361.5</td>
+    <td class="tg-nrix">376.5</td>
+    <td class="tg-nrix">391.5</td>
+    <td class="tg-nrix">406.5</td>
+    <td class="tg-nrix">421.5</td>
+    <td class="tg-nrix">436.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>40</b></td>
+    <td class="tg-nrix">132.0</td>
+    <td class="tg-nrix">147.0</td>
+    <td class="tg-nrix">162.0</td>
+    <td class="tg-nrix">177.0</td>
+    <td class="tg-nrix">192.0</td>
+    <td class="tg-nrix">207.0</td>
+    <td class="tg-nrix">222.0</td>
+    <td class="tg-nrix">237.0</td>
+    <td class="tg-nrix">252.0</td>
+    <td class="tg-nrix">267.0</td>
+    <td class="tg-nrix">282.0</td>
+    <td class="tg-nrix">297.0</td>
+    <td class="tg-nrix">312.0</td>
+    <td class="tg-nrix">327.0</td>
+    <td class="tg-nrix">342.0</td>
+    <td class="tg-nrix">357.0</td>
+    <td class="tg-nrix">372.0</td>
+    <td class="tg-nrix">387.0</td>
+    <td class="tg-nrix">402.0</td>
+    <td class="tg-nrix">417.0</td>
+    <td class="tg-nrix">432.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><<b>45</b></td>
+    <td class="tg-nrix">126.5</td>
+    <td class="tg-nrix">141.5</td>
+    <td class="tg-nrix">156.5</td>
+    <td class="tg-nrix">171.5</td>
+    <td class="tg-nrix">186.5</td>
+    <td class="tg-nrix">201.5</td>
+    <td class="tg-nrix">216.5</td>
+    <td class="tg-nrix">231.5</td>
+    <td class="tg-nrix">246.5</td>
+    <td class="tg-nrix">261.5</td>
+    <td class="tg-nrix">276.5</td>
+    <td class="tg-nrix">291.5</td>
+    <td class="tg-nrix">306.5</td>
+    <td class="tg-nrix">321.5</td>
+    <td class="tg-nrix">336.5</td>
+    <td class="tg-nrix">351.5</td>
+    <td class="tg-nrix">366.5</td>
+    <td class="tg-nrix">381.5</td>
+    <td class="tg-nrix">396.5</td>
+    <td class="tg-nrix">411.5</td>
+    <td class="tg-nrix">426.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>50</b></td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+    <td class="tg-nrix">315.0</td>
+    <td class="tg-nrix">330.0</td>
+    <td class="tg-nrix">345.0</td>
+    <td class="tg-nrix">360.0</td>
+    <td class="tg-nrix">375.0</td>
+    <td class="tg-nrix">390.0</td>
+    <td class="tg-nrix">405.0</td>
+    <td class="tg-nrix">420.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>55</b></td>
+    <td class="tg-nrix">112.5</td>
+    <td class="tg-nrix">127.5</td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>60</b></td>
+    <td class="tg-nrix">104.0</td>
+    <td class="tg-nrix">119.0</td>
+    <td class="tg-nrix">134.0</td>
+    <td class="tg-nrix">149.0</td>
+    <td class="tg-nrix">164.0</td>
+    <td class="tg-nrix">179.0</td>
+    <td class="tg-nrix">194.0</td>
+    <td class="tg-nrix">209.0</td>
+    <td class="tg-nrix">224.0</td>
+    <td class="tg-nrix">239.0</td>
+    <td class="tg-nrix">254.0</td>
+    <td class="tg-nrix">269.0</td>
+    <td class="tg-nrix">284.0</td>
+    <td class="tg-nrix">299.0</td>
+    <td class="tg-nrix">314.0</td>
+    <td class="tg-nrix">329.0</td>
+    <td class="tg-nrix">344.0</td>
+    <td class="tg-nrix">359.0</td>
+    <td class="tg-nrix">374.0</td>
+    <td class="tg-nrix">389.0</td>
+    <td class="tg-nrix">404.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>65</b></td>
+    <td class="tg-nrix">94.5</td>
+    <td class="tg-nrix">109.5</td>
+    <td class="tg-nrix">124.5</td>
+    <td class="tg-nrix">139.5</td>
+    <td class="tg-nrix">154.5</td>
+    <td class="tg-nrix">169.5</td>
+    <td class="tg-nrix">184.5</td>
+    <td class="tg-nrix">199.5</td>
+    <td class="tg-nrix">214.5</td>
+    <td class="tg-nrix">229.5</td>
+    <td class="tg-nrix">244.5</td>
+    <td class="tg-nrix">259.5</td>
+    <td class="tg-nrix">274.5</td>
+    <td class="tg-nrix">289.5</td>
+    <td class="tg-nrix">304.5</td>
+    <td class="tg-nrix">319.5</td>
+    <td class="tg-nrix">334.5</td>
+    <td class="tg-nrix">349.5</td>
+    <td class="tg-nrix">364.5</td>
+    <td class="tg-nrix">379.5</td>
+    <td class="tg-nrix">394.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>70</b></td>
+    <td class="tg-nrix">84.0</td>
+    <td class="tg-nrix">99.0</td>
+    <td class="tg-nrix">114.0</td>
+    <td class="tg-nrix">129.0</td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>75</b></td>
+    <td class="tg-nrix">72.5</td>
+    <td class="tg-nrix">87.5</td>
+    <td class="tg-nrix">102.5</td>
+    <td class="tg-nrix">117.5</td>
+    <td class="tg-nrix">132.5</td>
+    <td class="tg-nrix">147.5</td>
+    <td class="tg-nrix">162.5</td>
+    <td class="tg-nrix">177.5</td>
+    <td class="tg-nrix">192.5</td>
+    <td class="tg-nrix">207.5</td>
+    <td class="tg-nrix">222.5</td>
+    <td class="tg-nrix">237.5</td>
+    <td class="tg-nrix">252.5</td>
+    <td class="tg-nrix">267.5</td>
+    <td class="tg-nrix">282.5</td>
+    <td class="tg-nrix">297.5</td>
+    <td class="tg-nrix">312.5</td>
+    <td class="tg-nrix">327.5</td>
+    <td class="tg-nrix">342.5</td>
+    <td class="tg-nrix">357.5</td>
+    <td class="tg-nrix">372.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>80</b></td>
+    <td class="tg-nrix">60.0</td>
+    <td class="tg-nrix">75.0</td>
+    <td class="tg-nrix">90.0</td>
+    <td class="tg-nrix">105.0</td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+    <td class="tg-nrix">315.0</td>
+    <td class="tg-nrix">330.0</td>
+    <td class="tg-nrix">345.0</td>
+    <td class="tg-nrix">360.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>85</b></td>
+    <td class="tg-nrix">46.5</td>
+    <td class="tg-nrix">61.5</td>
+    <td class="tg-nrix">76.5</td>
+    <td class="tg-nrix">91.5</td>
+    <td class="tg-nrix">106.5</td>
+    <td class="tg-nrix">121.5</td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+    <td class="tg-nrix">331.5</td>
+    <td class="tg-nrix">346.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>90</b></td>
+    <td class="tg-nrix">32.0</td>
+    <td class="tg-nrix">47.0</td>
+    <td class="tg-nrix">62.0</td>
+    <td class="tg-nrix">77.0</td>
+    <td class="tg-nrix">92.0</td>
+    <td class="tg-nrix">107.0</td>
+    <td class="tg-nrix">122.0</td>
+    <td class="tg-nrix">137.0</td>
+    <td class="tg-nrix">152.0</td>
+    <td class="tg-nrix">167.0</td>
+    <td class="tg-nrix">182.0</td>
+    <td class="tg-nrix">197.0</td>
+    <td class="tg-nrix">212.0</td>
+    <td class="tg-nrix">227.0</td>
+    <td class="tg-nrix">242.0</td>
+    <td class="tg-nrix">257.0</td>
+    <td class="tg-nrix">272.0</td>
+    <td class="tg-nrix">287.0</td>
+    <td class="tg-nrix">302.0</td>
+    <td class="tg-nrix">317.0</td>
+    <td class="tg-nrix">332.0</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>95</b></td>
+    <td class="tg-nrix">16.5</td>
+    <td class="tg-nrix">31.5</td>
+    <td class="tg-nrix">46.5</td>
+    <td class="tg-nrix">61.5</td>
+    <td class="tg-nrix">76.5</td>
+    <td class="tg-nrix">91.5</td>
+    <td class="tg-nrix">106.5</td>
+    <td class="tg-nrix">121.5</td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><b>100</b></td>
+    <td class="tg-nrix">0.0</td>
+    <td class="tg-nrix">15.0</td>
+    <td class="tg-nrix">30.0</td>
+    <td class="tg-nrix">45.0</td>
+    <td class="tg-nrix">60.0</td>
+    <td class="tg-nrix">75.0</td>
+    <td class="tg-nrix">90.0</td>
+    <td class="tg-nrix">105.0</td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+  </tr>
+</tbody>
+</table>
+
+<div style="height: 400px;"></div>
 {% endblock %}
