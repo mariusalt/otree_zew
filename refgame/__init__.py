@@ -125,7 +125,7 @@ def cq_3_error_message(player, value):  # error message cq_3
 def cq_4_error_message(player, value):  # error message cq_4
     if value != 2:
         return 'Die Antwort ist leider nicht korrekt. ' \
-               'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten' \
+               'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten ' \
                '(beste Antwort ist immer 15)'
 
 
