@@ -119,7 +119,7 @@ def cq_2_error_message(player, value):  # error message cq_2
 def cq_3_error_message(player, value):  # error message cq_3
     if value != 15:
         return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 15 mit einer Auszahlung in Höge von 189.5.'
+               'Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5.'
 
 
 def cq_4_error_message(player, value):  # error message cq_4
@@ -132,7 +132,7 @@ def cq_4_error_message(player, value):  # error message cq_4
 def cq_5_error_message(player, value):  # error message cq_5
     if value != 90:
         return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 90 mit einer Auszahlung in Höge von 302.'
+               'Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302.'
 
 
 def cq_6_error_message(player, value):  # error message cq_6
