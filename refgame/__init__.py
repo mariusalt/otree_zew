@@ -10,7 +10,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-# To clean and commend - new stuff #
+
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
@@ -25,7 +25,6 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     pass
-####Test####++++
 
 class Group(BaseGroup):
     total_contribution = models.CurrencyField()
@@ -77,6 +76,10 @@ class Player(BasePlayer):
 
     # Avg. contribution other group members
     avg_contribution_others = models.CurrencyField()
+
+    # Questions
+    q_1 = models.IntegerField( # post-question 1
+        min=0)
 
 # FUNCTIONS
 
@@ -165,8 +168,6 @@ class Kontrollfragen(Page):  # Control questions
         return player.round_number == 1
 
 
-# Und wie machen wir das mit der payoff table?
-
 class Beitragsentscheidung(Page):
     form_model = 'player'
     form_fields = ['contribution']
@@ -195,10 +196,15 @@ class Results(Page):
 
 class FinalResults(Page):
 
-    def is_displayed(player):  # control questions only once
+    def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
 
+class Questionnaire(Page):  # welcome page
+    form_model = 'player'
+    form_fields = ["q_1"]
 
+    def is_displayed(player):  # only once
+        return player.round_number == Constants.num_rounds
 
 page_sequence = [Willkommen,
                  Instruktionen,
@@ -206,4 +212,5 @@ page_sequence = [Willkommen,
                  Beitragsentscheidung,
                  ResultsWaitPage,
                  Results,
-                 FinalResults]
+                 FinalResults,
+                 Questionnaire]

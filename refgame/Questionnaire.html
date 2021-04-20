@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Fragebogen
+{% endblock %}
+
+{% block content %}
+
+    <p style="text-align:center">
+        <b>Vielen Dank für Ihre Teilnahme!</b>
+    </p>
+
+    <p> Zum Schluss möchten wir Sie bitten einige Angaben zu Ihrer Person zu beantworten. Ihre Angaben werden
+    selbstverständlich streng vertraulich behandelt. </p>
+
+    <p><b>Frage 1</b>: Wie alt sind Sie? (In Jahren)</p>
+    <p> Ich bin: {% formfield player.q_1 label="" %}</p>
+
+    <p>
+        Wenn Sie alle Fragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}
