@@ -11,32 +11,30 @@
         position: fixed;
         right: 10%;
         width: 7%;
-        top:10%;
+        top:7%;
         padding: 10px;
     }
-    #Introcalc{
-        position: fixed;
-        right: 1.6%;
-        width: 11%;
-        top:20%;
-        padding: 10px;
-    }
-    .calc{
-        position: fixed;
-        right: -1%;
-        width: 15%;
-        top:22.5%;
-        padding: 10px;
-    }
-    #Introbut{
+    #Introbut1{
         position: fixed;
         right: 1.6%;
         width: 15%;
         top:12.5%;
         padding: 10px;
     }
-
-
+    #Introbut2{
+        position: fixed;
+        right: 1.6%;
+        width: 11%;
+        top:20%;
+        padding: 10px;
+    }
+    #Introbut3{
+        position: fixed;
+        right: 1.6%;
+        width: 11%;
+        top:26%;
+        padding: 10px;
+    }
     #button1 {
     position: fixed;
     right: 3%;
@@ -80,7 +78,7 @@
     #button1:active {
     position: fixed;
     right: 3%;
-    width: 10%;
+    width: 11%;
     top:16%;
     padding: 10px;
     }
@@ -88,9 +86,86 @@
         padding-top: 20px;
         padding-bottom: 40px;
     }
- 
+    #button2 {
+    position: fixed;
+    right: 3%;
+    width: 11%;
+    top:23.5%;
+    padding: 10px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 36px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button2:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button2:active {
+    position: fixed;
+    right: 3%;
+    width: 11%;
+    top:23.5%;
+    padding: 10px;
+    }
+    #table1{
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
 
-</style>
+    .tg  {position:relative; left:-10%; border-collapse:collapse;border-spacing:0;width: 100%;}
+    .tg .rotate{width: 30%}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:6px 3px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:6px 3px;word-break:normal;}
+    .tg .tg-pb0m{border-color:transparent;text-align:center;vertical-align:middle}
+    .tg .tg-za14{border-color:transparent;text-align:left;vertical-align:middle}
+    .tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+    .tg .tg-nrix{text-align:center;vertical-align:middle}
+    .tg .rotate{border-color:transparent;text-align:center;vertical-align:middle}
+
+    .rotate {
+      /* FF3.5+ */
+      -moz-transform: rotate(-90.0deg);
+      /* Opera 10.5 */
+      -o-transform: rotate(-90.0deg);
+      /* Saf3.1+, Chrome */
+      -webkit-transform: rotate(-90.0deg);
+      /* IE6,IE7 */
+      filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=0.083);
+      /* IE8 */
+      -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)";
+      /* Standard */
+      transform: rotate(-90.0deg);
+      white-space: nowrap;
+    }
+ </style>
 {% endblock %}
 
 {% block scripts %}
@@ -120,9 +195,36 @@
     function del() {
         document.getElementById('screen').innerHTML = "";
     }
+</script>
 
+<script language="javascript" type="text/javascript">
+    document.getElementById("table1").style.display="none";
+    function showhide1()
+        {
+        var div = document.getElementById("table1");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        window.location='#table1';
+        } else {
+        window.location='#rules';
+        div.style.display = "none";
+        }
+        }
+
+    function update(value) {
+    document.getElementById('screen').innerHTML += value;
+    }
+
+    function result() {
+        document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML);
+    }
+
+    function del() {
+        document.getElementById('screen').innerHTML = "";
+    }
 
 </script>
+
 {% endblock %}
 
 {% block content %}
@@ -158,7 +260,7 @@
     <p>
         Wenn Sie alle Kontrollfragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
     </p>
-  
+
     {% next_button %}
 
     <div style="height: 500px;" id="cont">
@@ -168,82 +270,560 @@
   
     
       
-    <div id='heading'><strong>Hilfen:</strong></div>
-    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Instruktionen</b></div>
+    <div id='heading'><strong>Help Desk:</strong></div>
+    <div id='Introbut1'valign="center" style="text-align:center;vertical-align: middle;"><b>Instruktionen</b></div>
     <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
-    <div id='Introcalc'><b>Taschenrechner</b></div>
-    
-    <div class="calc">
-                    
-                <TABLE BORDER=2>
+    <div id='Introbut2'><b>Payoff-Tabelle</b></div>
+    <div id='button2'  onclick="showhide1()"><b>Bitte hier klicken</b></div>
+    <div id='Introbut3'><b>Payoff-Simulator</b></div>
 
-                    <TR>
+ <table class="tg" id="table1">
+    <caption align="Bottom">
+        <b>Hinweis</b>: In diese Tabelle können Sie pro Runde den durchschnittlichen Beitrag aller
+        anderen Spieler (Spalte) und Ihren eigenen Beitrag (Zeile) <font color="red">festlegen/nachschlagen</font>
+        (jeweils in 5er Schritten). In der jeweiligen Zelle der Tabelle finden Sie dann Ihre entsprechende Auszahlung
+        pro Runde in LD.
+    </caption>
+  <thead>
+  <tr>
+    <th class="tg-za14"  rowspan="2"></th>
+    <th class="tg-pb0m" colspan="22"><b>Durchschnittlicher Beitrag aller anderen Spieler<b><br></th>
+  </tr>
 
-                        <TD align="center">
-                            <div id="screen" NAME="screen" style="border: 1px solid black; width: 99%;height:30px;"></div>
+  <tr bgcolor="#4682b4">
+    <td class="tg-9wq8"></td>
+    <td class="tg-9wq8"><b><font color="#f0f8ff">0</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">5</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">10</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">15</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">20</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">25</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">30</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">35</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">40</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">45</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">50</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">55</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">60</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">65</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">70</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">75</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">80</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">85</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">90</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">95</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">100</font></b></td>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="rotate" rowspan="21"><b>Ihr eigener Beitrag<b></td>
+    <td class="tg-9wq8" bgcolor="#4682b4"><b><font color="#f0f8ff">0</font></b></td>
+    <td class="tg-9wq8">140.0</td>
+    <td class="tg-nrix">155.0</td>
+    <td class="tg-nrix">170.0</td>
+    <td class="tg-nrix">185.0</td>
+    <td class="tg-nrix">200.0</td>
+    <td class="tg-nrix">215.0</td>
+    <td class="tg-nrix">230.0</td>
+    <td class="tg-nrix">245.0</td>
+    <td class="tg-nrix">260.0</td>
+    <td class="tg-nrix">275.0</td>
+    <td class="tg-nrix">290.0</td>
+    <td class="tg-nrix">305.0</td>
+    <td class="tg-nrix">320.0</td>
+    <td class="tg-nrix">335.0</td>
+    <td class="tg-nrix">350.0</td>
+    <td class="tg-nrix">365.0</td>
+    <td class="tg-nrix">380.0</td>
+    <td class="tg-nrix">395.0</td>
+    <td class="tg-nrix">410.0</td>
+    <td class="tg-nrix">425.0</td>
+    <td class="tg-nrix">440.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">5</font></b></td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+    <td class="tg-nrix">427.5</td>
+    <td class="tg-nrix">442.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">10</font></b></td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+    <td class="tg-nrix">399.0</td>
+    <td class="tg-nrix">414.0</td>
+    <td class="tg-nrix">429.0</td>
+    <td class="tg-nrix">444.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">15</font></b></td>
+    <td class="tg-nrix">144.5</td>
+    <td class="tg-nrix">159.5</td>
+    <td class="tg-nrix">174.5</td>
+    <td class="tg-nrix">189.5</td>
+    <td class="tg-nrix">204.5</td>
+    <td class="tg-nrix">219.5</td>
+    <td class="tg-nrix">234.5</td>
+    <td class="tg-nrix">249.5</td>
+    <td class="tg-nrix">264.5</td>
+    <td class="tg-nrix">279.5</td>
+    <td class="tg-nrix">294.5</td>
+    <td class="tg-nrix">309.5</td>
+    <td class="tg-nrix">324.5</td>
+    <td class="tg-nrix">339.5</td>
+    <td class="tg-nrix">354.5</td>
+    <td class="tg-nrix">369.5</td>
+    <td class="tg-nrix">384.5</td>
+    <td class="tg-nrix">399.5</td>
+    <td class="tg-nrix">414.5</td>
+    <td class="tg-nrix">429.5</td>
+    <td class="tg-nrix">444.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">20</font></b></td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+    <td class="tg-nrix">399.0</td>
+    <td class="tg-nrix">414.0</td>
+    <td class="tg-nrix">429.0</td>
+    <td class="tg-nrix">444.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">25</font></b></td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+    <td class="tg-nrix">427.5</td>
+    <td class="tg-nrix">442.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">30</font></b></td>
+    <td class="tg-nrix">140.0</td>
+    <td class="tg-nrix">155.0</td>
+    <td class="tg-nrix">170.0</td>
+    <td class="tg-nrix">185.0</td>
+    <td class="tg-nrix">200.0</td>
+    <td class="tg-nrix">215.0</td>
+    <td class="tg-nrix">230.0</td>
+    <td class="tg-nrix">245.0</td>
+    <td class="tg-nrix">260.0</td>
+    <td class="tg-nrix">275.0</td>
+    <td class="tg-nrix">290.0</td>
+    <td class="tg-nrix">305.0</td>
+    <td class="tg-nrix">320.0</td>
+    <td class="tg-nrix">335.0</td>
+    <td class="tg-nrix">350.0</td>
+    <td class="tg-nrix">365.0</td>
+    <td class="tg-nrix">380.0</td>
+    <td class="tg-nrix">395.0</td>
+    <td class="tg-nrix">410.0</td>
+    <td class="tg-nrix">425.0</td>
+    <td class="tg-nrix">440.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">35</font></b></td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+    <td class="tg-nrix">331.5</td>
+    <td class="tg-nrix">346.5</td>
+    <td class="tg-nrix">361.5</td>
+    <td class="tg-nrix">376.5</td>
+    <td class="tg-nrix">391.5</td>
+    <td class="tg-nrix">406.5</td>
+    <td class="tg-nrix">421.5</td>
+    <td class="tg-nrix">436.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">40</font></b></td>
+    <td class="tg-nrix">132.0</td>
+    <td class="tg-nrix">147.0</td>
+    <td class="tg-nrix">162.0</td>
+    <td class="tg-nrix">177.0</td>
+    <td class="tg-nrix">192.0</td>
+    <td class="tg-nrix">207.0</td>
+    <td class="tg-nrix">222.0</td>
+    <td class="tg-nrix">237.0</td>
+    <td class="tg-nrix">252.0</td>
+    <td class="tg-nrix">267.0</td>
+    <td class="tg-nrix">282.0</td>
+    <td class="tg-nrix">297.0</td>
+    <td class="tg-nrix">312.0</td>
+    <td class="tg-nrix">327.0</td>
+    <td class="tg-nrix">342.0</td>
+    <td class="tg-nrix">357.0</td>
+    <td class="tg-nrix">372.0</td>
+    <td class="tg-nrix">387.0</td>
+    <td class="tg-nrix">402.0</td>
+    <td class="tg-nrix">417.0</td>
+    <td class="tg-nrix">432.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">45</font></b></td>
+    <td class="tg-nrix">126.5</td>
+    <td class="tg-nrix">141.5</td>
+    <td class="tg-nrix">156.5</td>
+    <td class="tg-nrix">171.5</td>
+    <td class="tg-nrix">186.5</td>
+    <td class="tg-nrix">201.5</td>
+    <td class="tg-nrix">216.5</td>
+    <td class="tg-nrix">231.5</td>
+    <td class="tg-nrix">246.5</td>
+    <td class="tg-nrix">261.5</td>
+    <td class="tg-nrix">276.5</td>
+    <td class="tg-nrix">291.5</td>
+    <td class="tg-nrix">306.5</td>
+    <td class="tg-nrix">321.5</td>
+    <td class="tg-nrix">336.5</td>
+    <td class="tg-nrix">351.5</td>
+    <td class="tg-nrix">366.5</td>
+    <td class="tg-nrix">381.5</td>
+    <td class="tg-nrix">396.5</td>
+    <td class="tg-nrix">411.5</td>
+    <td class="tg-nrix">426.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">50</font></b></td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+    <td class="tg-nrix">315.0</td>
+    <td class="tg-nrix">330.0</td>
+    <td class="tg-nrix">345.0</td>
+    <td class="tg-nrix">360.0</td>
+    <td class="tg-nrix">375.0</td>
+    <td class="tg-nrix">390.0</td>
+    <td class="tg-nrix">405.0</td>
+    <td class="tg-nrix">420.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">55</font></b></td>
+    <td class="tg-nrix">112.5</td>
+    <td class="tg-nrix">127.5</td>
+    <td class="tg-nrix">142.5</td>
+    <td class="tg-nrix">157.5</td>
+    <td class="tg-nrix">172.5</td>
+    <td class="tg-nrix">187.5</td>
+    <td class="tg-nrix">202.5</td>
+    <td class="tg-nrix">217.5</td>
+    <td class="tg-nrix">232.5</td>
+    <td class="tg-nrix">247.5</td>
+    <td class="tg-nrix">262.5</td>
+    <td class="tg-nrix">277.5</td>
+    <td class="tg-nrix">292.5</td>
+    <td class="tg-nrix">307.5</td>
+    <td class="tg-nrix">322.5</td>
+    <td class="tg-nrix">337.5</td>
+    <td class="tg-nrix">352.5</td>
+    <td class="tg-nrix">367.5</td>
+    <td class="tg-nrix">382.5</td>
+    <td class="tg-nrix">397.5</td>
+    <td class="tg-nrix">412.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">60</font></b></td>
+    <td class="tg-nrix">104.0</td>
+    <td class="tg-nrix">119.0</td>
+    <td class="tg-nrix">134.0</td>
+    <td class="tg-nrix">149.0</td>
+    <td class="tg-nrix">164.0</td>
+    <td class="tg-nrix">179.0</td>
+    <td class="tg-nrix">194.0</td>
+    <td class="tg-nrix">209.0</td>
+    <td class="tg-nrix">224.0</td>
+    <td class="tg-nrix">239.0</td>
+    <td class="tg-nrix">254.0</td>
+    <td class="tg-nrix">269.0</td>
+    <td class="tg-nrix">284.0</td>
+    <td class="tg-nrix">299.0</td>
+    <td class="tg-nrix">314.0</td>
+    <td class="tg-nrix">329.0</td>
+    <td class="tg-nrix">344.0</td>
+    <td class="tg-nrix">359.0</td>
+    <td class="tg-nrix">374.0</td>
+    <td class="tg-nrix">389.0</td>
+    <td class="tg-nrix">404.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">65</font></b></td>
+    <td class="tg-nrix">94.5</td>
+    <td class="tg-nrix">109.5</td>
+    <td class="tg-nrix">124.5</td>
+    <td class="tg-nrix">139.5</td>
+    <td class="tg-nrix">154.5</td>
+    <td class="tg-nrix">169.5</td>
+    <td class="tg-nrix">184.5</td>
+    <td class="tg-nrix">199.5</td>
+    <td class="tg-nrix">214.5</td>
+    <td class="tg-nrix">229.5</td>
+    <td class="tg-nrix">244.5</td>
+    <td class="tg-nrix">259.5</td>
+    <td class="tg-nrix">274.5</td>
+    <td class="tg-nrix">289.5</td>
+    <td class="tg-nrix">304.5</td>
+    <td class="tg-nrix">319.5</td>
+    <td class="tg-nrix">334.5</td>
+    <td class="tg-nrix">349.5</td>
+    <td class="tg-nrix">364.5</td>
+    <td class="tg-nrix">379.5</td>
+    <td class="tg-nrix">394.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">70</font></b></td>
+    <td class="tg-nrix">84.0</td>
+    <td class="tg-nrix">99.0</td>
+    <td class="tg-nrix">114.0</td>
+    <td class="tg-nrix">129.0</td>
+    <td class="tg-nrix">144.0</td>
+    <td class="tg-nrix">159.0</td>
+    <td class="tg-nrix">174.0</td>
+    <td class="tg-nrix">189.0</td>
+    <td class="tg-nrix">204.0</td>
+    <td class="tg-nrix">219.0</td>
+    <td class="tg-nrix">234.0</td>
+    <td class="tg-nrix">249.0</td>
+    <td class="tg-nrix">264.0</td>
+    <td class="tg-nrix">279.0</td>
+    <td class="tg-nrix">294.0</td>
+    <td class="tg-nrix">309.0</td>
+    <td class="tg-nrix">324.0</td>
+    <td class="tg-nrix">339.0</td>
+    <td class="tg-nrix">354.0</td>
+    <td class="tg-nrix">369.0</td>
+    <td class="tg-nrix">384.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">75</font></b></td>
+    <td class="tg-nrix">72.5</td>
+    <td class="tg-nrix">87.5</td>
+    <td class="tg-nrix">102.5</td>
+    <td class="tg-nrix">117.5</td>
+    <td class="tg-nrix">132.5</td>
+    <td class="tg-nrix">147.5</td>
+    <td class="tg-nrix">162.5</td>
+    <td class="tg-nrix">177.5</td>
+    <td class="tg-nrix">192.5</td>
+    <td class="tg-nrix">207.5</td>
+    <td class="tg-nrix">222.5</td>
+    <td class="tg-nrix">237.5</td>
+    <td class="tg-nrix">252.5</td>
+    <td class="tg-nrix">267.5</td>
+    <td class="tg-nrix">282.5</td>
+    <td class="tg-nrix">297.5</td>
+    <td class="tg-nrix">312.5</td>
+    <td class="tg-nrix">327.5</td>
+    <td class="tg-nrix">342.5</td>
+    <td class="tg-nrix">357.5</td>
+    <td class="tg-nrix">372.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">80</font></b></td>
+    <td class="tg-nrix">60.0</td>
+    <td class="tg-nrix">75.0</td>
+    <td class="tg-nrix">90.0</td>
+    <td class="tg-nrix">105.0</td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+    <td class="tg-nrix">315.0</td>
+    <td class="tg-nrix">330.0</td>
+    <td class="tg-nrix">345.0</td>
+    <td class="tg-nrix">360.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">85</font></b></td>
+    <td class="tg-nrix">46.5</td>
+    <td class="tg-nrix">61.5</td>
+    <td class="tg-nrix">76.5</td>
+    <td class="tg-nrix">91.5</td>
+    <td class="tg-nrix">106.5</td>
+    <td class="tg-nrix">121.5</td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+    <td class="tg-nrix">331.5</td>
+    <td class="tg-nrix">346.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">90</font></b></td>
+    <td class="tg-nrix">32.0</td>
+    <td class="tg-nrix">47.0</td>
+    <td class="tg-nrix">62.0</td>
+    <td class="tg-nrix">77.0</td>
+    <td class="tg-nrix">92.0</td>
+    <td class="tg-nrix">107.0</td>
+    <td class="tg-nrix">122.0</td>
+    <td class="tg-nrix">137.0</td>
+    <td class="tg-nrix">152.0</td>
+    <td class="tg-nrix">167.0</td>
+    <td class="tg-nrix">182.0</td>
+    <td class="tg-nrix">197.0</td>
+    <td class="tg-nrix">212.0</td>
+    <td class="tg-nrix">227.0</td>
+    <td class="tg-nrix">242.0</td>
+    <td class="tg-nrix">257.0</td>
+    <td class="tg-nrix">272.0</td>
+    <td class="tg-nrix">287.0</td>
+    <td class="tg-nrix">302.0</td>
+    <td class="tg-nrix">317.0</td>
+    <td class="tg-nrix">332.0</td>
+  </tr>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">95</font></b></td>
+    <td class="tg-nrix">16.5</td>
+    <td class="tg-nrix">31.5</td>
+    <td class="tg-nrix">46.5</td>
+    <td class="tg-nrix">61.5</td>
+    <td class="tg-nrix">76.5</td>
+    <td class="tg-nrix">91.5</td>
+    <td class="tg-nrix">106.5</td>
+    <td class="tg-nrix">121.5</td>
+    <td class="tg-nrix">136.5</td>
+    <td class="tg-nrix">151.5</td>
+    <td class="tg-nrix">166.5</td>
+    <td class="tg-nrix">181.5</td>
+    <td class="tg-nrix">196.5</td>
+    <td class="tg-nrix">211.5</td>
+    <td class="tg-nrix">226.5</td>
+    <td class="tg-nrix">241.5</td>
+    <td class="tg-nrix">256.5</td>
+    <td class="tg-nrix">271.5</td>
+    <td class="tg-nrix">286.5</td>
+    <td class="tg-nrix">301.5</td>
+    <td class="tg-nrix">316.5</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">100</font></b></td>
+    <td class="tg-nrix">0.0</td>
+    <td class="tg-nrix">15.0</td>
+    <td class="tg-nrix">30.0</td>
+    <td class="tg-nrix">45.0</td>
+    <td class="tg-nrix">60.0</td>
+    <td class="tg-nrix">75.0</td>
+    <td class="tg-nrix">90.0</td>
+    <td class="tg-nrix">105.0</td>
+    <td class="tg-nrix">120.0</td>
+    <td class="tg-nrix">135.0</td>
+    <td class="tg-nrix">150.0</td>
+    <td class="tg-nrix">165.0</td>
+    <td class="tg-nrix">180.0</td>
+    <td class="tg-nrix">195.0</td>
+    <td class="tg-nrix">210.0</td>
+    <td class="tg-nrix">225.0</td>
+    <td class="tg-nrix">240.0</td>
+    <td class="tg-nrix">255.0</td>
+    <td class="tg-nrix">270.0</td>
+    <td class="tg-nrix">285.0</td>
+    <td class="tg-nrix">300.0</td>
+  </tr>
+</tbody>
+</table>
 
-                    </TD>
-
-                    </TR>
-
-                    <TR>
-
-                        <TD>
-                          <INPUT TYPE="button" NAME="c" VALUE="  c  " onclick="del();">
-
-                          <INPUT TYPE="button" NAME="("   VALUE="  (  " onclick="update('(')">
-
-                          <INPUT TYPE="button" NAME=")" VALUE="  )  " onclick="update(')')">
-
-                          <br>
-
-                            <INPUT TYPE="button" NAME="7"   VALUE="  7  " onclick="update(7)">
-
-                            <INPUT TYPE="button" NAME="8"   VALUE="  8  " onclick="update(8)">
-
-                            <INPUT TYPE="button" NAME="9" VALUE="  9  " onclick="update(9)">
-
-                            <INPUT TYPE="button" NAME="+"  VALUE="  +  " onclick="update('+')">
-
-                            <br>
-
-                            <INPUT TYPE="button" NAME="4"  VALUE="  4  " onclick="update(4)">
-
-                            <INPUT TYPE="button" NAME="5"  VALUE="  5  " onclick="update(5)">
-
-                            <INPUT TYPE="button" NAME="6"   VALUE="  6  " onclick="update(6)">
-
-                            <INPUT TYPE="button" NAME="-" VALUE="  -  " onclick="update('-')">
-
-                            <br>
-
-                            <INPUT TYPE="button" NAME="1" VALUE="  1  " onclick="update(1)">
-
-                            <INPUT TYPE="button" NAME="2" VALUE="  2  " onclick="update(2)">
-
-                            <INPUT TYPE="button" NAME="3"  VALUE="  3  " onclick="update(3)">
-
-                            <INPUT TYPE="button" NAME="*" VALUE="  x  " onclick="update('*')">
-
-
-                            <br>
-
-                            <INPUT TYPE="button" NAME="," VALUE="  ,  " onclick="update('.');">
-
-                            <INPUT TYPE="button" NAME="0"  VALUE="  0  " onclick="update(0)">
-
-                            <INPUT TYPE="button" NAME="="  VALUE="  =  " onclick="result();">
-
-                            <INPUT TYPE="button" NAME="/"   VALUE="  /  " onclick="update('/')">
-
-                        </TD>
-
-                    </TR>
-
-                </TABLE>
-
-        </div>
-
- 
+<div style="height: 400px;"></div>
 
 {% endblock %}
