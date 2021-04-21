@@ -11,13 +11,13 @@
         position: fixed;
         right: 10%;
         width: 7%;
-        top:10%;
+        top:7%;
         padding: 10px;
     }
      #Introbut{
         position: fixed;
         right: 1.6%;
-        width: 15%;
+        width: 16%;
         top:12.5%;
         padding: 10px;
     }
@@ -25,7 +25,7 @@
     position: fixed;
     right: 2%;
     width: 14%;
-    top:18%;
+    top:16%;
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
     -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -65,7 +65,7 @@
     position: fixed;
     right: 2%;
     width: 14%;
-    top:18%;
+    top:16%;
     padding: 10px;
     }
     #cont{
@@ -147,48 +147,55 @@
 
 
 
-    <div id='heading'><strong>Hilfen:</strong></div>
-    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff Table</b></div>
-    <div id='button1'  onclick="showhide()"><b>Bitte hier klicken</b></div>
+    <div id='heading'><strong>Help Desk:</strong></div>
+    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff-Tabelle</b></div>
+    <div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
+        <b>Bitte hier klicken</b></div>
 
 
 
 <table class="tg" id="table1">
-<thead>
+    <caption align="Bottom">
+        <b>Hinweis</b>: In diese Tabelle können Sie pro Runde den durchschnittlichen Beitrag aller
+        anderen Spieler (Spalte) und Ihren eigenen Beitrag (Zeile) <font color="red">festlegen/nachschlagen</font>
+        (jeweils in 5er Schritten). In der jeweiligen Zelle der Tabelle finden Sie dann Ihre entsprechende Auszahlung
+        pro Runde in LD.
+    </caption>
+  <thead>
   <tr>
     <th class="tg-za14"  rowspan="2"></th>
-    <th class="tg-pb0m" colspan="22"><b>durchschnittlicher Beitrag aller anderen<b><br></th>
+    <th class="tg-pb0m" colspan="22"><b>Durchschnittlicher Beitrag aller anderen Spieler<b><br></th>
   </tr>
 
-  <tr>
+  <tr bgcolor="#4682b4">
     <td class="tg-9wq8"></td>
-    <td class="tg-9wq8"><b>0</b></td>
-    <td class="tg-nrix"><b>5</b></td>
-    <td class="tg-nrix"><b>10</b></td>
-    <td class="tg-nrix"><b>15</b></td>
-    <td class="tg-nrix"><b>20</b></td>
-    <td class="tg-nrix"><b>25</b></td>
-    <td class="tg-nrix"><b>30</b></td>
-    <td class="tg-nrix"><b>35</b></td>
-    <td class="tg-nrix"><b>40</b></td>
-    <td class="tg-nrix"><b>45</b></td>
-    <td class="tg-nrix"><b>50</b></td>
-    <td class="tg-nrix"><b>55</b></td>
-    <td class="tg-nrix"><b>60</b></td>
-    <td class="tg-nrix"><b>65</b></td>
-    <td class="tg-nrix"><b>70</b></td>
-    <td class="tg-nrix"><b>75</b></td>
-    <td class="tg-nrix"><b>80</b></td>
-    <td class="tg-nrix"><b>85</b></td>
-    <td class="tg-nrix"><b>90</b></td>
-    <td class="tg-nrix"><b>95</b></td>
-    <td class="tg-nrix"><b>100</b></td>
+    <td class="tg-9wq8"><b><font color="#f0f8ff">0</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">5</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">10</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">15</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">20</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">25</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">30</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">35</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">40</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">45</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">50</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">55</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">60</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">65</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">70</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">75</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">80</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">85</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">90</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">95</font></b></td>
+    <td class="tg-nrix"><b><font color="#f0f8ff">100</font></b></td>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="rotate" rowspan="21"><b>eigener Beitrag<b></td>
-    <td class="tg-9wq8"><b>0</b></td>
+    <td class="rotate" rowspan="21"><b>Ihr eigener Beitrag<b></td>
+    <td class="tg-9wq8" bgcolor="#4682b4"><b><font color="#f0f8ff">0</font></b></td>
     <td class="tg-9wq8">140.0</td>
     <td class="tg-nrix">155.0</td>
     <td class="tg-nrix">170.0</td>
@@ -211,8 +218,8 @@
     <td class="tg-nrix">425.0</td>
     <td class="tg-nrix">440.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>5</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">5</font></b></td>
     <td class="tg-nrix">142.5</td>
     <td class="tg-nrix">157.5</td>
     <td class="tg-nrix">172.5</td>
@@ -236,7 +243,7 @@
     <td class="tg-nrix">442.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>10</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">10</font></b></td>
     <td class="tg-nrix">144.0</td>
     <td class="tg-nrix">159.0</td>
     <td class="tg-nrix">174.0</td>
@@ -259,8 +266,8 @@
     <td class="tg-nrix">429.0</td>
     <td class="tg-nrix">444.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>15</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">15</font></b></td>
     <td class="tg-nrix">144.5</td>
     <td class="tg-nrix">159.5</td>
     <td class="tg-nrix">174.5</td>
@@ -284,7 +291,7 @@
     <td class="tg-nrix">444.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>20</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">20</font></b></td>
     <td class="tg-nrix">144.0</td>
     <td class="tg-nrix">159.0</td>
     <td class="tg-nrix">174.0</td>
@@ -307,8 +314,8 @@
     <td class="tg-nrix">429.0</td>
     <td class="tg-nrix">444.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>25</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">25</font></b></td>
     <td class="tg-nrix">142.5</td>
     <td class="tg-nrix">157.5</td>
     <td class="tg-nrix">172.5</td>
@@ -332,7 +339,7 @@
     <td class="tg-nrix">442.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>30</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">30</font></b></td>
     <td class="tg-nrix">140.0</td>
     <td class="tg-nrix">155.0</td>
     <td class="tg-nrix">170.0</td>
@@ -355,8 +362,8 @@
     <td class="tg-nrix">425.0</td>
     <td class="tg-nrix">440.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>35</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">35</font></b></td>
     <td class="tg-nrix">136.5</td>
     <td class="tg-nrix">151.5</td>
     <td class="tg-nrix">166.5</td>
@@ -380,7 +387,7 @@
     <td class="tg-nrix">436.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>40</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">40</font></b></td>
     <td class="tg-nrix">132.0</td>
     <td class="tg-nrix">147.0</td>
     <td class="tg-nrix">162.0</td>
@@ -403,8 +410,8 @@
     <td class="tg-nrix">417.0</td>
     <td class="tg-nrix">432.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>45</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">45</font></b></td>
     <td class="tg-nrix">126.5</td>
     <td class="tg-nrix">141.5</td>
     <td class="tg-nrix">156.5</td>
@@ -428,7 +435,7 @@
     <td class="tg-nrix">426.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>50</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">50</font></b></td>
     <td class="tg-nrix">120.0</td>
     <td class="tg-nrix">135.0</td>
     <td class="tg-nrix">150.0</td>
@@ -451,8 +458,8 @@
     <td class="tg-nrix">405.0</td>
     <td class="tg-nrix">420.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>55</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">55</font></b></td>
     <td class="tg-nrix">112.5</td>
     <td class="tg-nrix">127.5</td>
     <td class="tg-nrix">142.5</td>
@@ -476,7 +483,7 @@
     <td class="tg-nrix">412.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>60</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">60</font></b></td>
     <td class="tg-nrix">104.0</td>
     <td class="tg-nrix">119.0</td>
     <td class="tg-nrix">134.0</td>
@@ -499,8 +506,8 @@
     <td class="tg-nrix">389.0</td>
     <td class="tg-nrix">404.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>65</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">65</font></b></td>
     <td class="tg-nrix">94.5</td>
     <td class="tg-nrix">109.5</td>
     <td class="tg-nrix">124.5</td>
@@ -524,7 +531,7 @@
     <td class="tg-nrix">394.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>70</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">70</font></b></td>
     <td class="tg-nrix">84.0</td>
     <td class="tg-nrix">99.0</td>
     <td class="tg-nrix">114.0</td>
@@ -547,8 +554,8 @@
     <td class="tg-nrix">369.0</td>
     <td class="tg-nrix">384.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>75</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">75</font></b></td>
     <td class="tg-nrix">72.5</td>
     <td class="tg-nrix">87.5</td>
     <td class="tg-nrix">102.5</td>
@@ -572,7 +579,7 @@
     <td class="tg-nrix">372.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>80</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">80</font></b></td>
     <td class="tg-nrix">60.0</td>
     <td class="tg-nrix">75.0</td>
     <td class="tg-nrix">90.0</td>
@@ -595,8 +602,8 @@
     <td class="tg-nrix">345.0</td>
     <td class="tg-nrix">360.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>85</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">85</font></b></td>
     <td class="tg-nrix">46.5</td>
     <td class="tg-nrix">61.5</td>
     <td class="tg-nrix">76.5</td>
@@ -620,7 +627,7 @@
     <td class="tg-nrix">346.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>90</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">90</font></b></td>
     <td class="tg-nrix">32.0</td>
     <td class="tg-nrix">47.0</td>
     <td class="tg-nrix">62.0</td>
@@ -643,8 +650,8 @@
     <td class="tg-nrix">317.0</td>
     <td class="tg-nrix">332.0</td>
   </tr>
-  <tr>
-    <td class="tg-nrix"><b>95</b></td>
+  <tr bgcolor="#add8e6">
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">95</font></b></td>
     <td class="tg-nrix">16.5</td>
     <td class="tg-nrix">31.5</td>
     <td class="tg-nrix">46.5</td>
@@ -668,7 +675,7 @@
     <td class="tg-nrix">316.5</td>
   </tr>
   <tr>
-    <td class="tg-nrix"><b>100</b></td>
+    <td class="tg-nrix" bgcolor="#4682b4"><b><font color="#f0f8ff">100</font></b></td>
     <td class="tg-nrix">0.0</td>
     <td class="tg-nrix">15.0</td>
     <td class="tg-nrix">30.0</td>
