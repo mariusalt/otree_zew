@@ -21,6 +21,7 @@ class Constants(BaseConstants):
     gamma = 1  # parameter for benefits from public account
     tau = 100  # parameter to calibrate payoff
     instructions_template = 'refgame/instr_content.html'
+    payofftable_template = 'refgame/table_content.html'
 
 
 class Subsession(BaseSubsession):
