@@ -1,0 +1,38 @@
+<script>
+window.Papercups = {
+  config: {
+    accountId: "d05aa956-2a17-4fc8-993b-ce9dc20a17d0",
+    title: "Chat mit der Studienleitung",
+    subtitle: "Falls Sie fragen haben, können Sie diese jederzeit stellen.",
+    primaryColor: "#1890ff",
+    greeting: "",
+    awayMessage: "",
+    newMessagePlaceholder: "Start typing...",
+    showAgentAvailability: false,
+    agentAvailableText: "We're online right now!",
+    agentUnavailableText: "We're away at the moment.",
+    requireEmailUpfront: false,
+    iconVariant: "outlined",
+    baseUrl: "https://otreechat.herokuapp.com",
+    customer: {
+    name: '{{participant.code}}',
+    external_id: '{{participant.code}}',
+    }
+    // Optionally include data about your customer here to identify them
+    // customer: {
+    //   name: __CUSTOMER__.name,
+    //   email: __CUSTOMER__.email,
+    //   external_id: __CUSTOMER__.id,
+    //   metadata: {
+    //     plan: "premium"
+    //   }
+    // }
+  },
+};
+</script>
+<script
+type="text/javascript"
+async
+defer
+src="https://otreechat.herokuapp.com/widget.js"
+></script>
