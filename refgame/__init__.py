@@ -22,6 +22,7 @@ class Constants(BaseConstants):
     tau = 100  # parameter to calibrate payoff
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
+    chat_template = 'refgame/papercups.html'
 
 
 class Subsession(BaseSubsession):
