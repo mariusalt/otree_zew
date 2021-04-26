@@ -13,13 +13,6 @@
         width: 13%;
         top:7%;
     }
-     #Introbut{
-        position: fixed;
-        right: 1.6%;
-        width: 16%;
-        top:12.5%;
-        padding: 10px;
-    }
     #button1 {
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -134,13 +127,6 @@
       transform: rotate(-90.0deg);
       white-space: nowrap;
     }
-     #Introbut2{
-        position: fixed;
-        right: 1.6%;
-        width: 16%;
-        top:20%;
-        padding: 10px;
-    }
     #result{
         
         font-weight : bold;
@@ -154,6 +140,7 @@
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
+    document.getElementById("table1").style.display="none";
     function showhide()
         {
         var div = document.getElementById("table1");
@@ -208,26 +195,6 @@
 {% block content %}
 
     {% include Constants.instructions_template %}
-    <br>
-    <br>
-    <br>
-    <p><b>How to Payoff-Tabelle:</b><br>
-    Mit Hilfe dieses Videos erklären wir Ihnen, wie Ihnen die unten stehende Tabelle dabei hilft, die Beziehung zwischen Ihrer eigenen Beitragsentscheidung, der durchschnittlichen Beitragsentscheidung der anderen und Ihrer Auszahlung besser zu verstehen:</p>
-    <table>
-        <tbody>
-            <tr>
-            
-            <td  style="vertical-align: center; text-align: left" >
-                <video width="760" height="580" controls>
-                 <source src="{% static 'refgame/Test.mp4' %}" type=video/mp4 >
-                </video>
-                
-            </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <br>
     <br>
     <div  id="table1">
         {% include Constants.payofftable_template %}
