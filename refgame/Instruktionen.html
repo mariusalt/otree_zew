@@ -9,10 +9,9 @@
 <style type="text/css">
     #heading{
         position: fixed;
-        right: 10%;
-        width: 7%;
+        right: 1.5%;
+        width: 13%;
         top:7%;
-        padding: 10px;
     }
      #Introbut{
         position: fixed;
@@ -22,10 +21,6 @@
         padding: 10px;
     }
     #button1 {
-    position: fixed;
-    right: 2%;
-    width: 14%;
-    top:16%;
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
     -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -47,7 +42,7 @@
     color:#ffffff;
     font-family:Arial;
     font-size:14px;
-    padding:5px 36px;
+    padding:5px 26px;
     text-decoration:none;
     text-shadow:0px 1px 0px #1c2847;
     }
@@ -62,17 +57,11 @@
     background-color:#7c858f;
     }
     #button1:active {
-    position: fixed;
-    right: 2%;
-    width: 14%;
-    top:16%;
+    
     padding: 10px;
     }
     #button2 {
-    position: fixed;
-    right: 2%;
-    width: 14%;
-    top:40%;
+    
     padding: 10px;
     -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
     -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
@@ -109,10 +98,7 @@
     background-color:#7c858f;
     }
     #button2:active {
-    position: fixed;
-    right: 2%;
-    width: 20%;
-    top:40%;
+    
     padding: 10px;
     }
     #table1{
@@ -156,11 +142,7 @@
         padding: 10px;
     }
     #result{
-        position: fixed;
-        right: 1.6%;
-        width: 16%;
-        top:44%;
-        padding: 10px;
+        
         font-weight : bold;
     }
     video.im6 {
@@ -255,17 +237,45 @@
 
 <div style="height: 500px;"></div>
 
-    <div id='heading'><strong>Help Desk:</strong></div>
-    <div id='Introbut'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff-Tabelle</b></div>
-    <div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
-        <b>Bitte hier klicken</b></div>
-    <div id='Introbut2'valign="center" style="text-align:center;vertical-align: middle;"><b>Payoff-Simulator</b><br>
-    Ihr Beitrag:<br>
-    <input name="owncon"  type="number" id="textInput1" value="" size="1" style="text-align:center;"><br>
-    Durchschn. Beitrag aller<br>anderen Gruppenmitglieder:<br>
-    <input name="othcon"  type="number"  min="0" max="100" id="textInput2" value="" size="1" style="text-align:center;">
-    <div id='button2' id="b1" onclick="ch1()">Berechnen</div><br>
-    <div id="result"  ></div>
+    <div id='heading' ><strong>Help Desk:</strong>
+    <table >
+        <tbody>
+            <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center"><b>Payoff-Tabelle</b></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
+                <b>Bitte hier klicken</b></div></td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><b>Payoff-Simulator</b></td>
+        </tr>
+        <tr>
+        <td align="center">Ihr Beitrag:</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><input name="owncon"  type="number" id="textInput1" value="" size="1" style="text-align:center;"></td>
+        </tr>
+        <tr>
+        <td align="center">Durchschn. Beitrag aller<br>anderen Gruppenmitglieder:</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><input name="othcon"  type="number"  min="0" max="100" id="textInput2" value="" size="1" style="text-align:center;"></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button2' id="b1" onclick="ch1()">Berechnen</div></td>
+        </tr>
+          <tr>
+        <td align="center"><div id="result"  ></div></td>
+        </tr>
+        </tbody>
+        </table>
     </div>
     
 
