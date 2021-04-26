@@ -169,9 +169,16 @@
      function ch1(){
       own=document.getElementById("textInput1").value;
       oth=document.getElementById("textInput2").value;
-      if(own<0 | own>100 | own % 5 != 0 | oth<0 | oth>100 | oth % 5 != 0 ){
+      if(own<0 | own>100 | oth<0 | oth>100){
         document.getElementById("result").innerHTML="Die angegebenen Beiträge müssen<br>a) zwischen 0 und 100 sein <br>b) in Fünferschritten angegeben werden (5,10,15...100)";
-      }else{
+      }else if(oth % 5 != 0 | own % 5 != 0){
+      var k=Math.round((4.4*(100-parseInt(own))-0.02*(100-parseInt(own))**2+(parseInt(own)+parseInt(oth)+parseInt(oth)+parseInt(oth))-100)*10)/10;
+      if (Number.isNaN(k)==true){
+        document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
+      } else{
+        document.getElementById(dieid).style.backgroundColor = original;
+        document.getElementById("result").innerHTML=k;
+      }}else{
       var k=Math.round((4.4*(100-parseInt(own))-0.02*(100-parseInt(own))**2+(parseInt(own)+parseInt(oth)+parseInt(oth)+parseInt(oth))-100)*10)/10;
       if (Number.isNaN(k)==true){
         document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
