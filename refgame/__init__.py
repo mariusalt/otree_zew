@@ -97,6 +97,44 @@ class Player(BasePlayer):
             [10, "10"],
         ], widget=widgets.RadioSelect()
     )
+
+    q_3_1= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
+            [2, "sichere Auszahlung: 0,90 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_2= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
+            [2, "sichere Auszahlung: 0,70 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_3= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
+            [2, "sichere Auszahlung: 0,50 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_4= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
+            [2, "sichere Auszahlung: 0,30 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_5 = models.IntegerField(  # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
+            [2, "sichere Auszahlung: 0,10 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+
+
 # FUNCTIONS
 
 # Payoff function
@@ -217,7 +255,7 @@ class FinalResults(Page):
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
-    form_fields = ["q_1", "q_2"]
+    form_fields = ["q_1", "q_2","q_3_1","q_3_2","q_3_3","q_3_4","q_3_5"]
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
