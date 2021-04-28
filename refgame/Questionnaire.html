@@ -17,6 +17,11 @@
     <p><b>Frage 1</b>: Wie alt sind Sie? (In Jahren)</p>
     <p> Ich bin: {% formfield player.q_1 label="" %}</p>
 
+    <p><b>Frage 2</b>: Inwieweit sind Sie bereit, Risiken einzugehen? Bitte verwenden Sie für Ihre Angabe die Skala von 0 bis 10.
+        <b>0</b> bedeutet, dass Sie <b>überhaupt nicht bereit sind, Risiken einzugehen</b> und <b>10</b>, dass Sie
+        <b>sehr bereit sind, Risiken einzugehen</b>
+    <p>{% formfield player.q_2 label="" %}</p>  <!-- field for q_2 -->
+
     <p>
         Wenn Sie alle Fragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
     </p>

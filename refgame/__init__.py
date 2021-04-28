@@ -83,6 +83,20 @@ class Player(BasePlayer):
     q_1 = models.IntegerField( # post-question 1
         min=0)
 
+    q_2 = models.IntegerField( # post-question 2
+        choices=[
+            [1, "1"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10"],
+        ], widget=widgets.RadioSelect()
+    )
 # FUNCTIONS
 
 # Payoff function
@@ -203,7 +217,7 @@ class FinalResults(Page):
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
-    form_fields = ["q_1"]
+    form_fields = ["q_1", "q_2"]
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
