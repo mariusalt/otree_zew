@@ -170,6 +170,21 @@
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
+    document.getElementById("wong").style.visibility="hidden"
+    function store(){
+        Value = document.getElementById("wr").value;
+        console.log(Value++);
+        window.sessionStorage.setItem("wr", Value);
+    }
+
+     window.onload = function() {
+        if(sessionStorage.getItem("wr")>0){
+            document.getElementById("wr").value = sessionStorage.getItem("wr");
+        }else{
+        document.getElementById("wr").value = 0;
+        }
+    }
+
     document.getElementById("cont").style.display="none";
     function showhide(url)
         {
@@ -195,9 +210,10 @@
     function del() {
         document.getElementById('screen').innerHTML = "";
     }
-</script>
 
-<script language="javascript" type="text/javascript">
+
+    
+
     document.getElementById("table1").style.display="none";
     function showhide1()
         {
@@ -222,6 +238,7 @@
     function del() {
         document.getElementById('screen').innerHTML = "";
     }
+  
 
 </script>
 
@@ -261,7 +278,12 @@
         Wenn Sie alle Kontrollfragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
     </p>
 
-    {% next_button %}
+    <button id="id_submit_button" onclick="store()" class="otree-btn-next btn btn-primary next-button otree-next-button">Antworten</button>
+
+    <div id=wong>
+        <input type="number" id="wr" name="wrong"  size=1>
+
+</div>
 
     <div style="height: 500px;" id="cont">
         {% include Constants.instructions_template %}
@@ -279,6 +301,8 @@
     <div id='Introbut2'><b>Payoff-Tabelle</b></div>
     <div id='button2'  onclick="showhide1()"><b>Bitte hier klicken</b></div>
     <div id='Introbut3'><b>Payoff-Simulator</b></div>
+
+
 
 {% include Constants.chat_template %}
  {% endblock %}

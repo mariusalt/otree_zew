@@ -37,6 +37,21 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     # Control Questions
+    wrong = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q1 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q2 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q3 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q4 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q5 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q6 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+
     cq_1 = models.IntegerField(  # control question 1 (cq_1)
         min=0)
 
@@ -83,7 +98,9 @@ class Player(BasePlayer):
     q_1 = models.IntegerField( # post-question 1
         min=0)
 
-# FUNCTIONS
+
+
+################# FUNCTIONS
 
 # Payoff function
 def set_payoffs(group):
@@ -111,41 +128,68 @@ def set_payoffs(group):
 # Error messages
 def cq_1_error_message(player, value):  # error message cq_1
     if value != 294:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 4.4(100-20)-0.02(100-20)^2+(20+3*50)=352-128+170-100=294.'
+        if player.wrong_Q1==0:
+            player.wrong_Q1=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q1=+1
+            return 'Die korrekte Antwort ist 4.4(100-20)-0.02(100-20)^2+(20+3*50)=352-128+170-100=294.'
+
 
 
 def cq_2_error_message(player, value):  # error message cq_2
     if value != 164:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 4.4(100-60)-0.02(100-60)^2+(60+3*20)=176-32+120-100=164.'
+        if player.wrong_Q2==0:
+            player.wrong_Q2=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q2=+1
+            return 'Die korrekte Antwort ist 4.4(100-60)-0.02(100-60)^2+(60+3*20)=176-32+120-100=164.'
 
 
 def cq_3_error_message(player, value):  # error message cq_3
     if value != 15:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5.'
+        if player.wrong_Q3==0:
+            player.wrong_Q3=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q3=+1
+            return 'Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5.'
 
 
 def cq_4_error_message(player, value):  # error message cq_4
     if value != 2:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten ' \
+        if player.wrong_Q4==0:
+            player.wrong_Q4=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q4=+1
+            return 'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten ' \
                '(beste Antwort ist immer 15).'
 
 
 def cq_5_error_message(player, value):  # error message cq_5
     if value != 90:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302.'
+        if player.wrong_Q5==0:
+            player.wrong_Q5=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q5=+1
+            return 'Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302.'
 
 
 def cq_6_error_message(player, value):  # error message cq_6
     if value != 2:
-        return 'Die Antwort ist leider nicht korrekt. ' \
-               'Eine der fünf Phasen wird ausgelost und ausgezahlt.'
+        if player.wrong_Q6==0:
+            player.wrong_Q6=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q6=+1
+            return 'Eine der fünf Phasen wird ausgelost und ausgezahlt.'
 
-# PAGES
+
+
+################ PAGES
 
 class Willkommen(Page):  # welcome page
     form_model = 'player'
@@ -164,7 +208,7 @@ class Instruktionen(Page):  # Instructions
 # Kontrollfragen
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
-    form_fields = ["cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
+    form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
 
     def is_displayed(player):  # control questions only once
         return player.round_number == 1
