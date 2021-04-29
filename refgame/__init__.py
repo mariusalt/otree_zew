@@ -98,11 +98,11 @@ class Player(BasePlayer):
     q_1 = models.IntegerField( # post-question 1
         min=0)
 
-<<<<<<< HEAD
+
 
 
 ################# FUNCTIONS
-=======
+
     q_2 = models.IntegerField( # post-question 2
         choices=[
             [1, "1"],
@@ -155,8 +155,6 @@ class Player(BasePlayer):
 
 
 
-# FUNCTIONS
->>>>>>> 70b88c890e8eb06945d606d8318cd985e9bb47aa
 
 # Payoff function
 def set_payoffs(group):
