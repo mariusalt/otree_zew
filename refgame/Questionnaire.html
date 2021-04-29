@@ -17,6 +17,28 @@
     <p><b>Frage 1</b>: Wie alt sind Sie? (In Jahren)</p>
     <p> Ich bin: {% formfield player.q_1 label="" %}</p>
 
+    <p><b>Frage 2</b>: Inwieweit sind Sie bereit, Risiken einzugehen? Bitte verwenden Sie für Ihre Angabe die Skala von 0 bis 10.
+        <b>0</b> bedeutet, dass Sie <b>überhaupt nicht bereit sind, Risiken einzugehen</b> und <b>10</b>, dass Sie
+        <b>sehr bereit sind, Risiken einzugehen.</b>
+    <p>{% formfield player.q_2 label="" %}</p>  <!-- field for q_2 -->
+
+    <p><b>Frage 3</b>: Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer <b>sicheren Auszahlung</b>.
+    Bei der Lotterie hätten Sie jeweils eine 50% Chance auf 1 EURO oder 0 EURO. Bei der sicheren Auszahlung würde Ihnen der
+    angebene Betrag sicher sein. Bitte geben Sie im Folgenden jeweils an, ob Sie sich für die Lotterie oder die sichere
+    Auszahlung entscheiden würden.
+
+    <p>{% formfield player.q_3_1 label="" %}</p>  <!-- field for q_3_1 -->
+
+    <p>{% formfield player.q_3_2 label="" %}</p>  <!-- field for q_3_2 -->
+
+    <p>{% formfield player.q_3_3 label="" %}</p>  <!-- field for q_3_3 -->
+
+    <p>{% formfield player.q_3_4 label="" %}</p>  <!-- field for q_3_4 -->
+
+    <p>{% formfield player.q_3_5 label="" %}</p>  <!-- field for q_3_5 -->
+
+
+
     <p>
         Wenn Sie alle Fragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
     </p>
