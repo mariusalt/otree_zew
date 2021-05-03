@@ -8,17 +8,19 @@
 {% block content %}
 
     <p align="center">
-        <b><font size="5">Sie sind Spieler {{ player.id_in_group }} von {{ Constants.players_per_group }}</font></b>
+        <font size="5">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
+        <b>{{ Constants.players_per_group }}</font></b>
     </p>
 
     <table class="table table-light">
-         <tr>
+        <caption><b>Hinweis</b>. Alle Angaben in <b>LaborDollar</b> (LD).</caption>
+        <tr>
              <thead class="table-dark">
                 <th>Ihre kumulierte Auszahlung:</th>
                 <th><b>{{ player.cum_payoff }}</b></th>
              </thead>
         </tr>
-         <tr>
+        <tr>
              <td>Ihre Anfangsausstattung:</td>
              <td><b>{{ Constants.endowment }}</b></td>
         </tr>
@@ -39,18 +41,24 @@
 
     <h5>Alle Runden:</h5>
     <table class="table table-strped table-hover">
+        <caption><b>Hinweis</b>.  Alle Angaben in <b>LaborDollar</b> (LD).</caption>
+        <thead>
+        <th></th>
+        <th colspan="5" style="text-align: center">Beiträge:</th>
+        <th colspan="5" style="text-align: center">Auszahlungen:</th>
+        </thead>
         <thead>
         <th>Runde</th>
-        <th>Beitrag: Spieler 1</th>
-        <th>Beitrag: Spieler 2</th>
-        <th>Beitrag: Spieler 3</th>
-        <th>Beitrag: Spieler 4</th>
-        <th>Beitrag: Durchschnitt</th>
-        <th>Auszahlung: Spieler 1</th>
-        <th>Auszahlung: Spieler 2</th>
-        <th>Auszahlung: Spieler 3</th>
-        <th>Auszahlung: Spieler 4</th>
-        <th>Auszahlung: Durchschnitt</th>
+        <th>Spieler 1</th>
+        <th>Spieler 2</th>
+        <th>Spieler 3</th>
+        <th>Spieler 4</th>
+        <th>Durchschnitt</th>
+        <th>Spieler 1</th>
+        <th>Spieler 2</th>
+        <th>Spieler 3</th>
+        <th>Spieler 4</th>
+        <th>Durchschnitt</th>
         </thead>
         <tbody>
 
