@@ -245,7 +245,11 @@
 {% endblock %}
 
 {% block content %}
-    <p id="firstques"> Wenn Sie die Instruktionen durchgelesen und keine Fragen haben, beantworten Sie bitte die folgenden Kontrollfragen. </p>
+    <p id="firstques"> Wenn Sie die Instruktionen durchgelesen und keine Fragen haben, beantworten Sie bitte die
+        folgenden <b>Kontrollfragen</b>. Um Ihnen die Berechnungen zu erleichtern, finden Sie am rechten Rand des Bildschirms
+        unseren <b>Help Desk</b>. Der Help Desk enthält noch einmal die <b>Instruktionen</b> sowie die
+        <b>Payoff-Tabelle</b> und den <b>Payoff-Simulator</b>.
+    </p>
 
     <p><b>Frage 1</b>: Angenommen, Ihr Beitrag zum Projekt beträgt 20 LD. Der durchschnittliche Beitrag aller anderen
         Spieler sei 50 LD. Wie hoch ist Ihre Auszahlung (in LD) in dieser Runde? </p>
@@ -275,10 +279,13 @@
     {% formfield player.cq_6 label="" %}  <!-- field for cq_6 -->
 
     <p>
-        Wenn Sie alle Kontrollfragen korrekt beantwortet haben, klicken Sie bitte auf <b>Next</b>.
+        Bitte melen Sie sich, wenn sie eine Frage haben. Nutzen Sie hierfür bitte unseren <b>Chat</b>, der Ihnen unten
+        rechts auf der Seite angezeigt wird. Wenn Sie alle Kontrollfragen korrekt beantwortet haben, klicken Sie bitte
+        auf <b>Next</b>.
     </p>
 
-    <button id="id_submit_button" onclick="store()" class="otree-btn-next btn btn-primary next-button otree-next-button">Antworten</button>
+    <button id="id_submit_button" onclick="store()" class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Next</button>
 
     <div id=wong>
         <input type="number" id="wr" name="wrong"  size=1>

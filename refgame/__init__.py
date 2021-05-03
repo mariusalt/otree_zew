@@ -241,7 +241,8 @@ def cq_1_error_message(player, value):  # error message cq_1
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q1=+1
-            return 'Die korrekte Antwort ist 4.4(100-20)-0.02(100-20)^2+(20+3*50)=352-128+170-100=294.'
+            return '<b>Die korrekte Antwort ist 294</b>. Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den ' \
+                   '<b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 
@@ -252,7 +253,8 @@ def cq_2_error_message(player, value):  # error message cq_2
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q2=+1
-            return 'Die korrekte Antwort ist 4.4(100-60)-0.02(100-60)^2+(60+3*20)=176-32+120-100=164.'
+            return '<b>Die korrekte Antwort ist 164</b>. Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den ' \
+                   '<b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 def cq_3_error_message(player, value):  # error message cq_3
@@ -262,7 +264,9 @@ def cq_3_error_message(player, value):  # error message cq_3
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q3=+1
-            return 'Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5.'
+            return '<b>Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5</b>. Bitte nutzen Sie die ' \
+                   '<b>Payoff-Tabelle</b> oder den <b>Payoff-Simulator</b> im Help Desk, um die Berechnung ' \
+                   'nachzuvollziehen.'
 
 
 def cq_4_error_message(player, value):  # error message cq_4
@@ -273,7 +277,8 @@ def cq_4_error_message(player, value):  # error message cq_4
         else:
             player.wrong_Q4=+1
             return 'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten ' \
-               '(beste Antwort ist immer 15).'
+               '(beste Antwort ist immer 15). Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den' \
+               ' <b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 def cq_5_error_message(player, value):  # error message cq_5
@@ -283,7 +288,9 @@ def cq_5_error_message(player, value):  # error message cq_5
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q5=+1
-            return 'Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302.'
+            return '<b>Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302</b>. Bitte nutzen Sie die ' \
+                   '<b>Payoff-Tabelle</b> oder den <b>Payoff-Simulator</b> im Help Desk, ' \
+                   'um die Berechnung nachzuvollziehen.'
 
 
 def cq_6_error_message(player, value):  # error message cq_6
@@ -293,7 +300,7 @@ def cq_6_error_message(player, value):  # error message cq_6
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q6=+1
-            return 'Eine der fünf Phasen wird ausgelost und ausgezahlt.'
+            return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
 
 
