@@ -95,17 +95,43 @@ class Player(BasePlayer):
     avg_contribution_others = models.CurrencyField()
 
     # Questions
-    q_1 = models.IntegerField( # post-question 1
+    q_1_1 = models.IntegerField( # post-question 1: age
         min=0)
-
-
+    q_1_2 = models.IntegerField( # post-question 2: gender
+        choices=[
+            [1, "Divers"],
+            [2, "Weiblich"],
+            [3, "Männlich"],
+            [4, "Keine Antwort"]
+        ], widget=widgets.RadioSelect()
+    )
+    q_1_3 = models.IntegerField( # post-question 3: mother tongue
+        choices=[
+            [1, "Ja"],
+            [2, "Nein"],
+            [3, "Keine Antwort"]
+        ], widget=widgets.RadioSelect()
+    )
+    q_1_4 = models.IntegerField( # post-question 4: income
+        choices=[
+            [1, "bis unter 500 Euro"],
+            [2, "500 bis 1.000 Euro"],
+            [3, "bis unter 1.500 Euro"],
+            [4, "1.500 bis unter 2.000 Euro"],
+            [5, "2.000 bis unter 2.500 Euro"],
+            [6, "2.500 bis unter 3.000 Euro"],
+            [7, "3.000 bis unter 3.500 Euro"],
+            [8, "über 3.500 Euro"],
+            [9, "Keine Antwort"]
+        ]
+    )
 
 
 ################# FUNCTIONS
 
-    q_2 = models.IntegerField( # post-question 2
+    q_2_1 = models.IntegerField( # post-question XX: risk
         choices=[
-            [1, "1"],
+            [1, "1: gar nicht risikobereit"],
             [2, "2"],
             [3, "3"],
             [4, "4"],
@@ -114,9 +140,40 @@ class Player(BasePlayer):
             [7, "7"],
             [8, "8"],
             [9, "9"],
-            [10, "10"],
-        ], widget=widgets.RadioSelect()
+            [10, "10: sehr risikobereit"],
+        ]
     )
+
+    q_2_2 = models.IntegerField(  # post-question XX: trust
+        choices=[
+            [1, "1: Man kann nicht vorsichtig genug sein"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10: Man kann den meisten vertrauen"],
+        ]
+    )
+
+    q_2_3 = models.IntegerField(  # post-question XX: exploitation
+        choices=[
+            [1, "1: Die Menschen nutzen einen aus"],
+            [2, "2"],
+            [3, "3"],
+            [4, "4"],
+            [5, "5"],
+            [6, "6"],
+            [7, "7"],
+            [8, "8"],
+            [9, "9"],
+            [10, "10: Die Menschen verhalten sich fair"],
+        ]
+    )
+
 
     q_3_1= models.IntegerField( # post-question 3_1
         choices=[
@@ -153,9 +210,6 @@ class Player(BasePlayer):
         ], widget=widgets.RadioSelectHorizontal
     )
 
-
-
-
 # Payoff function
 def set_payoffs(group):
     players = group.get_players()
@@ -187,7 +241,8 @@ def cq_1_error_message(player, value):  # error message cq_1
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q1=+1
-            return 'Die korrekte Antwort ist 4.4(100-20)-0.02(100-20)^2+(20+3*50)=352-128+170-100=294.'
+            return '<b>Die korrekte Antwort ist 294</b>. Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den ' \
+                   '<b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 
@@ -198,7 +253,8 @@ def cq_2_error_message(player, value):  # error message cq_2
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q2=+1
-            return 'Die korrekte Antwort ist 4.4(100-60)-0.02(100-60)^2+(60+3*20)=176-32+120-100=164.'
+            return '<b>Die korrekte Antwort ist 164</b>. Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den ' \
+                   '<b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 def cq_3_error_message(player, value):  # error message cq_3
@@ -208,7 +264,9 @@ def cq_3_error_message(player, value):  # error message cq_3
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q3=+1
-            return 'Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5.'
+            return '<b>Die korrekte Antwort ist 15 mit einer Auszahlung in Höhe von 189.5</b>. Bitte nutzen Sie die ' \
+                   '<b>Payoff-Tabelle</b> oder den <b>Payoff-Simulator</b> im Help Desk, um die Berechnung ' \
+                   'nachzuvollziehen.'
 
 
 def cq_4_error_message(player, value):  # error message cq_4
@@ -219,7 +277,8 @@ def cq_4_error_message(player, value):  # error message cq_4
         else:
             player.wrong_Q4=+1
             return 'Selbst wenn die anderen nichts beitragen, ist es besser einen positiven Beitrag zu leisten ' \
-               '(beste Antwort ist immer 15).'
+               '(beste Antwort ist immer 15). Bitte nutzen Sie die <b>Payoff-Tabelle</b> oder den' \
+               ' <b>Payoff-Simulator</b> im Help Desk, um die Berechnung nachzuvollziehen.'
 
 
 def cq_5_error_message(player, value):  # error message cq_5
@@ -229,7 +288,9 @@ def cq_5_error_message(player, value):  # error message cq_5
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q5=+1
-            return 'Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302.'
+            return '<b>Die korrekte Antwort ist 90 mit einer Auszahlung in Höhe von 302</b>. Bitte nutzen Sie die ' \
+                   '<b>Payoff-Tabelle</b> oder den <b>Payoff-Simulator</b> im Help Desk, ' \
+                   'um die Berechnung nachzuvollziehen.'
 
 
 def cq_6_error_message(player, value):  # error message cq_6
@@ -239,7 +300,7 @@ def cq_6_error_message(player, value):  # error message cq_6
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q6=+1
-            return 'Eine der fünf Phasen wird ausgelost und ausgezahlt.'
+            return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
 
 
@@ -301,7 +362,8 @@ class FinalResults(Page):
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
-    form_fields = ["q_1", "q_2","q_3_1","q_3_2","q_3_3","q_3_4","q_3_5"]
+    form_fields = ["q_1_1", "q_1_2", "q_1_3", "q_1_4",
+                   "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_2_2", "q_2_3"]
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
