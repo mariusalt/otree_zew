@@ -209,6 +209,34 @@ class Player(BasePlayer):
             [2, "sichere Auszahlung: 0,10 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
+    betr20 = models.IntegerField()
+    betr19 = models.IntegerField()
+    betr18 = models.IntegerField()
+    betr17 = models.IntegerField()
+    betr16 = models.IntegerField()
+    betr15 = models.IntegerField()
+    betr14 = models.IntegerField()
+    betr13 = models.IntegerField()
+    betr12 = models.IntegerField()
+    betr11 = models.IntegerField()
+    betr10 = models.IntegerField()
+    betr9 = models.IntegerField()
+    betr8 = models.IntegerField()
+    betr7 = models.IntegerField()
+    betr6 = models.IntegerField()
+    betr5 = models.IntegerField()
+    betr4 = models.IntegerField()
+    betr3 = models.IntegerField()
+    betr2 = models.IntegerField()
+    betr1 = models.IntegerField()
+    betr0 = models.IntegerField()
+
+    taxi = models.IntegerField(  
+        choices=[
+            [1, "Taxiunternehmen A"],
+            [2, "Taxiunternehmen B"],
+        ], widget=widgets.RadioSelectHorizontal
+    )
 
 # Payoff function
 def set_payoffs(group):
@@ -363,7 +391,10 @@ class FinalResults(Page):
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
     form_fields = ["q_1_1", "q_1_2", "q_1_3", "q_1_4",
-                   "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_2_2", "q_2_3"]
+                   "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_2_2", "q_2_3",
+                   "betr20","betr19","betr18","betr17","betr16","betr15","betr14","betr13","betr12","betr11",
+                   "betr10","betr9","betr8","betr7","betr6","betr5","betr4","betr3","betr2","betr1",
+                   "betr0","taxi"]
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds

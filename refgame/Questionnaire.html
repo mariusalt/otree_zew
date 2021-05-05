@@ -5,6 +5,19 @@
     Fragebogen
 {% endblock %}
 
+{% block styles %}
+<style type="text/css">
+      img.im5 {
+      max-width:50%;
+      max-height:50%;
+        }
+    tr.border1 td{
+        padding-top: : 5px ;
+        padding-bottom: 5px ;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 
     <p style="text-align:center">
@@ -82,7 +95,188 @@
        unten rechts auf der Seite angezeigt wird. Wenn Sie keine weiteren Fragen haben, klicken Sie bitte auf
        <b>Next</b>.
     </p>
+
+  <br>
+  <b>Frage <font color="red">XX</font></b>.
+    
+    <p align="justify">Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie zusammengebracht: "Person B".  Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out" spielen, erhalten Sie und Ihr Gegenüber jeweils 10 €. Wenn Sie "In" spielen, hängt das Ergebnis von der Entscheidung Ihres Gegenübers ab.Ihr Gegenüber wählt zwischen "Links" oder "Rechts". Wenn er/sie "Links" spielt, erhalten Sie und Ihr Gegenüber jeweils 15 €. Wenn er/sie stattdessen "Rechts" spielt, erhalten Sie 8 € und Ihr Gegenspieler 22 €.</p>
+        <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
+    <p align="justify">Des weiteren stellen Sie sich bitte vor, dass es in diesem Experiment insgesamt 40 Teilnehmer gibt, die in zwei Gruppen aufgeteilt sind: Gruppe A und Gruppe B. Sie gehören zu Gruppe A, die aus 20 Teilnehmenden besteht. Jeder Teilnehmer in Gruppe A muss sich zwischen "In" und "Out" entscheiden.  Ihr Gegenüber gehört zu Gruppe B, die sich ebenfalls aus 20 Teilnehmenden zusammensetzt. Jeder Person in Gruppe B muss sich zwischen "Links" und "Rechts" entscheiden. In diesem Experiment bitten wir Sie, Ihre Entscheidungen nicht nur unter Berücksichtigung der möglichen Aktionen Ihres Gegenübers zu treffen, sondern auch unter Berücksichtigung der möglichen Aktionen aller Teilnehmenden in Gruppe B. Insbesondere bitten wir Sie, für jeden möglichen Wert der Anzahl der Teilnehmer in Gruppe B, die "Links2 wählen, eine separate Entscheidung zwischen "In" und "Out" zu treffen. Diesbezüglich bitten wir Sie, Ihre Entscheidungen zu treffen, indem Sie die untenstehende Tabelle ausfüllen.</p>
+
+    <table cellpadding="8">
+        <tbody>
+          <tr >
+        <td align="center" ><b>Anzahl an Personen in Gruppe B,<br>die Option "Links" auswählen.</b></td>
+        <td colspan=4><b>Ihre Auswahl</b></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">20 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr20" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;" >Out</td>
+        <td><input type="radio"   name="betr20" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">19 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr19" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr19" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">18 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr18" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr18" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">17 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr17" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr17" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">16 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr16" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr16" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">15 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr15" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr15" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">14 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr14" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr14" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">13 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr13" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr13" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">12 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr12" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr12" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">11 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr11" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr11" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">10 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr10" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr10" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">9 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr9" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr9" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">8 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr8" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr8" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">7 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr7" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr7" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">6 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr6" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr6" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">5 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr5" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr5" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">4 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr4" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr4" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">3 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr3" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr3" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">2 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr2" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr2" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">1 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr1" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr1" value="0" required/></td>
+        </tr>
+        <tr class="border">
+        <td style="border-right: 1px solid lightgray;" align="center">0 von 20</td>
+        <td>In</td>
+        <td><input type="radio"   name="betr0" value="1" required/></td>
+        <td  style="border-left: 1px solid lightgray;">Out</td>
+        <td><input type="radio"   name="betr0" value="0" required/></td>
+        </tr>
+      </tbody>
+    </table>
+
+   
     <br>
+
+    <b>Frage <font color="red">XX</font></b>.
+    
+    <p align="justify">
+        Stellen Sie sich vor, Sie müssen aus persönlichen Gründen in eine Ihnen unbekannte Großstadt reisen. Vom Flughafen aus können Sie zwischen zwei Taxiunternehmen wählen, um Ihr endgültiges Ziel zu erreichen, für das Sie die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von $12. Unternehmen B rechnet nach dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie $8. 1 von 5 Fahrern nimmt jedoch Umwege, um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann $16. <br>
+    Geben Sie unten bitte an, welches Taxiunternehmen Sie wählen würden.</p>
+    {% formfield player.taxi label="" %}
+
+    <br>
+    <p>
+       Bitte melden Sie sich, wenn Sie eine Frage haben. Nutzen Sie hierfür bitte unseren <b>Chat</b>, der Ihnen
+       unten rechts auf der Seite angezeigt wird. Wenn Sie keine weiteren Fragen haben, klicken Sie bitte auf
+       <b>Next</b>.
+    </p>
+    <br>
+
     {% next_button %}
 
 {% include Constants.chat_template %}
