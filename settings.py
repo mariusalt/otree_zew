@@ -38,3 +38,5 @@ SECRET_KEY = '7543021239532'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+PARTICIPANT_FIELDS = ['pay_phases','phase_count']

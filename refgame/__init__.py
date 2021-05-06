@@ -14,7 +14,7 @@ from otree.api import (
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
-    num_rounds = 2
+    num_rounds = 25
     endowment = c(100)
     alpha = 4.4  # parameter for benefits from private account
     beta = 0.02  # parameter for benefits from private account
@@ -23,6 +23,7 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
+    rounds_phase = 5
 
 
 class Subsession(BaseSubsession):
@@ -37,6 +38,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     # Control Questions
+    total_payoff = models.CurrencyField()
+
     wrong = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
     wrong_Q1 = models.IntegerField(initial=0,  # num incorrect answers control questions
@@ -126,8 +129,6 @@ class Player(BasePlayer):
         ]
     )
 
-
-################# FUNCTIONS
 
     q_2_1 = models.IntegerField( # post-question XX: risk
         choices=[
@@ -245,7 +246,16 @@ class Player(BasePlayer):
     q_1_6 = models.IntegerField(  # post-question 6: FuS
     min=0, max = 20)
 
+
+
+
+
+
+################# FUNCTIONS
+
 # Payoff function
+    
+
 def set_payoffs(group):
     players = group.get_players()
     contributions = [p.contribution for p in players]
@@ -265,8 +275,18 @@ def set_payoffs(group):
                    + Constants.gamma * group.total_contribution - \
                    Constants.tau
     for p in players:  # cumulative payoff
-        p.cum_payoff = sum([p.payoff for p in p.in_all_rounds()])
+        p.participant.phase_count=p.participant.phase_count+1
+        p.cum_payoff = sum([p.payoff for p in p.in_rounds(p.round_number-p.participant.phase_count+1,p.round_number)])
     group.avg_payoff = sum([p.payoff for p in players]) / Constants.players_per_group
+    for p in players:
+        if p.round_number % Constants.rounds_phase == 0:
+            if p.round_number==Constants.rounds_phase:
+                p.participant.pay_phases.append(p.payoff)
+                p.participant.phase_count=0
+            elif p.round_number==Constants.num_rounds:
+                p.total_payoff = sum(p.participant.pay_phases)
+            
+                
 
 # Error messages
 def cq_1_error_message(player, value):  # error message cq_1
@@ -344,6 +364,11 @@ def cq_6_error_message(player, value):  # error message cq_6
 class Willkommen(Page):  # welcome page
     form_model = 'player'
 
+    @staticmethod
+    def before_next_page(player, timeout_happened):
+        player.participant.phase_count=0
+        player.participant.pay_phases=[]
+
     def is_displayed(player):  # welcome only once
         return player.round_number == 1
 
@@ -387,6 +412,7 @@ class Results(Page):
                 player2=player.group.get_player_by_id(2),
                 player3=player.group.get_player_by_id(3),
                 player4=player.group.get_player_by_id(4),
+                prev_rounds=int(player.round_number-player.participant.phase_count+1)
         )
 
 
@@ -394,6 +420,15 @@ class FinalResults(Page):
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
+
+class NeuePhase(Page):
+    @staticmethod
+    def vars_for_template(player):
+        return dict(
+                cum_pay=sum(player.participant.pay_phases)
+        )
+    def is_displayed(player):  # only once
+        return player.round_number % 5 == 0
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
@@ -413,4 +448,5 @@ page_sequence = [Willkommen,
                  ResultsWaitPage,
                  Results,
                  FinalResults,
+                 NeuePhase,
                  Questionnaire]
