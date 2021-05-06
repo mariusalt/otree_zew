@@ -286,7 +286,7 @@ def set_payoffs(group):
                 p.participant.pay_phases.append(p.cum_payoff)
                 p.participant.phase_count=0
             else:
-                p.pay_round=random.choice(range(Constants.num_phase))
+                p.pay_round=random.choice(range(Constants.num_phase-1))
                 p.total_payoff = p.participant.pay_phases[p.pay_round]
             
                 
