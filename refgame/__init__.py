@@ -425,7 +425,7 @@ class FinalResults(Page):
 
 class NeuePhase(Page):
     def is_displayed(player):  # only once
-        return player.round_number % 5 == 0
+        return player.round_number % Constants.rounds_phase == 0
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
