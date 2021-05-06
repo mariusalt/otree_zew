@@ -11,7 +11,7 @@
     <p>Neue Runde </p>
     {% else %}
 
-    Ihre kummulierte Auszahlung: {{ cum_pay }}, {{ participant.pay_phases }}
+    Ihre kummulierte Auszahlung: {{ player.total_payoff }} aus Runde {{ player.pay_round }}
 
     {% endif %}
 

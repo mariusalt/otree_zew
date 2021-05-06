@@ -10,6 +10,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
+import random
 
 class Constants(BaseConstants):
     name_in_url = 'refgame'
@@ -39,7 +40,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     # Control Questions
     total_payoff = models.CurrencyField()
-
+    pay_round = models.IntegerField()
     wrong = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
     wrong_Q1 = models.IntegerField(initial=0,  # num incorrect answers control questions
@@ -280,11 +281,12 @@ def set_payoffs(group):
     group.avg_payoff = sum([p.payoff for p in players]) / Constants.players_per_group
     for p in players:
         if p.round_number % Constants.rounds_phase == 0:
-            if p.round_number==Constants.rounds_phase:
-                p.participant.pay_phases.append(p.payoff)
+            if p.round_number!=Constants.num_rounds:
+                p.participant.pay_phases.append(p.cum_payoff)
                 p.participant.phase_count=0
-            elif p.round_number==Constants.num_rounds:
-                p.total_payoff = sum(p.participant.pay_phases)
+            else:
+                p.pay_round=random.choice(range(5))
+                p.total_payoff = p.participant.pay_phases[p.pay_round]
             
                 
 
@@ -422,11 +424,6 @@ class FinalResults(Page):
         return player.round_number == Constants.num_rounds
 
 class NeuePhase(Page):
-    @staticmethod
-    def vars_for_template(player):
-        return dict(
-                cum_pay=sum(player.participant.pay_phases)
-        )
     def is_displayed(player):  # only once
         return player.round_number % 5 == 0
 
