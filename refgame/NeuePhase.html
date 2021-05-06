@@ -2,7 +2,12 @@
 {% load otree %}
 
 {% block title %}
-    Willkommen
+    {% if player.round_number < Constants.num_rounds %}
+    Neue Phase
+    {% else %}
+    Auszahlung
+    {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -11,7 +16,7 @@
     <p>Neue Runde </p>
     {% else %}
 
-    Ihre kummulierte Auszahlung: {{ player.total_payoff }} aus Runde {{ player.pay_round }}
+    Ihre kummulierte Auszahlung: {{ player.total_payoff }} aus Phase {{ player.pay_round }}
 
     {% endif %}
 

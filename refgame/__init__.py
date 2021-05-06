@@ -24,8 +24,8 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 2
-    num_phase = 2
+    rounds_phase = 2  # Runden pro Phase
+    num_phase = 2  # Anzahl an Phasen
 
 
 class Subsession(BaseSubsession):
@@ -277,17 +277,24 @@ def set_payoffs(group):
                    + Constants.gamma * group.total_contribution - \
                    Constants.tau
     for p in players:  # cumulative payoff
+        # bestimme eine Variable, die in jeder phase die Runden zählt (participant.phase_count) und erhöhe diese Variable um 1 jede Runde.
         p.participant.phase_count=p.participant.phase_count+1
+        #bestimme nach jeder Runde den bisherigen kumulativen payoff in dieser Phase (Phase geht von p.round_number-p.participant.phase_count+1 bis p.round_number)
         p.cum_payoff = sum([p.payoff for p in p.in_rounds(p.round_number-p.participant.phase_count+1,p.round_number)])
     group.avg_payoff = sum([p.payoff for p in players]) / Constants.players_per_group
     for p in players:
         if p.round_number % Constants.rounds_phase == 0:
+            # Wenn das noch nicht die letzte Runde ist, aber die letzte Runde dieser Phase, dann nehme den bisherigen kumilierten payoff 
+            # und speicher ihn in der Liste participant.pay_phases
             if p.round_number!=Constants.num_rounds:
                 p.participant.pay_phases.append(p.cum_payoff)
+                # Setze für die kommende Phase die Variable, die die Anzahl der Runden in dieser Phase zählt, wieder auf Null
                 p.participant.phase_count=0
             else:
-                p.pay_round=random.choice(range(Constants.num_phase-1))
-                p.total_payoff = p.participant.pay_phases[p.pay_round]
+                # Falls dies die allerletzte Runde ist, bestimme eine Zufallsvariable zwischen 1 und num_phase, um zu bestimmen welche Runde auszahlungsrelevant wird
+                p.pay_round=random.choice(range(Constants.num_phase-1))+1
+                # Nimm diese Zufallsvariable und bestimme die jeweilige kummulierte Auszahlung aus der gewissen Runde anhand der Liste, in der wir das gespeichert haben (participant.pay_phases)
+                p.total_payoff = p.participant.pay_phases[p.pay_round-1]
             
                 
 
