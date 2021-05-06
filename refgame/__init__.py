@@ -238,6 +238,13 @@ class Player(BasePlayer):
         ], widget=widgets.RadioSelectHorizontal
     )
 
+
+    q_1_5 = models.IntegerField(  # post-question 5: FuS
+    min=0, max = 20)
+
+    q_1_6 = models.IntegerField(  # post-question 6: FuS
+    min=0, max = 20)
+
 # Payoff function
 def set_payoffs(group):
     players = group.get_players()
@@ -394,7 +401,7 @@ class Questionnaire(Page):  # welcome page
                    "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_2_2", "q_2_3",
                    "betr20","betr19","betr18","betr17","betr16","betr15","betr14","betr13","betr12","betr11",
                    "betr10","betr9","betr8","betr7","betr6","betr5","betr4","betr3","betr2","betr1",
-                   "betr0","taxi"]
+                   "betr0","taxi", "q_1_5", "q_1_6"]
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
