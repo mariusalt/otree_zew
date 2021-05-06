@@ -15,7 +15,7 @@ import random
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
-    num_rounds = 25
+    num_rounds = 4
     endowment = c(100)
     alpha = 4.4  # parameter for benefits from private account
     beta = 0.02  # parameter for benefits from private account
@@ -24,7 +24,8 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 5
+    rounds_phase = 2
+    num_phase = 2
 
 
 class Subsession(BaseSubsession):
@@ -285,7 +286,7 @@ def set_payoffs(group):
                 p.participant.pay_phases.append(p.cum_payoff)
                 p.participant.phase_count=0
             else:
-                p.pay_round=random.choice(range(5))
+                p.pay_round=random.choice(range(Constants.num_phase))
                 p.total_payoff = p.participant.pay_phases[p.pay_round]
             
                 
@@ -413,8 +414,7 @@ class Results(Page):
                 player1=player.group.get_player_by_id(1),
                 player2=player.group.get_player_by_id(2),
                 player3=player.group.get_player_by_id(3),
-                player4=player.group.get_player_by_id(4),
-                prev_rounds=int(player.round_number-player.participant.phase_count+1)
+                player4=player.group.get_player_by_id(4)
         )
 
 
