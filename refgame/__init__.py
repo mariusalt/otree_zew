@@ -134,46 +134,49 @@ class Player(BasePlayer):
 
     q_2_1 = models.IntegerField( # post-question XX: risk
         choices=[
-            [1, "1: gar nicht risikobereit"],
-            [2, "2"],
-            [3, "3"],
-            [4, "4"],
-            [5, "5"],
-            [6, "6"],
-            [7, "7"],
-            [8, "8"],
-            [9, "9"],
-            [10, "10: sehr risikobereit"],
+            [1, "0: gar nicht risikobereit"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10: sehr risikobereit"],
         ]
     )
 
     q_2_2 = models.IntegerField(  # post-question XX: trust
         choices=[
-            [1, "1: Man kann nicht vorsichtig genug sein"],
-            [2, "2"],
-            [3, "3"],
-            [4, "4"],
-            [5, "5"],
-            [6, "6"],
-            [7, "7"],
-            [8, "8"],
-            [9, "9"],
-            [10, "10: Man kann den meisten vertrauen"],
+            [1, "0: Man kann nicht vorsichtig genug sein"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10: Man kann den meisten vertrauen"],
         ]
     )
 
     q_2_3 = models.IntegerField(  # post-question XX: exploitation
         choices=[
-            [1, "1: Die Menschen nutzen einen aus"],
-            [2, "2"],
-            [3, "3"],
-            [4, "4"],
-            [5, "5"],
-            [6, "6"],
-            [7, "7"],
-            [8, "8"],
-            [9, "9"],
-            [10, "10: Die Menschen verhalten sich fair"],
+            [1, "0: Die Menschen nutzen einen aus"],
+            [2, "1"],
+            [3, "2"],
+            [4, "3"],
+            [5, "4"],
+            [6, "5"],
+            [7, "6"],
+            [8, "7"],
+            [9, "8"],
+            [10, "9"],
+            [11, "10: Die Menschen verhalten sich fair"],
         ]
     )
 
