@@ -15,17 +15,15 @@
 {% endblock %}
 
 {% block title %}
-    {% if player.round_number == 1 %}
-    Beginn Phase 1
-    {% elif player.round_number < Constants.num_rounds %}
-    Neue Phase
-    {% endif %}
-
+    Phase {{ participant.phase }}
 {% endblock %}
 
 {% block content %}
 
-    <p>Wenn Sie nun auf "Weiter" klicken, beginnt Phase {{ participant.phase }} von {{ Constants.num_phase }} </p>
+    <p>
+        In Kürze beginnt <b>Phase {{ participant.phase }}</b> des Experiments. Bitte klicken Sie auf "Weiter", um diese Phase
+        zu <b>starten</b>.
+    </p>
 
 
     {% next_button %}
