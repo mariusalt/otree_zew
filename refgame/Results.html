@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-{{ play|slice:":1" }}
     <p align="center">
         <font size="5">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
         <b>{{ Constants.players_per_group }}</font></b>
@@ -63,107 +62,79 @@
         </thead>
         <tbody>
 
-
-         <td>
-            <table >
-                {% for p in  player1.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.round_number }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-
-            <td>
-            <table >
-                {% for p in  player1.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.contribution }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table >
-                {% for p in  player2.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.contribution }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table >
-                {% for p in  player3.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.contribution }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table >
-                {% for p in  player4.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.contribution }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.group.avg_contribution }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player1.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.payoff }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player2.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.payoff }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player3.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.payoff }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player4.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.payoff }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
-        <td>
-            <table>
-                {% for p in player.in_rounds(1,2) %}
-                <tr>
-                <td>{{ p.group.avg_payoff }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </td>
+        <tr>
+         <td>1</td>
+        <td>{{ contriP1R1 }}</td>
+        <td>{{ contriP2R1 }}</td>
+        <td>{{ contriP3R1 }}</td>
+        <td>{{ contriP4R1 }}</td>
+        <td>{{ contriallR1 }}</td>
+        <td>{{ payP1R1 }}</td>
+        <td>{{ payP2R1 }}</td>
+        <td>{{ payP3R1 }}</td>
+        <td>{{ payP4R1 }}</td>
+        <td>{{ payallR1 }}</td>
+        </tr>
+        {% if participant.phase_count > 1 %}
+        <tr>
+        <td>2</td>
+        <td>{{ contriP1R2 }}</td>
+        <td>{{ contriP2R2 }}</td>
+        <td>{{ contriP3R2 }}</td>
+        <td>{{ contriP4R2 }}</td>
+        <td>{{ contriallR2 }}</td>
+        <td>{{ payP1R2 }}</td>
+        <td>{{ payP2R2 }}</td>
+        <td>{{ payP3R2 }}</td>
+        <td>{{ payP4R2 }}</td>
+        <td>{{ payallR2 }}</td>
+        </tr>
+        {% endif %}
+        {% if participant.phase_count > 2 %}
+        <tr>
+        <td>3</td>
+        <td>{{ contriP1R3 }}</td>
+        <td>{{ contriP2R3 }}</td>
+        <td>{{ contriP3R3 }}</td>
+        <td>{{ contriP4R3 }}</td>
+        <td>{{ contriallR3 }}</td>
+        <td>{{ payP1R3 }}</td>
+        <td>{{ payP2R3 }}</td>
+        <td>{{ payP3R3 }}</td>
+        <td>{{ payP4R3 }}</td>
+        <td>{{ payallR3 }}</td>
+        </tr>
+        {% endif %}
+        {% if participant.phase_count > 3 %}
+        <tr>
+        <td>4</td>
+        <td>{{ contriP1R4 }}</td>
+        <td>{{ contriP2R4 }}</td>
+        <td>{{ contriP3R4 }}</td>
+        <td>{{ contriP4R4 }}</td>
+        <td>{{ contriallR4 }}</td>
+        <td>{{ payP1R4 }}</td>
+        <td>{{ payP2R4 }}</td>
+        <td>{{ payP3R4 }}</td>
+        <td>{{ payP4R4 }}</td>
+        <td>{{ payallR4 }}</td>
+        </tr>
+        {% endif %}
+        {% if participant.phase_count > 4 %}
+        <tr>
+        <td>5</td>
+        <td>{{ contriP1R5 }}</td>
+        <td>{{ contriP2R5 }}</td>
+        <td>{{ contriP3R5 }}</td>
+        <td>{{ contriP4R5 }}</td>
+        <td>{{ contriallR5 }}</td>
+        <td>{{ payP1R5 }}</td>
+        <td>{{ payP2R5 }}</td>
+        <td>{{ payP3R5 }}</td>
+        <td>{{ payP4R5 }}</td>
+        <td>{{ payallR5 }}</td>
+        </tr>
+        {% endif %}
         </tbody>
     </table>
     <br>

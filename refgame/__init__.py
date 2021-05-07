@@ -283,8 +283,6 @@ def set_payoffs(group):
         
         #bestimme nach jeder Runde den bisherigen kumulativen payoff in dieser Phase (Phase geht von p.round_number-p.participant.phase_count+1 bis p.round_number)
         p.cum_payoff = sum([p.payoff for p in p.in_rounds(p.round_number-p.participant.phase_count+1,p.round_number)])
-        # bestimme eine Variable, die in jeder phase die Runden zählt (participant.phase_count) und erhöhe diese Variable um 1 jede Runde.
-        p.participant.phase_count=p.participant.phase_count+1
     group.avg_payoff = sum([p.payoff for p in players]) / Constants.players_per_group
     for p in players:
         if p.round_number % Constants.rounds_phase == 0:
@@ -293,7 +291,6 @@ def set_payoffs(group):
             if p.round_number!=Constants.num_rounds:
                 p.participant.pay_phases.append(p.cum_payoff)
                 # Setze für die kommende Phase die Variable, die die Anzahl der Runden in dieser Phase zählt, wieder auf Null
-                p.participant.phase_count=1
                 p.participant.phase=p.participant.phase+1
             else:
                 p.participant.pay_phases.append(p.cum_payoff)
@@ -301,6 +298,8 @@ def set_payoffs(group):
                 p.pay_round=random.choice(range(Constants.num_phase-1))+1
                 # Nimm diese Zufallsvariable und bestimme die jeweilige kummulierte Auszahlung aus der gewissen Runde anhand der Liste, in der wir das gespeichert haben (participant.pay_phases)
                 p.total_payoff = p.participant.pay_phases[p.pay_round-1]
+
+
 
 # Error messages
 def cq_1_error_message(player, value):  # error message cq_1
@@ -431,15 +430,25 @@ class ResultsWaitPage(WaitPage):
 class Results(Page):
     @staticmethod
     def vars_for_template(player):
-        return dict(
-                player1=player.group.get_player_by_id(1),
-                player2=player.group.get_player_by_id(2),
-                player3=player.group.get_player_by_id(3),
-                player4=player.group.get_player_by_id(4),
-                play=player.group.get_player_by_id(1).in_all_rounds(),
-                roundnow=player.round_number,
-                roundprev=player.round_number-1,
-        )
+        dicci1={}
+        for k,i in enumerate(range(player.round_number-player.participant.phase_count,player.round_number)):
+            nam="contriallR"+str(k+1)
+            dicci1[nam]=(player.in_round(i+1).group.get_player_by_id(1).contribution+player.in_round(i+1).group.get_player_by_id(2).contribution+player.in_round(i+1).group.get_player_by_id(3).contribution+player.in_round(i+1).group.get_player_by_id(4).contribution)/4
+            nam="payallR"+str(k+1)
+            dicci1[nam]=(player.in_round(i+1).group.get_player_by_id(1).payoff+player.in_round(i+1).group.get_player_by_id(2).payoff+player.in_round(i+1).group.get_player_by_id(3).payoff+player.in_round(i+1).group.get_player_by_id(4).payoff)/4
+            for p in range(4):
+                nam="contriP"+str(p+1)+"R"+str(k+1)
+                dicci1[nam]= player.in_round(i+1).group.get_player_by_id(p+1).contribution
+                nam="payP"+str(p+1)+"R"+str(k+1)
+                dicci1[nam]= player.in_round(i+1).group.get_player_by_id(p+1).payoff
+        return dicci1
+    
+    @staticmethod
+    def before_next_page(player, timeout_happened):
+        if player.round_number % Constants.rounds_phase == 0:
+            player.participant.phase_count=1
+        else:
+            player.participant.phase_count=player.participant.phase_count+1
 
 
 class FinalResults(Page):
