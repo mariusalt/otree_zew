@@ -1,11 +1,13 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
+
 {% block title %}
     Ergebnisse: Runde {{ subsession.round_number }} von {{ Constants.num_rounds }}
 {% endblock %}
 
 {% block content %}
+{{ play|slice:":1" }}
     <p align="center">
         <font size="5">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
         <b>{{ Constants.players_per_group }}</font></b>
@@ -64,7 +66,7 @@
 
          <td>
             <table >
-                {% for p in  player1.in_rounds(1,1) %}
+                {% for p in  player1.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.round_number }}</td>
                 </tr>
@@ -74,7 +76,7 @@
 
             <td>
             <table >
-                {% for p in  player1.in_rounds(1,1) %}
+                {% for p in  player1.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.contribution }}</td>
                 </tr>
@@ -83,7 +85,7 @@
         </td>
         <td>
             <table >
-                {% for p in  player2.in_rounds(1,1) %}
+                {% for p in  player2.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.contribution }}</td>
                 </tr>
@@ -92,7 +94,7 @@
         </td>
         <td>
             <table >
-                {% for p in  player3.in_rounds(1,1) %}
+                {% for p in  player3.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.contribution }}</td>
                 </tr>
@@ -101,7 +103,7 @@
         </td>
         <td>
             <table >
-                {% for p in  player4.in_rounds(1,1) %}
+                {% for p in  player4.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.contribution }}</td>
                 </tr>
@@ -110,7 +112,7 @@
         </td>
         <td>
             <table>
-                {% for p in player.in_rounds(1,1) %}
+                {% for p in player.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.group.avg_contribution }}</td>
                 </tr>
@@ -119,7 +121,7 @@
         </td>
         <td>
             <table>
-                {% for p in player1.in_rounds(1,1) %}
+                {% for p in player1.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.payoff }}</td>
                 </tr>
@@ -128,7 +130,7 @@
         </td>
         <td>
             <table>
-                {% for p in player2.in_rounds(1,1) %}
+                {% for p in player2.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.payoff }}</td>
                 </tr>
@@ -137,7 +139,7 @@
         </td>
         <td>
             <table>
-                {% for p in player3.in_rounds(1,1) %}
+                {% for p in player3.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.payoff }}</td>
                 </tr>
@@ -146,7 +148,7 @@
         </td>
         <td>
             <table>
-                {% for p in player4.in_rounds(1,1) %}
+                {% for p in player4.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.payoff }}</td>
                 </tr>
@@ -155,7 +157,7 @@
         </td>
         <td>
             <table>
-                {% for p in player.in_rounds(1,1) %}
+                {% for p in player.in_rounds(1,2) %}
                 <tr>
                 <td>{{ p.group.avg_payoff }}</td>
                 </tr>

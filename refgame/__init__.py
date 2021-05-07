@@ -437,7 +437,10 @@ class Results(Page):
                 player1=player.group.get_player_by_id(1),
                 player2=player.group.get_player_by_id(2),
                 player3=player.group.get_player_by_id(3),
-                player4=player.group.get_player_by_id(4)
+                player4=player.group.get_player_by_id(4),
+                play=player.group.get_player_by_id(1).in_all_rounds(),
+                roundnow=player.round_number,
+                roundprev=player.round_number-1,
         )
 
 
