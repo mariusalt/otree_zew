@@ -42,7 +42,6 @@ class Player(BasePlayer):
     # Control Questions
     total_payoff = models.CurrencyField()
     pay_round = models.IntegerField()
-    phase = models.IntegerField(initial=1)
     wrong = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
     wrong_Q1 = models.IntegerField(initial=0,  # num incorrect answers control questions
@@ -295,8 +294,9 @@ def set_payoffs(group):
                 p.participant.pay_phases.append(p.cum_payoff)
                 # Setze für die kommende Phase die Variable, die die Anzahl der Runden in dieser Phase zählt, wieder auf Null
                 p.participant.phase_count=1
-                p.phase=+1
+                p.participant.phase=p.participant.phase+1
             else:
+                p.participant.pay_phases.append(p.cum_payoff)
                 # Falls dies die allerletzte Runde ist, bestimme eine Zufallsvariable zwischen 1 und num_phase, um zu bestimmen welche Runde auszahlungsrelevant wird
                 p.pay_round=random.choice(range(Constants.num_phase-1))+1
                 # Nimm diese Zufallsvariable und bestimme die jeweilige kummulierte Auszahlung aus der gewissen Runde anhand der Liste, in der wir das gespeichert haben (participant.pay_phases)
@@ -384,6 +384,7 @@ class Willkommen(Page):  # welcome page
     def before_next_page(player, timeout_happened):
         player.participant.phase_count=1
         player.participant.pay_phases=[]
+        player.participant.phase=1
 
     def is_displayed(player):  # welcome only once
         return player.round_number == 1
@@ -443,11 +444,10 @@ class Results(Page):
 class FinalResults(Page):
     @staticmethod
     def vars_for_template(player):
-        pay_phase1 = player.participant.pay_phases[0]
-        pay_phase2 = player.participant.pay_phases[1]
         dicci={}
         for k,i in enumerate(player.participant.pay_phases):
             nam="pay_phase"+str(k+1)
+            exec("global %s; %s = i" % (nam,nam))
             dicci[nam]= i
         return dicci
             
