@@ -301,8 +301,6 @@ def set_payoffs(group):
                 p.pay_round=random.choice(range(Constants.num_phase-1))+1
                 # Nimm diese Zufallsvariable und bestimme die jeweilige kummulierte Auszahlung aus der gewissen Runde anhand der Liste, in der wir das gespeichert haben (participant.pay_phases)
                 p.total_payoff = p.participant.pay_phases[p.pay_round-1]
-            
-                
 
 # Error messages
 def cq_1_error_message(player, value):  # error message cq_1
