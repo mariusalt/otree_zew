@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block content %}
-
+{{ pay_phase1 }}
+<p>Hiermit haben Sie die letzte Phase beendet.<br></p>
     <table class="table table-striped table-hover">
         <caption><b>Hinweis</b>.  Alle Angaben in <b>LaborDollar</b> (LD).</caption>
         <thead>
@@ -25,12 +26,18 @@
             </tr>
         {% endfor %}
         </body>
+    </table>
+        <p>Welche Phase für Sie auszahlungsrelevant wird, wurde zufällig ausgewählt:</p>
+    <div class=a>
+        <p>Phase {{ player.pay_round }} wird für Sie auszahlungsrelevant.</p>
+    </div>
+    <table>
         <tr>
              <thead class="table-dark">
                 <th></th>
                 <th></th>
-                <th>Ihre kumulierte Auszahlung:</th>
-                <th><b>{{ player.cum_payoff }}</b></th>
+                <th>Ihre Auszahlung:</th>
+                <th><b>{{ player.total_payoff }}</b></th>
              </thead>
         </tr>
     </table>

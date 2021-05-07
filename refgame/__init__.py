@@ -42,6 +42,7 @@ class Player(BasePlayer):
     # Control Questions
     total_payoff = models.CurrencyField()
     pay_round = models.IntegerField()
+    phase = models.IntegerField(initial=1)
     wrong = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
     wrong_Q1 = models.IntegerField(initial=0,  # num incorrect answers control questions
@@ -280,10 +281,11 @@ def set_payoffs(group):
                    + Constants.gamma * group.total_contribution - \
                    Constants.tau
     for p in players:  # cumulative payoff
-        # bestimme eine Variable, die in jeder phase die Runden zählt (participant.phase_count) und erhöhe diese Variable um 1 jede Runde.
-        p.participant.phase_count=p.participant.phase_count+1
+        
         #bestimme nach jeder Runde den bisherigen kumulativen payoff in dieser Phase (Phase geht von p.round_number-p.participant.phase_count+1 bis p.round_number)
         p.cum_payoff = sum([p.payoff for p in p.in_rounds(p.round_number-p.participant.phase_count+1,p.round_number)])
+        # bestimme eine Variable, die in jeder phase die Runden zählt (participant.phase_count) und erhöhe diese Variable um 1 jede Runde.
+        p.participant.phase_count=p.participant.phase_count+1
     group.avg_payoff = sum([p.payoff for p in players]) / Constants.players_per_group
     for p in players:
         if p.round_number % Constants.rounds_phase == 0:
@@ -292,7 +294,8 @@ def set_payoffs(group):
             if p.round_number!=Constants.num_rounds:
                 p.participant.pay_phases.append(p.cum_payoff)
                 # Setze für die kommende Phase die Variable, die die Anzahl der Runden in dieser Phase zählt, wieder auf Null
-                p.participant.phase_count=0
+                p.participant.phase_count=1
+                p.phase=+1
             else:
                 # Falls dies die allerletzte Runde ist, bestimme eine Zufallsvariable zwischen 1 und num_phase, um zu bestimmen welche Runde auszahlungsrelevant wird
                 p.pay_round=random.choice(range(Constants.num_phase-1))+1
@@ -379,7 +382,7 @@ class Willkommen(Page):  # welcome page
 
     @staticmethod
     def before_next_page(player, timeout_happened):
-        player.participant.phase_count=0
+        player.participant.phase_count=1
         player.participant.pay_phases=[]
 
     def is_displayed(player):  # welcome only once
@@ -400,6 +403,15 @@ class Kontrollfragen(Page):  # Control questions
 
     def is_displayed(player):  # control questions only once
         return player.round_number == 1
+
+class NeuePhase(Page):
+    def is_displayed(player):  # only once
+        if player.round_number==1: 
+            return True
+        elif (player.round_number+1) % Constants.rounds_phase == 0:
+            return True
+        else:
+            return False
 
 
 class Beitragsentscheidung(Page):
@@ -429,13 +441,21 @@ class Results(Page):
 
 
 class FinalResults(Page):
-
+    @staticmethod
+    def vars_for_template(player):
+        pay_phase1 = player.participant.pay_phases[0]
+        pay_phase2 = player.participant.pay_phases[1]
+        dicci={}
+        for k,i in enumerate(player.participant.pay_phases):
+            nam="pay_phase"+str(k+1)
+            dicci[nam]= i
+        return dicci
+            
+        
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
 
-class NeuePhase(Page):
-    def is_displayed(player):  # only once
-        return player.round_number % Constants.rounds_phase == 0
+
 
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
@@ -451,9 +471,9 @@ class Questionnaire(Page):  # welcome page
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
+                 NeuePhase,
                  Beitragsentscheidung,
                  ResultsWaitPage,
                  Results,
                  FinalResults,
-                 NeuePhase,
                  Questionnaire]

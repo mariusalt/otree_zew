@@ -1,24 +1,32 @@
 {% extends "global/Page.html" %}
 {% load otree %}
 
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 20px ;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-style: solid;
+    }
+
+  </style>
+{% endblock %}
+
 {% block title %}
-    {% if player.round_number < Constants.num_rounds %}
+    {% if player.round_number == 1 %}
+    Beginn Phase 1
+    {% elif player.round_number < Constants.num_rounds %}
     Neue Phase
-    {% else %}
-    Auszahlung
     {% endif %}
 
 {% endblock %}
 
 {% block content %}
 
-    {% if player.round_number < Constants.num_rounds %}
-    <p>Neue Runde </p>
-    {% else %}
+    <p>Wenn Sie nun auf "Weiter" klicken, beginnt Phase {{ player.phase }} von {{ Constants.num_phase }} </p>
 
-    Ihre kummulierte Auszahlung: {{ player.total_payoff }} aus Phase {{ player.pay_round }}
-
-    {% endif %}
 
     {% next_button %}
     
