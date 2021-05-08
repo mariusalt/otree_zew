@@ -15,7 +15,6 @@ import random
 class Constants(BaseConstants):
     name_in_url = 'refgame'
     players_per_group = 4
-    num_rounds = 4
     endowment = c(100)
     alpha = 4.4  # parameter for benefits from private account
     beta = 0.02  # parameter for benefits from private account
@@ -26,6 +25,7 @@ class Constants(BaseConstants):
     chat_template = 'refgame/papercups.html'
     rounds_phase = 2  # Runden pro Phase
     num_phase = 2  # Anzahl an Phasen
+    num_rounds = rounds_phase*num_phase
 
 
 class Subsession(BaseSubsession):
@@ -183,38 +183,148 @@ class Player(BasePlayer):
 
     q_3_1= models.IntegerField( # post-question 3_1
         choices=[
-            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
-            [2, "sichere Auszahlung: 0,90 EURO "],
+            [1, "Lotterie: 0% Chance auf 30 EURO, 100% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
 
     q_3_2= models.IntegerField( # post-question 3_1
         choices=[
-            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
-            [2, "sichere Auszahlung: 0,70 EURO "],
+            [1, "Lotterie: 5% Chance auf 30 EURO, 95% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
 
     q_3_3= models.IntegerField( # post-question 3_1
         choices=[
-            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
-            [2, "sichere Auszahlung: 0,50 EURO "],
+            [1, "Lotterie: 10% Chance auf 30 EURO, 90% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
 
     q_3_4= models.IntegerField( # post-question 3_1
         choices=[
-            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
-            [2, "sichere Auszahlung: 0,30 EURO "],
+            [1, "Lotterie: 15% Chance auf 30 EURO, 85% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
 
-    q_3_5 = models.IntegerField(  # post-question 3_1
+    q_3_5= models.IntegerField( # post-question 3_1
         choices=[
-            [1, "Lotterie: 50% Chance auf 1 EURO, 50% Chance auf 0 EURO"],
-            [2, "sichere Auszahlung: 0,10 EURO "],
+            [1, "Lotterie: 20% Chance auf 30 EURO, 80% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
         ], widget=widgets.RadioSelectHorizontal
     )
+
+    q_3_6= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 25% Chance auf 30 EURO, 75% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_7= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 30% Chance auf 30 EURO, 70% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_8= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 35% Chance auf 30 EURO, 65% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_9= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 40% Chance auf 30 EURO, 60% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_10= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 45% Chance auf 30 EURO, 55% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_11= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 50% Chance auf 30 EURO, 50% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_12= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 55% Chance auf 30 EURO, 45% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_13= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 60% Chance auf 30 EURO, 40% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_14= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 65% Chance auf 30 EURO, 35% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_15= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 70% Chance auf 30 EURO, 30% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+    q_3_16= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 75% Chance auf 30 EURO, 25% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+    q_3_17= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 80% Chance auf 30 EURO, 20% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+    q_3_18= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 85% Chance auf 30 EURO, 15% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+    q_3_19= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 90% Chance auf 30 EURO, 10% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+    q_3_20= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 95% Chance auf 30 EURO, 5% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+    q_3_21= models.IntegerField( # post-question 3_1
+        choices=[
+            [1, "Lotterie: 100% Chance auf 30 EURO, 0% Chance auf 16 EURO"],
+            [2, "sichere Auszahlung: 20 EURO "],
+        ], widget=widgets.RadioSelectHorizontal
+    )
+
+
+    
     betr20 = models.IntegerField()
     betr19 = models.IntegerField()
     betr18 = models.IntegerField()
@@ -470,10 +580,18 @@ class FinalResults(Page):
 class Questionnaire(Page):  # welcome page
     form_model = 'player'
     form_fields = ["q_1_1", "q_1_2", "q_1_3", "q_1_4",
-                   "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_2_2", "q_2_3",
+                   "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_3_6", "q_3_7", "q_3_8", "q_3_9", "q_3_10",
+                    "q_3_11", "q_3_12", "q_3_13", "q_3_14", "q_3_15", "q_3_16", "q_3_17", "q_3_18", "q_3_19", "q_3_20", "q_3_21",
+                     "q_2_2", "q_2_3",
                    "betr20","betr19","betr18","betr17","betr16","betr15","betr14","betr13","betr12","betr11",
                    "betr10","betr9","betr8","betr7","betr6","betr5","betr4","betr3","betr2","betr1",
                    "betr0","taxi", "q_1_5", "q_1_6"]
+    @staticmethod
+    def vars_for_template(player):
+        return dict( 
+                fields1 = ["q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_3_6", "q_3_7", "q_3_8", "q_3_9", "q_3_10",
+                    "q_3_11", "q_3_12", "q_3_13", "q_3_14", "q_3_15", "q_3_16", "q_3_17", "q_3_18", "q_3_19", "q_3_20", "q_3_21"], 
+              ) 
 
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
