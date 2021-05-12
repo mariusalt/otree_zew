@@ -325,27 +325,7 @@ class Player(BasePlayer):
 
 
     
-    betr20 = models.IntegerField()
-    betr19 = models.IntegerField()
-    betr18 = models.IntegerField()
-    betr17 = models.IntegerField()
-    betr16 = models.IntegerField()
-    betr15 = models.IntegerField()
-    betr14 = models.IntegerField()
-    betr13 = models.IntegerField()
-    betr12 = models.IntegerField()
-    betr11 = models.IntegerField()
-    betr10 = models.IntegerField()
-    betr9 = models.IntegerField()
-    betr8 = models.IntegerField()
-    betr7 = models.IntegerField()
-    betr6 = models.IntegerField()
-    betr5 = models.IntegerField()
-    betr4 = models.IntegerField()
-    betr3 = models.IntegerField()
-    betr2 = models.IntegerField()
-    betr1 = models.IntegerField()
-    betr0 = models.IntegerField()
+    betr = models.IntegerField()
 
     taxi = models.IntegerField(  
         choices=[
@@ -583,9 +563,7 @@ class Questionnaire(Page):  # welcome page
                    "q_2_1", "q_3_1", "q_3_2", "q_3_3", "q_3_4", "q_3_5", "q_3_6", "q_3_7", "q_3_8", "q_3_9", "q_3_10",
                     "q_3_11", "q_3_12", "q_3_13", "q_3_14", "q_3_15", "q_3_16", "q_3_17", "q_3_18", "q_3_19", "q_3_20", "q_3_21",
                      "q_2_2", "q_2_3",
-                   "betr20","betr19","betr18","betr17","betr16","betr15","betr14","betr13","betr12","betr11",
-                   "betr10","betr9","betr8","betr7","betr6","betr5","betr4","betr3","betr2","betr1",
-                   "betr0","taxi", "q_1_5", "q_1_6"]
+                   "betr","taxi", "q_1_5", "q_1_6"]
     @staticmethod
     def vars_for_template(player):
         return dict( 
