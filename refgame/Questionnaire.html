@@ -15,6 +15,78 @@
         padding-top: : 5px ;
         padding-bottom: 5px ;
     }
+    .slider1 {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+    z-index:20;
+}
+
+.slider1:focus {
+    outline: none;
+    z-index:20;
+}
+
+.slider1::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+    z-index:20;
+    
+}
+
+.slider1::-webkit-slider-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -webkit-appearance: none;
+    z-index:20;
+}
+
+
+.slider1 {
+    -moz-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+    z-index:20;
+   
+}
+
+
+.slider1::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    background: #3071a9;
+    border-radius: 1.3px;
+    border: 0.2px solid #010101;
+    z-index:20;
+}
+
+.slider1::-moz-range-thumb {
+    border: 0px;
+    height: 0px;
+    width: 0px;
+    border-radius: 0px;
+    -moz-appearance: none;
+    z-index:20;
+}
+
+
+
+.slider1 {
+    width: 80%;
+    position: absolute;
+    z-index:20;
+}
     .slider2 {
     -webkit-appearance: none;
     margin: 18px 0;
@@ -94,11 +166,18 @@
     height:80px;
 
 }
-  #show2 {
-    width: 15%;
+  #show1 {
+    width: 70%;
     position: absolute;
-    top: -4%;
-    left: 34.3%;
+    top: -30%;
+    left: 0%;
+    font-weight: bold;
+}
+  #show2 {
+    width: 70%;
+    position: absolute;
+    top: -30%;
+    left: 0%;
     font-weight: bold;
 }
 
@@ -106,13 +185,13 @@
     width: 5%;
     position: absolute;
     top: 60%;
-    left: 75%;
+    left: 78%;
 }
 #p2 {
     width: 5%;
     position: absolute;
     top: 60%;
-    left: 1%;
+    left: 0.5%;
 }
 #p3 {
     width: 5%;
@@ -124,6 +203,36 @@
     z-index:-19;
 }
 #p4 {
+    width: 5%;
+    position: absolute;
+    top: 30%;
+    left: 0.7%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index:-20;
+}
+#p11 {
+    width: 5%;
+    position: absolute;
+    top: 60%;
+    left: 78%;
+}
+#p12 {
+    width: 5%;
+    position: absolute;
+    top: 60%;
+    left: 0.5%;
+}
+#p13 {
+    width: 5%;
+    position: absolute;
+    top: 30%;
+    left: 78.5%;
+    font-size: 18px;
+    font-weight: bold;
+    z-index:-19;
+}
+#p14 {
     width: 5%;
     position: absolute;
     top: 30%;
@@ -161,6 +270,37 @@
 {% endblock %}
 {% block scripts %}
 <script language="javascript" type="text/javascript"> 
+
+function updateTextInput1(val) {
+          document.getElementById('textInput1').value=val; 
+          }
+$(document).ready(function () {
+        $('.slider1').on('input change', function () {
+            $('.slider1').addClass('myclass');
+        });
+
+    });
+document.getElementById("show1").style.display="none";
+function showhide1()
+    {
+      document.getElementById("show1").style.display="block";
+    } 
+     var slider1 = document.getElementById("slider1");
+var output12 = document.getElementById("show1");
+output12.innerHTML = slider1.value;
+var output13 = document.getElementById("win1");
+var output14 = document.getElementById("lose1")
+
+slider1.oninput = function() {
+  output12.innerHTML = 'Verlustwahrscheinlichkeit: ' + this.value + "%";
+  k=100-this.value
+  output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
+  output14.innerHTML = '<b>Sie bekommen 10€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
+
+}
+
+
+
 function updateTextInput2(val) {
           document.getElementById('textInput2').value=val; 
           }
@@ -170,6 +310,7 @@ $(document).ready(function () {
         });
 
     });
+document.getElementById("show2").style.display="none";
 function showhide2()
     {
       document.getElementById("show2").style.display="block";
@@ -177,8 +318,15 @@ function showhide2()
      var slider2 = document.getElementById("slider2");
 var output2 = document.getElementById("show2");
 output2.innerHTML = slider2.value;
+var output3 = document.getElementById("win");
+var output4 = document.getElementById("lose")
+
 slider2.oninput = function() {
-  output2.innerHTML = this.value + "%";
+  output2.innerHTML = 'Anteil an Personen B, die Option "Rechts" auswählen: ' + this.value + " Personen";
+  k=20-this.value
+  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie einen der  <b>' + k + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie einen der <b>' + this.value + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
+
 }
 </script>
 {% endblock %}
@@ -190,21 +338,21 @@ slider2.oninput = function() {
 
     <p> Zum Schluss möchten wir Sie bitten, einige Fragen zu beantworten. Ihre Angaben werden
     selbstverständlich streng vertraulich behandelt. </p>
-
+ <br>
     <!--- First block: sociodemographics -->
     <p><b>Frage 1</b>. Wie alt sind Sie? (In Jahren)</p>
     <p> Ich bin: {% formfield player.q_1_1 label="" %}</p> <!-- field for q_1_1 age -->
-
+ <br>
     <p><b>Frage 2</b>. Mit welchem Geschlecht identifizieren Sie sich?</p>
     <p>{% formfield player.q_1_2 label="" %}</p>  <!-- field for q_1_2 gender -->
-
+ <br>
     <p><b>Frage 3</b>. Ist Deutsch Ihre Muttersprache?</p>
     <p>{% formfield player.q_1_3 label="" %}</p> <!-- field for q_1_3 mother tongue -->
-
+ <br>
     <p><b>Frage 4</b>. Wie hoch ist Ihr monatliches Einkommen nach Abzug von Steuern und
         Sozialversicherungsbeiträgen?</p>
     <p>{% formfield player.q_1_4 label="" %}</p>
-
+ <br>
     <!-- Second block: risk and trust -->
     <p>
         <b>Frage 5</b>. Wie schätzen Sie sich persönlich ein: Sind Sie im allgemeinen ein risikobereiter Mensch oder
@@ -215,27 +363,54 @@ slider2.oninput = function() {
     </p>
 
     <p>{% formfield player.q_2_1 label="" %}</p>  <!-- field for q_2_1: risk -->
-
+ <br>
     <p>
         <b>Frage 6</b>: Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
         <b>sicheren Auszahlung</b>. Bei der Lotterie hätten Sie jeweils eine Chance auf 30 Euro oder 16 Euro. Bei der
         sicheren Auszahlung würde Ihnen der Betrag von 20 Euro sicher sein. Bitte geben Sie im Folgenden jeweils für die
         verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
-        entscheiden würden.
-    </p>
+        entscheiden würden.<br></p>
+    <b>Bitte geben Sie an, ab welcher Verlustwahrscheinlichkeit Sie sich für Option die sichere Auszahlung entscheiden würden.</b>
+    <br>
+    <br>
 
-     <table cellpadding="8">
+
+     <div class=b width="80%" height="50px" style="text-align:left;">
+
+
+                <input  type="range" min="0" max="100" step="1" value="" class="slider1" id="slider1"  onchange="updateTextInput1(this.value);" onclick="showhide1()">
+                <span id="show1"></span>
+
+                <span id="show3"></span>
+                <p id="p11"><strong>100%</strong></p>
+                <p id="p12"><strong>0%</strong></p>
+                <p id="p13">|</p>
+                <p id="p14">|</p>
+
+                
+  </div>
+
+  <table cellpadding="8" width="80%">
         <tbody>
-            {% for field in fields1 %} 
-          <tr class="border">
+          <tr>
             <td>
-                {% formfield field label="" %} 
+                <span id="win1"></span>
+            </td>
+            <td>
+               &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+            </td>
+            <td>
+                <span id="lose1"></span>
             </td>
         </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
+    <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
+    <div id="inf"></div>
 
+
+    <br>
+    <br>
    <br>
 
    <p>
@@ -259,9 +434,9 @@ slider2.oninput = function() {
     </p>
          <p>{% formfield player.q_2_3 label="" %}</p>  <!-- field for q_2_3: exploitation -->
 
- <b>Frage 9</b>.
+ 
     
-    <p align="justify">Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild
+    <p align="justify"><b>Frage 9</b>.Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild
         vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
         zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out"
         spielen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" spielen, hängt das Ergebnis von der
@@ -270,28 +445,47 @@ slider2.oninput = function() {
         8 Euro und Ihr Gegenspieler 22 Euro.
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben. In der untenstehenden Tabelle würden wir gerne von Ihnen wissen, ob Sie sich für "In" oder "Out" entscheiden würden je nachdem, wie viele "Personen B" die Option "Links" gewählt haben.</p>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Rechts" gewählt haben.<br></p>
+    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Rechts" auswählen (8€ für Sie, 22€ für Person B), würden Sie sich für Option "Out" (sichere Auszahlung, 10€ für beide) entscheiden?</b>
+    <br>
+    <br>
 
 
      <div class=b width="80%" height="50px" style="text-align:left;">
 
 
-                <input  type="range" min="0" max="100" step="0.5" value="" class="slider2" id="slider2"  onchange="updateTextInput2(this.value);" onclick="showhide2()">
+                <input  type="range" min="0" max="20" step="1" value="" class="slider2" id="slider2"  onchange="updateTextInput2(this.value);" onclick="showhide2()">
                 <span id="show2"></span>
 
                 <span id="show5"></span>
-                <p id="p1"><strong>100%</strong></p>
-                <p id="p2"><strong>0%</strong></p>
+                <p id="p1"><strong>20</strong></p>
+                <p id="p2"><strong>0</strong></p>
                 <p id="p3">|</p>
                 <p id="p4">|</p>
 
                 
   </div>
+
+  <table cellpadding="8" width="80%">
+        <tbody>
+          <tr>
+            <td>
+                <span id="win"></span>
+            </td>
+            <td>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                <span id="lose"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
     <input name="betr"  type="hidden" id="textInput2" value="" size="1" style="text-align:center;">
-    <input name="che"  type="hidden" id="textInput3" value="1" size="1" style="text-align:center;">
     <div id="inf"></div>
 
 
+    <br>
     <br>
 
     <b>Frage 10</b>.
