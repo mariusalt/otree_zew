@@ -188,38 +188,42 @@ slider2.oninput = function() {
         <b>Vielen Dank für Ihre Teilnahme!</b>
     </p>
 
-    <p> Zum Schluss möchten wir Sie bitten einige Fragen zu beantworten. Ihre Angaben werden
+    <p> Zum Schluss möchten wir Sie bitten, einige Fragen zu beantworten. Ihre Angaben werden
     selbstverständlich streng vertraulich behandelt. </p>
 
     <!--- First block: sociodemographics -->
     <p><b>Frage 1</b>. Wie alt sind Sie? (In Jahren)</p>
     <p> Ich bin: {% formfield player.q_1_1 label="" %}</p> <!-- field for q_1_1 age -->
 
-    <p><b>Frage <font color="red">XX</font>.</b> Mit welchem Geschlecht identifizieren Sie sich?</p>
+    <p><b>Frage 2</b>. Mit welchem Geschlecht identifizieren Sie sich?</p>
     <p>{% formfield player.q_1_2 label="" %}</p>  <!-- field for q_1_2 gender -->
 
-    <p><b>Frage <font color="red">XX</font></b>. Ist Deutsch Ihre Muttersprache?</p>
+    <p><b>Frage 3</b>. Ist Deutsch Ihre Muttersprache?</p>
     <p>{% formfield player.q_1_3 label="" %}</p> <!-- field for q_1_3 mother tongue -->
 
-    <p><b>Frage <font color="red">XX</font></b>. Wie hoch ist Ihr monatliches Einkommen nach Abzug von Steuern und
-        Sozialversicherungsbeiträge?</p>
+    <p><b>Frage 4</b>. Wie hoch ist Ihr monatliches Einkommen nach Abzug von Steuern und
+        Sozialversicherungsbeiträgen?</p>
     <p>{% formfield player.q_1_4 label="" %}</p>
 
     <!-- Second block: risk and trust -->
     <p>
-        <b>Frage <font color="red">XX</font></b>.
-        Wie schätzen Sie sich persönlich ein: Sind Sie im allgemeinen ein risikobereiter Mensch oder versuchen Sie,
-        Risiken zu vermeiden?
+        <b>Frage 5</b>. Wie schätzen Sie sich persönlich ein: Sind Sie im allgemeinen ein risikobereiter Mensch oder
+        versuchen Sie, Risiken zu vermeiden?
         <br>
         (<i>Antworten Sie bitte anhand der folgenden Skala. Der Wert 0 bedeutet: "gar nicht risikobereit". Der Wert 10
         bedeutet: "sehr risikobereit". Mit den Werten dazwischen können Sie Ihre Einschätzung abstufen.</i>)
+    </p>
+
     <p>{% formfield player.q_2_1 label="" %}</p>  <!-- field for q_2_1: risk -->
 
-    <p><b>Frage 3</b>: Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer <b>sicheren Auszahlung</b>.
-    Bei der Lotterie hätten Sie jeweils eine Chance auf 30 EURO oder 16 EURO. Bei der sicheren Auszahlung würde Ihnen der
-    Betrag von 20€ sicher sein. Bitte geben Sie im Folgenden jeweils für die vershiedenen Verlustwahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung entscheiden würden.
+    <p>
+        <b>Frage 6</b>: Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
+        <b>sicheren Auszahlung</b>. Bei der Lotterie hätten Sie jeweils eine Chance auf 30 Euro oder 16 Euro. Bei der
+        sicheren Auszahlung würde Ihnen der Betrag von 20 Euro sicher sein. Bitte geben Sie im Folgenden jeweils für die
+        verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
+        entscheiden würden.
+    </p>
 
-    
      <table cellpadding="8">
         <tbody>
             {% for field in fields1 %} 
@@ -231,15 +235,12 @@ slider2.oninput = function() {
         {% endfor %}
         </tbody>
     </table>
-     <!-- field for q_3_1 -->
 
-     <!-- field for q_3_5 -->
-     <br>
-     <br>
+   <br>
+
    <p>
-        <b>Frage <font color="red">XX</font></b>.
-        Würden Sie ganz allgemein sagen, dass man den meisten Menschen vertrauen kann, oder dass man da gar nicht
-        vorsichtig genug sein kann?
+        <b>Frage 7</b>. Würden Sie ganz allgemein sagen, dass man den meisten Menschen vertrauen kann, oder dass man
+       da gar nicht vorsichtig genug sein kann?
         <br>
         (<i>Antworten Sie bitte anhand der folgenden Skala. Der Wert 0 bedeutet: "Man kann nicht vorsichtig genug
         sein". Der Wert 10 bedeutet: "Man kann den meisten vertrauen". Mit den Werten dazwischen können Sie Ihre
@@ -249,9 +250,8 @@ slider2.oninput = function() {
 
     <!-- Third block: exploitation and betrayal and F&S -->
     <p>
-        <b>Frage <font color="red">XX</font></b>.
-        Glauben Sie, die meisten Menschen würden Sie ausnutzen, sobald sich ihnen eine Möglichkeit bietet? Oder
-        glauben Sie, die meisten Menschen würden sich fair verhalten?
+        <b>Frage 8</b>. Glauben Sie, die meisten Menschen würden Sie ausnutzen, sobald sich ihnen eine Möglichkeit
+        bietet? Oder glauben Sie, die meisten Menschen würden sich fair verhalten?
         <br>
         (<i>Antworten Sie bitte anhand der folgende Skala. Der Wert 0 bedeutet: "Die Menschen nutzen einen aus". Der
         Wert 10 bedeutet: "Die Menschen verhalten sich fair". Mit den Werten dazwischen können Sie Ihre Einschätzung
@@ -259,11 +259,19 @@ slider2.oninput = function() {
     </p>
          <p>{% formfield player.q_2_3 label="" %}</p>  <!-- field for q_2_3: exploitation -->
 
- <b>Frage <font color="red">XX</font></b>.
+ <b>Frage 9</b>.
     
-    <p align="justify">Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out" spielen, erhalten Sie und Ihr Gegenüber jeweils 10 €. Wenn Sie "In" spielen, hängt das Ergebnis von der Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt zwischen "Links" oder "Rechts". Wenn er/sie "Links" spielt, erhalten Sie und Ihr Gegenüber jeweils 15 €. Wenn er/sie stattdessen "Rechts" spielt, erhalten Sie 8 € und Ihr Gegenspieler 22 €.</p>
+    <p align="justify">Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild
+        vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
+        zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out"
+        spielen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" spielen, hängt das Ergebnis von der
+        Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt zwischen "Links" oder "Rechts". Wenn er/sie "Links"
+        spielt, erhalten Sie und Ihr Gegenüber jeweils 15 Euro. Wenn er/sie stattdessen "Rechts" spielt, erhalten Sie
+        8 Euro und Ihr Gegenspieler 22 Euro.
+    </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben. In der untenstehende Tabelle würden wir gerne von Ihnen wissen, ob Sie sich für "In" oder "Out" entscheiden würden je nachdem, wie viele "Personen B" die Option "Links" gewählt haben.</p>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben. In der untenstehenden Tabelle würden wir gerne von Ihnen wissen, ob Sie sich für "In" oder "Out" entscheiden würden je nachdem, wie viele "Personen B" die Option "Links" gewählt haben.</p>
+
 
      <div class=b width="80%" height="50px" style="text-align:left;">
 
@@ -283,41 +291,67 @@ slider2.oninput = function() {
     <input name="che"  type="hidden" id="textInput3" value="1" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-   
+
     <br>
 
-    <b>Frage <font color="red">XX</font></b>.
+    <b>Frage 10</b>.
     
     <p align="justify">
-        Stellen Sie sich vor, Sie müssen aus persönlichen Gründen in eine Ihnen unbekannte Großstadt reisen. Vom Flughafen aus können Sie zwischen zwei Taxiunternehmen wählen, um Ihr endgültiges Ziel zu erreichen, für das Sie die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von $12. Unternehmen B rechnet nach dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie $8. 1 von 5 Fahrern nimmt jedoch Umwege, um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann $16. <br>
-    Geben Sie unten bitte an, welches Taxiunternehmen Sie wählen würden.</p>
-    {% formfield player.taxi label="" %}
+        Stellen Sie sich vor, Sie müssen aus persönlichen Gründen in eine Ihnen unbekannte Großstadt reisen. Vom
+        Flughafen aus können Sie zwischen zwei Taxiunternehmen wählen, um Ihr endgültiges Ziel zu erreichen, für das Sie
+        die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von $12. Unternehmen B rechnet nach
+        dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie $8. 1 von 5 Fahrern nimmt jedoch Umwege,
+        um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann $16.
+        <br>
+        Geben Sie unten bitte an, welches Taxiunternehmen Sie wählen würden.
+    </p>
+        <p>{% formfield player.taxi label="" %}</p>
 
     <br>
 
-    <p><b>Frage XY</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments werden zusammen in eine Gruppe gelost.
-        Der andere Teilnehmer erhält 20 EUR vom Experimentator. Von diesen 20 EUR kann nun der andere Teilnehmer Ihnen einen Beitrag X in EUR abgeben.
-        Sie können diesen Vorschlag annehmen oder ablehnen.</p>
-    <p>Wenn Sie diesen Vorschlag <b>annehmen</b>, erhalten Sie X EUR und der andere Teilnehmer (20 - X) EUR.</p>
-    <p>Wenn Sie diesen Vorschlag <b>ablehnen</b>, erhalten Sie 0 EUR und auch der andere Teilnehmer 0 EUR.</p>
-    <p>Beide Teilnehmer kennen die Regeln des Spiels. </p>
-    <p>Wie hoch muss der Vorschlag des anderen Teilnehmers <b>mindestens</b> sein, damit Sie diesen annehmen? Bitte geben Sie einen EUR-Betrag in
-    ganzen Zahlen ein:</p>
+    <p>
+        <b>Frage 11</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments werden zusammen in eine Gruppe
+        gelost. Der andere Teilnehmer erhält 20 Euro vom Experimentator. Von diesen 20 Euro kann nun der andere
+        Teilnehmer Ihnen einen Beitrag X in Euro abgeben. Sie können diesen Vorschlag annehmen oder ablehnen.
+    </p>
+        <ul>
+            <li>Wenn Sie diesen Vorschlag <b>annehmen</b>, erhalten Sie X Euro und der andere Teilnehmer (20 - X)
+                Euro.</li>
+            <li>Wenn Sie diesen Vorschlag <b>ablehnen</b>, erhalten Sie 0 Euro und auch der andere Teilnehmer 0
+                Euro.</li>
+        </ul>
+    <p>
+        Beide Teilnehmer kennen die Regeln des Spiels. Wie hoch muss der Vorschlag des anderen Teilnehmers
+        <b>mindestens</b> sein, damit Sie diesen annehmen?
+    </p>
 
-    <p> Mindestvorschlag des anderen Teilnehmers: {% formfield player.q_1_5 label="" %}</p> <!-- field for q_1_5 -->
+    <p>
+        Mindestvorschlag des anderen Teilnehmers (<i>Bitte geben Sie einen Euro-Betrag in ganzen Zahlen ein</i>):
+        {% formfield player.q_1_5 label="" %}
+    </p> <!-- field for q_1_5 -->
 
-    <p><b>Frage XY</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments (eine andere Person als in Frage XY) werden zusammen in eine Gruppe gelost.
-        Sie erhalten 20 EUR vom Experimentator. Von diesen 20 EUR können Sie dem anderen Teilnehmer einen Beitrag X in EUR abgeben.</p>
-    <p>Wenn Sie dem anderen Teilnehmer X EUR <b>abgeben</b>, erhalten Sie (20 - X) EUR. Beide Teilnehmer kennen die Regeln des Spiels. </p>
-    <p>Welchen Beitrag X in EUR würden Sie dem anderen Teilnehmer abgeben? Bitte geben Sie einen EUR-Betrag in ganzen Zahlen ein:</p>
-
-    <p> Ihr Beitrag: {% formfield player.q_1_6 label="" %}</p> <!-- field for q_1_6 -->
+    <p>
+        <b>Frage 12</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments (eine andere Person als in Frage 11)
+        werden zusammen in eine Gruppe gelost. Sie erhalten 20 Euro vom Experimentator. Von diesen 20 Euro können Sie dem
+        anderen Teilnehmer einen Beitrag X in Euro abgeben.
+    </p>
+        <ul>
+            <li>Wenn Sie dem anderen Teilnehmer X Euro <b>abgeben</b>, erhalten Sie (20 - X) Euro.</li>
+        </ul>
+    <p>
+        Beide Teilnehmer kennen die Regeln des Spiels. Welchen Beitrag X in Euro würden Sie dem anderen Teilnehmer
+        abgeben?
+    </p>
+    <p>
+        Ihr Beitrag (<i>Bitte geben Sie einen Euro-Betrag in ganzen Zahlen ein</i>):
+        {% formfield player.q_1_6 label="" %}
+    </p> <!-- field for q_1_6 -->
 
     <br>
     <p>
        Bitte melden Sie sich, wenn Sie eine Frage haben. Nutzen Sie hierfür bitte unseren <b>Chat</b>, der Ihnen
        unten rechts auf der Seite angezeigt wird. Wenn Sie keine weiteren Fragen haben, klicken Sie bitte auf
-       <b>Next</b>.
+       <b>Weiter</b>.
     </p>
     <br>
 
