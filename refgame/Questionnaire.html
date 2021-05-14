@@ -292,7 +292,7 @@ var output13 = document.getElementById("win1");
 var output14 = document.getElementById("lose1")
 
 slider1.oninput = function() {
-  output12.innerHTML = 'Wahrscheinlichkeit der neidrigen Auszahlung: ' + this.value + "%";
+  output12.innerHTML = 'Wahrscheinlichkeit der niedrigen Auszahlung: ' + this.value + "%";
   k=100-this.value
   output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
   output14.innerHTML = '<b>Sie bekommen 10€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
@@ -367,7 +367,7 @@ slider2.oninput = function() {
     <p>
         <b>Frage 6</b>. Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
         <b>sicheren Auszahlung</b>. Bei der <b>Lotterie</b> hätten Sie jeweils eine Chance auf <font color="red"> eine hohe
-        Aushalung in Höhe von</font> <b>30 Euro</b> oder <font color="red"> eine niedrigen Auszahlung in Höhe von</font>
+        Auszahlung in Höhe von</font> <b>30 Euro</b> oder <font color="red"> eine niedrigen Auszahlung in Höhe von</font>
         <b>16 Euro</b>. Bei der <b>sicheren Auszahlung</b> würde Ihnen der Betrag von <b>20 Euro</b> sicher sein. <s>Bitte
         geben Sie im Folgenden jeweils für die verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
         entscheiden würden.</s>
@@ -412,6 +412,7 @@ slider2.oninput = function() {
     <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
+    <p>Beispiel: Angenommen, Sie geben 70% an. In diesem Fall bevorzugen Sie eine Lotterie mit 30%iger Auszahlung von 30 Euro und 70%iger Auszahlung von 16 Euro gegenüber der Sicheren Auszahlung von 16 Euro.</p>
 
     <br>
     <br>
