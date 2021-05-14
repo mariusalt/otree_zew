@@ -324,8 +324,8 @@ var output4 = document.getElementById("lose")
 slider2.oninput = function() {
   output2.innerHTML = 'Anteil an Personen B, die Option "Rechts" auswählen: ' + this.value + " Personen";
   k=20-this.value
-  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie einen der  <b>' + k + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
-  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie einen der <b>' + this.value + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie eine der  <b>' + k + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie eine der <b>' + this.value + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
 
 }
 </script>
@@ -412,7 +412,7 @@ slider2.oninput = function() {
     <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-    <p>Beispiel: Angenommen, Sie geben 70% an. In diesem Fall bevorzugen Sie eine Lotterie mit 30%iger Auszahlung von 30 Euro und 70%iger Auszahlung von 16 Euro gegenüber der sicheren Auszahlung von 16 Euro.</p>
+    <p>Beispiel: Angenommen, Sie geben 70% an. In diesem Fall bevorzugen Sie eine Lotterie mit 30%iger Auszahlung von 30 Euro und 70%iger Auszahlung von 16 Euro gegenüber der sicheren Auszahlung von 20 Euro.</p>
 
     <br>
     <br>
