@@ -292,7 +292,7 @@ var output13 = document.getElementById("win1");
 var output14 = document.getElementById("lose1")
 
 slider1.oninput = function() {
-  output12.innerHTML = 'Verlustwahrscheinlichkeit: ' + this.value + "%";
+  output12.innerHTML = 'Wahrscheinlichkeit der neidrigen Auszahlung: ' + this.value + "%";
   k=100-this.value
   output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
   output14.innerHTML = '<b>Sie bekommen 10€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
@@ -365,17 +365,21 @@ slider2.oninput = function() {
     <p>{% formfield player.q_2_1 label="" %}</p>  <!-- field for q_2_1: risk -->
  <br>
     <p>
-        <b>Frage 6</b>: Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
-        <b>sicheren Auszahlung</b>. Bei der Lotterie hätten Sie jeweils eine Chance auf 30 Euro oder 16 Euro. Bei der
-        sicheren Auszahlung würde Ihnen der Betrag von 20 Euro sicher sein. Bitte geben Sie im Folgenden jeweils für die
-        verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
-        entscheiden würden.<br></p>
-    <b>Bitte geben Sie an, ab welcher Verlustwahrscheinlichkeit Sie sich für Option die sichere Auszahlung entscheiden würden.</b>
-    <br>
+        <b>Frage 6</b>. Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
+        <b>sicheren Auszahlung</b>. Bei der <b>Lotterie</b> hätten Sie jeweils eine Chance auf <font color="red"> eine hohe
+        Aushalung in Höhe von</font> <b>30 Euro</b> oder <font color="red"> eine niedrigen Auszahlung in Höhe von</font>
+        <b>16 Euro</b>. Bei der <b>sicheren Auszahlung</b> würde Ihnen der Betrag von <b>20 Euro</b> sicher sein. <s>Bitte
+        geben Sie im Folgenden jeweils für die verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
+        entscheiden würden.</s>
+        <br>
+    </p>
+    <p>
+        Bitte geben Sie an, ab welcher <s>Verlustwahrscheinlichkeit</s> <font color="red">Wahrscheinlichkeit für die niedrige
+        Auszahlung der Lotterie</font> Sie sich für Option die sichere Auszahlung entscheiden würden.
+    </p>
     <br>
 
-
-     <div class=b width="80%" height="50px" style="text-align:left;">
+         <div class=b width="80%" height="50px" style="text-align:left;">
 
 
                 <input  type="range" min="0" max="100" step="1" value="" class="slider1" id="slider1"  onchange="updateTextInput1(this.value);" onclick="showhide1()">
@@ -436,8 +440,8 @@ slider2.oninput = function() {
 
  
     
-    <p align="justify"><b>Frage 9</b>. Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im unteren Bild
-        vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
+    <p align="justify"><b>Frage 9</b>. Bei dieser Frage bitten wir Sie sich die hypothetische Entscheidungssituation im
+        unteren Bild vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
         zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out"
         spielen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" spielen, hängt das Ergebnis von der
         Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt zwischen "Links" oder "Rechts". Wenn er/sie "Links"
