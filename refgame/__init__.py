@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 2  # Runden pro Phase
-    num_phase = 2  # Anzahl an Phasen
+    rounds_phase = 5  # Runden pro Phase
+    num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
 
 
@@ -354,7 +354,7 @@ class NeuePhase(Page):
     def is_displayed(player):  # only once
         if player.round_number==1: 
             return True
-        elif (player.round_number+1) % Constants.rounds_phase == 0:
+        elif (player.round_number-1) % Constants.rounds_phase == 0:
             return True
         else:
             return False
