@@ -292,10 +292,10 @@ var output13 = document.getElementById("win1");
 var output14 = document.getElementById("lose1")
 
 slider1.oninput = function() {
-  output12.innerHTML = 'Wahrscheinlichkeit der niedrigen Auszahlung: ' + this.value + "%";
+  output12.innerHTML = 'Wahrscheinlichkeit der höheren Auszahlung: ' + this.value + "%";
   k=100-this.value
-  output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
-  output14.innerHTML = '<b>Sie bekommen 16€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
+  output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
+  output14.innerHTML = '<b>Sie bekommen 16€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
 
 }
 
@@ -322,10 +322,10 @@ var output3 = document.getElementById("win");
 var output4 = document.getElementById("lose")
 
 slider2.oninput = function() {
-  output2.innerHTML = 'Anteil an Personen B, die Option "Rechts" auswählen: ' + this.value + " Personen";
+  output2.innerHTML = 'Anteil an Personen B, die Option "Links" auswählen: ' + this.value + " Personen";
   k=20-this.value
-  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie eine der  <b>' + k + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
-  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie eine der <b>' + this.value + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie eine der  <b>' + this.value + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
 
 }
 </script>
@@ -368,14 +368,14 @@ slider2.oninput = function() {
         <b>Frage 6</b>. Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
         <b>sicheren Auszahlung</b>. Bei der <b>Lotterie</b> hätten Sie jeweils eine Chance auf <font color="red"> eine hohe
         Auszahlung in Höhe von</font> <b>30 Euro</b> oder <font color="red"> eine niedrige Auszahlung in Höhe von</font>
-        <b>16 Euro</b>. Bei der <b>sicheren Auszahlung</b> würde Ihnen der Betrag von <b>20 Euro</b> sicher sein. <s>Bitte
-        geben Sie im Folgenden jeweils für die verschiedenen Wahrscheinlichkeiten an, ob Sie sich für die Lotterie oder die sichere Auszahlung
-        entscheiden würden.</s>
+        <b>16 Euro</b>. Bei der <b>sicheren Auszahlung</b> würde Ihnen der Betrag von <b>20 Euro</b> sicher sein.
         <br>
+        
     </p>
     <p>
-        Bitte geben Sie an, ab welcher <s>Verlustwahrscheinlichkeit</s> <font color="red">Wahrscheinlichkeit für die niedrige
-        Auszahlung der Lotterie</font> Sie sich für Option die sichere Auszahlung entscheiden würden.
+        <b>Bitte geben Sie an, ab welcher <font color="red">Wahrscheinlichkeit für die höhere
+        Auszahlung der Lotterie</font> Sie sich für Option die sichere Auszahlung entscheiden würden.<br><br>
+        Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterieoption, wenn die Auzahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrschenilichkeit würden Sie es bevorzugen einen Betrag von 20 Euro sicher zu haben.<br>
     </p>
     <br>
 
@@ -450,8 +450,9 @@ slider2.oninput = function() {
         8 Euro und Ihr Gegenspieler 22 Euro.
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Rechts" gewählt haben.<br></p>
-    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Rechts" auswählen (8€ für Sie, 22€ für Person B), würden Sie sich für Option "Out" (sichere Auszahlung, 10€ für beide) entscheiden?</b>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben.<br></p>
+    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Links" auswählen (15€ für Sie, 15€ für Person B), würden Sie sich für Option "Out" (sichere Auszahlung, 10€ für beide) entscheiden?</b><br><br>
+    <b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Links" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Links" entscheiden, würden Sie Option "Out" auswählen.<br>
     <br>
     <br>
 

@@ -23,13 +23,27 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 5  # Runden pro Phase
-    num_phase = 5  # Anzahl an Phasen
+    rounds_phase = 2  # Runden pro Phase
+    num_phase = 2  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
+    treatment = "ratchet" #"vcm"
 
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        players = self.get_players()
+        num_group = len(players)/4
+        for i in range(num_group):
+            new_group = [
+                players.pop(),
+                players.pop(),
+                players.pop(),
+                players.pop(),
+            ]
+            group_matrix.append(new_group)
+
+        self.set_groups(group_matrix)
+
 
 class Group(BaseGroup):
     total_contribution = models.CurrencyField()
