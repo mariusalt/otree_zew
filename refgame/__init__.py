@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 2  # Runden pro Phase
-    num_phase = 2  # Anzahl an Phasen
+    rounds_phase = 5  # Runden pro Phase
+    num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
     treatment = "ratchet" #"vcm"
 
@@ -252,8 +252,6 @@ def set_payoffs(group):
             # und speicher ihn in der Liste participant.pay_phases
             if p.round_number!=Constants.num_rounds:
                 p.participant.pay_phases.append(p.cum_payoff)
-                # Setze für die kommende Phase die Variable, die die Anzahl der Runden in dieser Phase zählt, wieder auf Null
-                p.participant.phase=p.participant.phase+1
             else:
                 p.participant.pay_phases.append(p.cum_payoff)
                 # Falls dies die allerletzte Runde ist, bestimme eine Zufallsvariable zwischen 1 und num_phase, um zu bestimmen welche Runde auszahlungsrelevant wird
@@ -332,7 +330,11 @@ def cq_6_error_message(player, value):  # error message cq_6
             player.wrong_Q6=+1
             return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
-
+def contribution_error_message(player, value):  # error message cq_1
+    if Constants.treatment=="ratchet":
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+            if value < player.in_round(player.round_number-1).contribution:
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
 
 ################ PAGES
 
@@ -381,6 +383,13 @@ class Beitragsentscheidung(Page):
     def is_displayed(player):
         return player.round_number <= Constants.num_rounds
 
+    def vars_for_template(player):
+        if player.round_number>1:
+            disp_rat = (player.round_number-1) % Constants.rounds_phase != 0
+        else:
+            disp_rat = False
+        return dict( disp_rat = disp_rat)
+
 
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = 'set_payoffs'
@@ -408,9 +417,12 @@ class Results(Page):
     @staticmethod
     def before_next_page(player, timeout_happened):
         if player.round_number % Constants.rounds_phase == 0:
+            player.participant.phase=player.participant.phase+1
+        if player.round_number % Constants.rounds_phase == 0:
             player.participant.phase_count=1
         else:
             player.participant.phase_count=player.participant.phase_count+1
+
 
 
 class FinalResults(Page):
