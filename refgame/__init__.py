@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     rounds_phase = 5  # Runden pro Phase
     num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
-    treatment = "minratchet" #treatments: "vcm", "ratchet", "minratchet"
+    treatment = "ratchet" #treatments: "vcm", "ratchet", "minratchet"
 
 
 class Subsession(BaseSubsession):
@@ -476,9 +476,17 @@ class Beitragsentscheidung(Page):
     def vars_for_template(player):
         if player.round_number>1:
             disp_rat = (player.round_number-1) % Constants.rounds_phase != 0
+            if Constants.treatment == "minratchet":
+                if player.in_round(player.round_number-1).contribution > player.participant.mincon_group:
+                    last_con = player.in_round(player.round_number-1).contribution
+                else:
+                    last_con = player.participant.mincon_group
+            else:
+                last_con = player.in_round(player.round_number-1).contribution
         else:
             disp_rat = False
-        return dict( disp_rat = disp_rat)
+            last_con = 0
+        return dict( disp_rat = disp_rat, last_con = last_con)
 
 
 class ResultsWaitPage(WaitPage):
