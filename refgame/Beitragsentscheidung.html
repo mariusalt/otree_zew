@@ -238,9 +238,9 @@
     <p>
         Ihre Aufgabe (wie auch die Aufgabe Ihrer Mitspieler) besteht darin zu entscheiden,
         wie viele LD sie zum <b>gemeinsamen Projekt</b> beitragen möchten.<br>
-        {% if Constants.treatment == "ratchet" %} 
-        text...........................
-        {% endif %}
+        {% if Constants.treatment == "ratchet" and disp_rat == True %}  
+        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss, wie ihr Beitrag aus der vorherigen Runde.
+        {% endif %} 
     </p>
 
     <p>

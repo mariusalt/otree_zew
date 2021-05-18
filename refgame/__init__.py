@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     rounds_phase = 5  # Runden pro Phase
     num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
-    treatment = "ratchet" #"vcm"
+    treatment = "minratchet" #treatments: "vcm", "ratchet", "minratchet"
 
 
 class Subsession(BaseSubsession):
@@ -50,6 +50,9 @@ class Group(BaseGroup):
     avg_contribution = models.CurrencyField()
     individual_share = models.CurrencyField()
     avg_payoff = models.CurrencyField()
+    #Minimum contribution outcome
+    mincon_group = models.CurrencyField()
+
 
 
 class Player(BasePlayer):
@@ -69,6 +72,10 @@ class Player(BasePlayer):
     wrong_Q5 = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
     wrong_Q6 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q7 = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+    wrong_Q8 = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
 
     cq_1 = models.IntegerField(  # control question 1 (cq_1)
@@ -102,8 +109,19 @@ class Player(BasePlayer):
         ], widget=widgets.RadioSelect()
     )
 
+    cq_7 = models.IntegerField(  # control question 7 (cq_7)
+    min=0, max = 20)
+
+    cq_8 = models.IntegerField(  # control question 8 (cq_8)
+    min=0, max = 20)
+
     # Contribution
     contribution = models.CurrencyField(
+        min=0, max=Constants.endowment, label="",
+    )
+
+    #Minimum contribution
+    mincon = models.CurrencyField(
         min=0, max=Constants.endowment, label="",
     )
 
@@ -213,6 +231,8 @@ class Player(BasePlayer):
     q_1_6 = models.IntegerField(  # post-question 6: FuS
     min=0, max = 20)
 
+    
+
 
 
 
@@ -221,6 +241,12 @@ class Player(BasePlayer):
 ################# FUNCTIONS
 
 # Payoff function
+def set_mincon(group):
+    players = group.get_players()
+    all_mincon = [p.mincon for p in players]
+    group.mincon_group = min(all_mincon)
+    for p in players:
+        p.participant.mincon_group=group.mincon_group
     
 
 def set_payoffs(group):
@@ -330,12 +356,37 @@ def cq_6_error_message(player, value):  # error message cq_6
             player.wrong_Q6=+1
             return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
+def cq_7_error_message(player, value):  # error message cq_6
+    if value != 20:
+        if player.wrong_Q7==0:
+            player.wrong_Q7=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q7=+1
+            return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+
+def cq_8_error_message(player, value):  # error message cq_6
+    if value != 20:
+        if player.wrong_Q8==0:
+            player.wrong_Q8=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q8=+1
+            return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+
 def contribution_error_message(player, value):  # error message cq_1
     if Constants.treatment=="ratchet":
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
-
+    if Constants.treatment=="minratchet":
+        if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
+            if value < player.participant.mincon_group:
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+            if value < player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie<br>a) ihr Beitrag aus der vorherigen Runde. Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.<br>b) der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
+            
 ################ PAGES
 
 class Willkommen(Page):  # welcome page
@@ -361,10 +412,49 @@ class Instruktionen(Page):  # Instructions
 # Kontrollfragen
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
-    form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
+    if Constants.treatment == "ratchet" or Constants.treatment == "minratchet":
+        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8"]
+    else:
+        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
 
     def is_displayed(player):  # control questions only once
         return player.round_number == 1
+
+class MinCon(Page):
+    form_model = 'player'
+    form_fields = ['mincon']
+
+    def is_displayed(player):
+        if Constants.treatment == "minratchet":
+            if (player.round_number-1) % Constants.rounds_phase == 0:
+                return True
+            else:
+                return False
+        else:
+            return False
+
+class MinConWaitPage(WaitPage):
+    after_all_players_arrive = 'set_mincon'
+
+    def is_displayed(player):
+        if Constants.treatment == "minratchet":
+            if (player.round_number-1) % Constants.rounds_phase == 0:
+                return True
+            else:
+                return False
+        else:
+            return False
+
+class MinConRes(Page):
+    def is_displayed(player):
+        if Constants.treatment == "minratchet":
+            if (player.round_number-1) % Constants.rounds_phase == 0:
+                return True
+            else:
+                return False
+        else:
+            return False
+    
 
 class NeuePhase(Page):
     def is_displayed(player):  # only once
@@ -456,6 +546,9 @@ class Questionnaire(Page):  # welcome page
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
+                 MinCon,
+                 MinConWaitPage,
+                 MinConRes,
                  NeuePhase,
                  Beitragsentscheidung,
                  ResultsWaitPage,

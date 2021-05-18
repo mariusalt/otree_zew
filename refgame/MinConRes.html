@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+
+{% block title %}
+    Ergebnis Mindestbeitrag
+{% endblock %}
+
+{% block content %}
+
+Minimum Contribution is: {{ group.mincon_group }}
+    
+    {% next_button %}
+
+{% include Constants.chat_template %}
+{% endblock %}
