@@ -23,8 +23,8 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 5  # Runden pro Phase
-    num_phase = 5  # Anzahl an Phasen
+    rounds_phase = 2  # Runden pro Phase
+    num_phase = 2  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
     treatment = "ratchet" #treatments: "vcm", "ratchet", "minratchet"
 

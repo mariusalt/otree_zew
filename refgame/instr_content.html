@@ -31,7 +31,7 @@
 
     <p>
         Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
-        <b>gemeinsamen Projekt</b> beitragen. Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.{% if Constants.treatment == "ratchet" %} In allen weiteren Runden muss Ihr Beitrag mindestens so hoch sein, wie in der Runde zuvor. Der maximale Beitrag ist 100 LD.{% endif %}
+        <b>gemeinsamen Projekt</b> beitragen.{% if Constants.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.{% elif Constants.treatment == "ratchet" %} Ihr Beitrag kann in Runde 1 zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag mindestens so hoch sein, wie in der Runde zuvor.{% endif %} Der maximale Beitrag ist 100 LD.
     </p>
 
     <p> 

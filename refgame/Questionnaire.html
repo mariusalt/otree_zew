@@ -294,8 +294,8 @@ var output14 = document.getElementById("lose1")
 slider1.oninput = function() {
   output12.innerHTML = 'Wahrscheinlichkeit der höheren Auszahlung: ' + this.value + "%";
   k=100-this.value
-  output13.innerHTML = '<b>Sie bekommen 30€</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
-  output14.innerHTML = '<b>Sie bekommen 16€</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
+  output13.innerHTML = '<b>Sie bekommen 30 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
+  output14.innerHTML = '<b>Sie bekommen 16 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
 
 }
 
@@ -324,8 +324,8 @@ var output4 = document.getElementById("lose")
 slider2.oninput = function() {
   output2.innerHTML = 'Anteil an Personen B, die Option "Links" auswählen: ' + this.value + " Personen";
   k=20-this.value
-  output3.innerHTML = '<b>Sie und Person B bekommen 15€</b> falls Sie eine der  <b>' + this.value + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
-  output4.innerHTML = '<b>Sie bekommen 10€</b> und <b>Person B bekommt 22€</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output3.innerHTML = '<b>Sie und Person B bekommen 15 Euro</b> falls Sie eine der  <b>' + this.value + ' Personen</b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output4.innerHTML = '<b>Sie bekommen 10 Euro</b> und <b>Person B bekommt 22 Euro</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
 
 }
 </script>
@@ -374,8 +374,8 @@ slider2.oninput = function() {
     </p>
     <p>
         <b>Bitte geben Sie an, ab welcher <font color="red">Wahrscheinlichkeit für die höhere
-        Auszahlung der Lotterie</font> Sie sich für Option die sichere Auszahlung entscheiden würden.<br><br>
-        Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterieoption, wenn die Auzahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrschenilichkeit würden Sie es bevorzugen einen Betrag von 20 Euro sicher zu haben.<br>
+        Auszahlung der Lotterie</font> Sie sich für Option die Teilnahme an der Lotterie entscheiden würden.<br><br>
+        
     </p>
     <br>
 
@@ -412,7 +412,7 @@ slider2.oninput = function() {
     <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-    <p>Beispiel: Angenommen, Sie geben 70% an. In diesem Fall bevorzugen Sie eine Lotterie mit 30%iger Auszahlung von 30 Euro und 70%iger Auszahlung von 16 Euro gegenüber der sicheren Auszahlung von 20 Euro.</p>
+Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterieoption, wenn die Auzahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrschenilichkeit würden Sie es bevorzugen einen Betrag von 20 Euro sicher zu haben.<br>
 
     <br>
     <br>
@@ -451,8 +451,7 @@ slider2.oninput = function() {
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
     <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben.<br></p>
-    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Links" auswählen (15€ für Sie, 15€ für Person B), würden Sie sich für Option "Out" (sichere Auszahlung, 10€ für beide) entscheiden?</b><br><br>
-    <b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Links" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Links" entscheiden, würden Sie Option "Out" auswählen.<br>
+    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Links" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
     <br>
     <br>
 
@@ -490,7 +489,7 @@ slider2.oninput = function() {
     <input name="betr"  type="hidden" id="textInput2" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-
+<b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Links" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Links" entscheiden, würden Sie Option "Out" auswählen.<br>
     <br>
     <br>
 

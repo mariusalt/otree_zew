@@ -241,12 +241,10 @@
         
     </p>
     <p>
-        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen. {% if Constants.treatment == "ratchet" and disp_rat == True %}  
+        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen. {% if Constants.treatment != "vcm" and disp_rat == True %}  
         <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss, wie ihr Beitrag aus der vorherigen Runde.</b>
         {% endif %} 
-        {% if Constants.treatment == "minratchet" and disp_rat == True %}  
-        <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss, wie a) ihr Beitrag aus der vorherigen Runde und b) der Mindestbeitrag.</b>
-        {% endif %} 
+
         {% if Constants.treatment == "minratchet" %} {% if player.round_number == 1 or disp_rat == False  %}
         <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss, wie der Mindestbeitrag.</b>
         {% endif %} {% endif %} 
@@ -257,12 +255,10 @@
     </p>
 
     
-         {% if Constants.treatment == "ratchet" and disp_rat == True %}  <p>
+         {% if Constants.treatment != "vcm" and disp_rat == True %}  <p>
         <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }}LD beigetragen. Nun müssen Sie also mindestens {{ last_con }}LD beitragen.</b></p>
         {% endif %} 
-        {% if Constants.treatment == "minratchet" and disp_rat == True %} <p> 
-        <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }}LD beigetragen. Der Mindestbeitrag liegt bei {{ participant.mincon_group }}LD. Nun müssen Sie also mindestens {{ last_con }}LD beitragen.</b></p>
-        {% endif %} 
+
         {% if Constants.treatment == "minratchet" %} {% if player.round_number == 1 or disp_rat == False  %}<p>
         <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }}LD. Nun müssen Sie also mindestens {{ participant.mincon_group }}LD beitragen.</b></p>
         {% endif %} {% endif %} 
