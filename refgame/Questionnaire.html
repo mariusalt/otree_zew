@@ -292,7 +292,7 @@ var output13 = document.getElementById("win1");
 var output14 = document.getElementById("lose1")
 
 slider1.oninput = function() {
-  output12.innerHTML = 'Wahrscheinlichkeit der höheren Auszahlung: ' + this.value + "%";
+  output12.innerHTML = 'Wahrscheinlichkeit der hohen Auszahlung: ' + this.value + "%";
   k=100-this.value
   output13.innerHTML = '<b>Sie bekommen 30 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + this.value +"%" ;
   output14.innerHTML = '<b>Sie bekommen 16 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
@@ -365,16 +365,16 @@ slider2.oninput = function() {
     <p>{% formfield player.q_2_1 label="" %}</p>  <!-- field for q_2_1: risk -->
  <br>
     <p>
-        <b>Frage 6</b>. Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> oder einer
+        <b>Frage 6</b>. Stellen Sie sich vor, Sie haben die Wahl zwischen einer <b>Lotterie</b> und einer
         <b>sicheren Auszahlung</b>. Bei der <b>Lotterie</b> hätten Sie jeweils eine Chance auf <font color="red"> eine hohe
-        Auszahlung in Höhe von</font> <b>30 Euro</b> oder <font color="red"> eine niedrige Auszahlung in Höhe von</font>
+        Auszahlung von</font> <b>30 Euro</b> oder <font color="red"> eine niedrige Auszahlung von</font>
         <b>16 Euro</b>. Bei der <b>sicheren Auszahlung</b> würde Ihnen der Betrag von <b>20 Euro</b> sicher sein.
         <br>
         
     </p>
     <p>
-        <b>Bitte geben Sie an, ab welcher <font color="red">Wahrscheinlichkeit für die höhere
-        Auszahlung der Lotterie</font> Sie sich für Option die Teilnahme an der Lotterie entscheiden würden.<br><br>
+        <b>Bitte geben Sie an, ab welcher <font color="red">Wahrscheinlichkeit für die hohe
+        Auszahlung der Lotterie</font> Sie sich für die Lotterie entscheiden würden.<br><br>
         
     </p>
     <br>
@@ -412,7 +412,7 @@ slider2.oninput = function() {
     <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterieoption, wenn die Auzahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrschenilichkeit würden Sie es bevorzugen einen Betrag von 20 Euro sicher zu haben.<br>
+Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterie, wenn die Auszahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrscheinlichkeit würden Sie es bevorzugen, 20 Euro sicher zu haben.<br>
 
     <br>
     <br>
@@ -450,7 +450,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
         8 Euro und Ihr Gegenspieler 22 Euro.
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits Ihre Entscheidung bezüglich den Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben.<br></p>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits ihre Entscheidung bezüglich der Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben.<br></p>
     <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Links" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
     <br>
     <br>
@@ -498,9 +498,9 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
     <p align="justify">
         Stellen Sie sich vor, Sie müssen aus persönlichen Gründen in eine Ihnen unbekannte Großstadt reisen. Vom
         Flughafen aus können Sie zwischen zwei Taxiunternehmen wählen, um Ihr endgültiges Ziel zu erreichen, für das Sie
-        die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von $12. Unternehmen B rechnet nach
-        dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie $8. 1 von 5 Fahrern nimmt jedoch Umwege,
-        um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann $16.
+        die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von 12 Euro. Unternehmen B rechnet nach
+        dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie 8 Euro. 1 von 5 Fahrern nimmt jedoch Umwege,
+        um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann 16 Euro.
         <br>
         Geben Sie unten bitte an, welches Taxiunternehmen Sie wählen würden.
     </p>
