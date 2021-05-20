@@ -378,14 +378,14 @@ def contribution_error_message(player, value):  # error message cq_1
     if Constants.treatment=="ratchet":
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution:
-                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
     if Constants.treatment=="minratchet":
         if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
-                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie<br>a) ihr Beitrag aus der vorherigen Runde. Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.<br>b) der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie<br>a) Ihr Beitrag aus der vorherigen Runde. Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.<br>b) der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
             
 ################ PAGES
 
