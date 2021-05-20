@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     rounds_phase = 2  # Runden pro Phase
     num_phase = 2  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
-    treatment = "ratchet" #treatments: "vcm", "ratchet", "minratchet"
+    treatment = "minsRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
 
 
 class Subsession(BaseSubsession):
@@ -357,36 +357,65 @@ def cq_6_error_message(player, value):  # error message cq_6
             return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
 def cq_7_error_message(player, value):  # error message cq_6
-    if value != 20:
-        if player.wrong_Q7==0:
-            player.wrong_Q7=+1
-            return 'Die Antwort ist leider nicht korrekt.'
-        else:
-            player.wrong_Q7=+1
-            return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+    if Constants.treatment=="wRat" or Constants.treatment=="minwRat":
+        if value != 20:
+            if player.wrong_Q7==0:
+                player.wrong_Q7=+1
+                return 'Die Antwort ist leider nicht korrekt.'
+            else:
+                player.wrong_Q7=+1
+                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+    if Constants.treatment=="sRat" or Constants.treatment=="minsRat":
+        if value != 21:
+            if player.wrong_Q7==0:
+                player.wrong_Q7=+1
+                return 'Die Antwort ist leider nicht korrekt.'
+            else:
+                player.wrong_Q7=+1
+                return 'Bitte beachten Sie, dass Ihr Beitrag höher sein muss, als in der Runde zuvor.'
 
 def cq_8_error_message(player, value):  # error message cq_6
-    if value != 20:
-        if player.wrong_Q8==0:
-            player.wrong_Q8=+1
-            return 'Die Antwort ist leider nicht korrekt.'
-        else:
-            player.wrong_Q8=+1
-            return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+    if Constants.treatment=="wRat" or Constants.treatment=="minwRat":
+        if value != 20:
+            if player.wrong_Q8==0:
+                player.wrong_Q8=+1
+                return 'Die Antwort ist leider nicht korrekt.'
+            else:
+                player.wrong_Q8=+1
+                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+    if Constants.treatment=="sRat" or Constants.treatment=="minsRat":
+        if value != 24:
+            if player.wrong_Q8==0:
+                player.wrong_Q8=+1
+                return 'Die Antwort ist leider nicht korrekt.'
+            else:
+                player.wrong_Q8=+1
+                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden jewils höher sein muss, als in der Runde zuvor.'
 
 def contribution_error_message(player, value):  # error message cq_1
-    if Constants.treatment=="ratchet":
+    if Constants.treatment=="wRat":
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
-    if Constants.treatment=="minratchet":
+    if Constants.treatment=="sRat":
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+            if value <= player.in_round(player.round_number-1).contribution:
+                return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+    if Constants.treatment=="minwRat":
         if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
-                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie<br>a) Ihr Beitrag aus der vorherigen Runde. Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.<br>b) der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
-            
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+    if Constants.treatment=="minsRat":
+        if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
+            if value < player.participant.mincon_group:
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+            if value <= player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
+                return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+               
 ################ PAGES
 
 class Willkommen(Page):  # welcome page
@@ -412,7 +441,7 @@ class Instruktionen(Page):  # Instructions
 # Kontrollfragen
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
-    if Constants.treatment == "ratchet" or Constants.treatment == "minratchet":
+    if Constants.treatment != "vcm":
         form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8"]
     else:
         form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
@@ -425,7 +454,7 @@ class MinCon(Page):
     form_fields = ['mincon']
 
     def is_displayed(player):
-        if Constants.treatment == "minratchet":
+        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat":
             if (player.round_number-1) % Constants.rounds_phase == 0:
                 return True
             else:
@@ -437,7 +466,7 @@ class MinConWaitPage(WaitPage):
     after_all_players_arrive = 'set_mincon'
 
     def is_displayed(player):
-        if Constants.treatment == "minratchet":
+        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat":
             if (player.round_number-1) % Constants.rounds_phase == 0:
                 return True
             else:
@@ -447,7 +476,7 @@ class MinConWaitPage(WaitPage):
 
 class MinConRes(Page):
     def is_displayed(player):
-        if Constants.treatment == "minratchet":
+        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat":
             if (player.round_number-1) % Constants.rounds_phase == 0:
                 return True
             else:
@@ -476,17 +505,22 @@ class Beitragsentscheidung(Page):
     def vars_for_template(player):
         if player.round_number>1:
             disp_rat = (player.round_number-1) % Constants.rounds_phase != 0
-            if Constants.treatment == "minratchet":
-                if player.in_round(player.round_number-1).contribution > player.participant.mincon_group:
+            if Constants.treatment == "minwRat" or Constants.treatment == "minsRat":
+                if player.in_round(player.round_number-1).contribution >= player.participant.mincon_group:
                     last_con = player.in_round(player.round_number-1).contribution
+                    last_con_s = player.in_round(player.round_number-1).contribution+1
                 else:
                     last_con = player.participant.mincon_group
+                    last_con_s = player.participant.mincon_group
             else:
                 last_con = player.in_round(player.round_number-1).contribution
+                last_con_s = player.in_round(player.round_number-1).contribution+1
         else:
             disp_rat = False
             last_con = 0
-        return dict( disp_rat = disp_rat, last_con = last_con)
+            last_con_s = 0
+
+        return dict( disp_rat = disp_rat, last_con = last_con, last_con_s = last_con_s)
 
 
 class ResultsWaitPage(WaitPage):

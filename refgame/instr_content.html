@@ -31,7 +31,7 @@
 
     <p>
         Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
-        <b>gemeinsamen Projekt</b> beitragen.{% if Constants.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.{% elif Constants.treatment == "ratchet" %} Ihr Beitrag kann in Runde 1 zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag mindestens so hoch sein, wie in der Runde zuvor.{% endif %} Der maximale Beitrag ist 100 LD.
+        <b>gemeinsamen Projekt</b> beitragen.{% if Constants.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.{% elif Constants.treatment == "wRat" or Constants.treatment == "minwRat" %} Ihr Beitrag kann in Runde 1 zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag <b>mindestens so hoch</b> sein, wie <b>in der Runde zuvor<b>.{% elif Constants.treatment == "sRat" or Constants.treatment == "minsRat" %}Ihr Beitrag kann in Runde 1 zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag <b>höher</b> als <b>in der Runde zuvor</b> sein.{% endif %} Der maximale Beitrag ist 100 LD.
     </p>
 
     <p> 
