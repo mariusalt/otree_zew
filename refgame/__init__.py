@@ -26,7 +26,7 @@ class Constants(BaseConstants):
     rounds_phase = 2  # Runden pro Phase
     num_phase = 2  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
-    treatment = "minsRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
+    treatment = "wRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
 
 
 class Subsession(BaseSubsession):
@@ -110,10 +110,10 @@ class Player(BasePlayer):
     )
 
     cq_7 = models.IntegerField(  # control question 7 (cq_7)
-    min=0, max = 20)
+    min=0, max = 100)
 
     cq_8 = models.IntegerField(  # control question 8 (cq_8)
-    min=0, max = 20)
+    min=0, max = 100)
 
     # Contribution
     contribution = models.CurrencyField(
@@ -365,7 +365,7 @@ def cq_7_error_message(player, value):  # error message cq_6
             else:
                 player.wrong_Q7=+1
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
-    if Constants.treatment=="sRat" or Constants.treatment=="minsRat":
+    elif Constants.treatment=="sRat" or Constants.treatment=="minsRat":
         if value != 21:
             if player.wrong_Q7==0:
                 player.wrong_Q7=+1
@@ -383,7 +383,7 @@ def cq_8_error_message(player, value):  # error message cq_6
             else:
                 player.wrong_Q8=+1
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
-    if Constants.treatment=="sRat" or Constants.treatment=="minsRat":
+    elif Constants.treatment=="sRat" or Constants.treatment=="minsRat":
         if value != 24:
             if player.wrong_Q8==0:
                 player.wrong_Q8=+1
