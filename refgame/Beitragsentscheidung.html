@@ -241,11 +241,12 @@
         
     </p>
     <p>
-        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen. {% if Constants.treatment == "wRat" or Constants.treatment == "minwRat" %} {% if disp_rat == True %}  
+        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen.
+        {% if Constants.treatment == "wRat" or Constants.treatment == "minwRat" %} {% if disp_rat == True %}
         <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss, wie ihr Beitrag aus der vorherigen Runde.</b>
-        {% endif %}{% endif %} 
-        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen. {% if Constants.treatment != "sRat" or Constants.treatment != "minsRat" %} {% if disp_rat == True %}  
-        <b>Beachten Sie, dass Ihr Beitrag mindestens höher sein muss, als ihr Beitrag aus der vorherigen Runde.</b>
+        {% endif %} {% endif %}
+        {% if Constants.treatment == "sRat" or Constants.treatment == "minsRat" %} {% if disp_rat == True %}
+        <b>Beachten Sie, dass Ihr Beitrag höher sein muss, als ihr Beitrag aus der vorherigen Runde.</b>
         {% endif %} {% endif %}
 
         {% if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}

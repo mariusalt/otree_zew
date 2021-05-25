@@ -23,8 +23,9 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 2  # Runden pro Phase
-    num_phase = 2  # Anzahl an Phasen
+    rounds_phase = 5  # Runden pro Phase
+    num_phase = 5  # Anzahl an Phasen
+    num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
     treatment = "sRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
 
@@ -396,11 +397,15 @@ def contribution_error_message(player, value):  # error message cq_1
     if Constants.treatment=="wRat":
         if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution:
-                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+                return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen' \
+                       ' Runde. <br>Ihr Beitrag in der vorherigen Runde betrug '\
+                       + str(player.in_round(player.round_number-1).contribution) +' LD.'
     if Constants.treatment=="sRat":
-        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0 and value < 100:
             if value <= player.in_round(player.round_number-1).contribution:
-                return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
+                return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde. ' \
+                       '<br>Ihr Beitrag in der vorherigen Runde betrug '\
+                       + str(player.in_round(player.round_number-1).contribution) +' LD.'
     if Constants.treatment=="minwRat":
         if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
@@ -514,7 +519,10 @@ class Beitragsentscheidung(Page):
                     last_con_s = player.participant.mincon_group
             else:
                 last_con = player.in_round(player.round_number-1).contribution
-                last_con_s = player.in_round(player.round_number-1).contribution+1
+                if player.in_round(player.round_number-1).contribution < 100:
+                    last_con_s = player.in_round(player.round_number-1).contribution+1
+                else:
+                    last_con_s = 100
         else:
             disp_rat = False
             last_con = 0
