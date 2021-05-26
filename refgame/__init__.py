@@ -27,7 +27,7 @@ class Constants(BaseConstants):
     num_phase = 5  # Anzahl an Phasen
     num_phase = 5  # Anzahl an Phasen
     num_rounds = rounds_phase*num_phase
-    treatment = "sRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
+    treatment = "minsRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
 
 
 class Subsession(BaseSubsession):
@@ -417,7 +417,7 @@ def contribution_error_message(player, value):  # error message cq_1
         if player.round_number==1 or (player.round_number-1) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
-        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0:
+        if player.round_number>1 and (player.round_number-1) % Constants.rounds_phase != 0 and value < 100:
             if value <= player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
                
