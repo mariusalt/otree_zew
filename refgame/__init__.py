@@ -23,11 +23,11 @@ class Constants(BaseConstants):
     instructions_template = 'refgame/instr_content.html'
     payofftable_template = 'refgame/table_content.html'
     chat_template = 'refgame/papercups.html'
-    rounds_phase = 5  # Runden pro Phase
-    num_phase = 5  # Anzahl an Phasen
-    num_phase = 5  # Anzahl an Phasen
+    rounds_phase = 2  # Runden pro Phase
+    num_phase = 2  # Anzahl an Phasen
+    num_phase = 2  # Anzahl an Phasen !!!! Wieso haben wir die var doppelt? !!!
     num_rounds = rounds_phase*num_phase
-    treatment = "minsRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
+    treatment = "vcm" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat"
 
 
 class Subsession(BaseSubsession):
@@ -593,6 +593,12 @@ class Questionnaire(Page):  # welcome page
     def is_displayed(player):  # only once
         return player.round_number == Constants.num_rounds
 
+class GoodBye(Page): # good bye page
+    form_model = 'player'
+
+    def is_displayed(player): # only once
+        return player.round_number == Constants.num_rounds
+
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
@@ -604,4 +610,5 @@ page_sequence = [Willkommen,
                  ResultsWaitPage,
                  Results,
                  FinalResults,
-                 Questionnaire]
+                 Questionnaire,
+                 GoodBye]
