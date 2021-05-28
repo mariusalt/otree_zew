@@ -33,41 +33,41 @@
             <tr>
                 <td align="center">1</td>
                 <td align="center">{{ pay_phase1 }} LD</td>
-                <td align="center">{% if player.pay_round == 1 %}X{% else %}{% endif%}</td>
+                <td align="center">{% if group.pay_round == 1 %}X{% else %}{% endif%}</td>
             </tr>
             {% if Constants.num_phase >= 2 %}
             <tr>
                 <td align="center">2</td>
                 <td align="center">{{ pay_phase2 }} LD</td>
-                <td align="center">{% if player.pay_round == 2 %}X{% else %}{% endif%}</td>
+                <td align="center">{% if group.pay_round == 2 %}X{% else %}{% endif%}</td>
             </tr>
             {% endif %}
             {% if Constants.num_phase >= 3 %}
             <tr>
                 <td align="center">3</td>
                 <td align="center">{{ pay_phase3 }} LD</td>
-                <td align="center">{% if player.pay_round == 3 %}X{% else %}{% endif%}</td>
+                <td align="center">{% if group.pay_round == 3 %}X{% else %}{% endif%}</td>
             </tr>
             {% endif %}
             {% if Constants.num_phase >= 4 %}
             <tr>
                 <td align="center">4</td>
                 <td align="center">{{ pay_phase4 }} LD</td>
-                <td align="center">{% if player.pay_round == 4 %}X{% else %}{% endif%}</td>
+                <td align="center">{% if group.pay_round == 4 %}X{% else %}{% endif%}</td>
             </tr>
             {% endif %}
             {% if Constants.num_phase >= 5 %}
             <tr>
                 <td align="center">5</td>
                 <td align="center">{{ pay_phase5 }} LD</td>
-                <td align="center">{% if player.pay_round == 5 %}X{% else %}{% endif%}</td>
+                <td align="center">{% if group.pay_round == 5 %}X{% else %}{% endif%}</td>
             </tr>
             {% endif %}
         </body>
     </table>
 
     <div class="a">
-        <p><b>Phase {{ player.pay_round }} ist für Sie auszahlungsrelevant.<br>Sie erhalten {{ payeuro }}€</b></p>
+        <p><b>Phase {{ group.pay_round }} ist für Sie auszahlungsrelevant.<br>Sie erhalten {{ payeuro }}€</b></p>
     </div>
     <br>
     <p>

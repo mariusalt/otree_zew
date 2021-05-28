@@ -24,40 +24,44 @@ class PlayerBot(Bot):
 				yield	Submission(Kontrollfragen, dict(cq_1=294,cq_2=164,cq_3=15,cq_4=2,cq_5=90,cq_6=2,cq_7=20,cq_8=20,wrong=1),check_html=False)
 			elif Constants.treatment == "minsRat":
 				yield	Submission(Kontrollfragen, dict(cq_1=294,cq_2=164,cq_3=15,cq_4=2,cq_5=90,cq_6=2,cq_7=21,cq_8=24,wrong=1),check_html=False)
+			elif Constants.treatment == "nbminsRat":
+				yield	Submission(Kontrollfragen, dict(cq_1=294,cq_2=164,cq_3=15,cq_4=2,cq_5=90,cq_6=2,cq_7=21,cq_8=24,wrong=1),check_html=False)
+			elif Constants.treatment == "nbminsRat":
+				yield	Submission(Kontrollfragen, dict(cq_1=294,cq_2=164,cq_3=15,cq_4=2,cq_5=90,cq_6=2,cq_7=21,cq_8=24,wrong=1),check_html=False)
 
-		if Constants.treatment == "minwRat" or Constants.treatment == "minsRat":
-			if (self.round_number-1) % Constants.rounds_phase == 0:
+		if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
+			if (self.round_number-3) % Constants.rounds_phase == 0 or self.round_number==1:
 				yield   Submission(MinCon, dict(mincon=random.randrange(0,101,1)),check_html=False)
 				yield	(MinConRes)
 
-		if self.round_number==1 or (self.round_number-1) % Constants.rounds_phase == 0:
+		if self.round_number==1 or (self.round_number-3) % Constants.rounds_phase == 0:
 			yield	(NeuePhase)
 
 		if Constants.treatment == "vcm":
 			yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(0,101,1)),check_html=False)
-		elif Constants.treatment == "wRat":
-			if self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0:
+		elif Constants.treatment == "wRat" or Constants.treatment == "nbminwRat":
+			if self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(self.player.in_round(self.round_number-1).contribution,101,1)),check_html=False)
 			else:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(0,101,1)),check_html=False)
-		elif Constants.treatment == "sRat":
-			if self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution < 100:
+		elif Constants.treatment == "sRat" or Constants.treatment == "nbminsRat":
+			if self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution < 100:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange((self.player.in_round(self.round_number-1).contribution+1),101,1)),check_html=False)
-			elif self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution == 100:
+			elif self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution == 100:
 				yield   Submission(Beitragsentscheidung, dict(contribution=100),check_html=False)
 			else:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(0,101,1)),check_html=False)
 		elif Constants.treatment == "minwRat":
-			if self.round_number==1 or (self.round_number-1) % Constants.rounds_phase == 0:
+			if self.round_number==1 or (self.round_number-3) % Constants.rounds_phase == 0:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(self.participant.mincon_group,101,1)),check_html=False)
-			if self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0:
+			if self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(self.player.in_round(self.round_number-1).contribution,101,1)),check_html=False)
 		elif Constants.treatment == "minsRat":
-			if self.round_number==1 or (self.round_number-1) % Constants.rounds_phase == 0:
+			if self.round_number==1 or (self.round_number-3) % Constants.rounds_phase == 0:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(self.participant.mincon_group,101,1)),check_html=False)
-			if self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution < 100:
+			if self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution < 100:
 				yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange((self.player.in_round(self.round_number-1).contribution+1),101,1)),check_html=False)
-			elif self.round_number>1 and (self.round_number-1) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution == 100:
+			elif self.round_number>1 and (self.round_number-3) % Constants.rounds_phase != 0 and self.player.in_round(self.round_number-1).contribution == 100:
 				yield   Submission(Beitragsentscheidung, dict(contribution=100),check_html=False)
 
 		yield	(Results)
