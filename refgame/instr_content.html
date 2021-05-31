@@ -38,7 +38,7 @@
             zu Beginn einer neuen Phase können Sie stets frei entscheiden.
             <br>
             <br>
-            !!! Abbildung !!!
+            <img class=im5 style="margin-bottom:40px;height:8%;" src="{% static "refgame/instr_abb.png" %}" />
             <br>
             <br>
             <div style="border-left: 4px solid steelblue; padding-left: 20px;">
@@ -47,13 +47,13 @@
                 zum gemeinsamen Projekt beitragen muss.
             </div>
             <br>
-            <br>
             <div style="border-left: 4px solid steelblue; padding-left: 20px;">
                  <b>Individueller Beitrag</b>: Ab Runde 1 entscheiden Sie über Ihren individuellen Beitrag zum
                  gemeinsamen Projekt. Hierbei gilt: In Runde 1 muss Ihr individueller Mindestbeitrag mindestens so hoch
                  sein wie der kollektive Mindestbeitrag. Ab Runde 2 (Runde 2 bis 5) muss Ihr individueller Beitrag
                  mindestens so hoch sein, wie Ihr individueller Beitrag in der Runde zuvor.
             </div>
+            <br>
         {% else %} <!-- without min. stage -->
             Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
             <b>Spiel</b>. Jedes der Spiele besteht aus <b>fünf Runden</b>. Insgesamt spielen Sie also 5 x 5 = 25 Runden.
@@ -73,12 +73,9 @@
             \(q_{min}\), sie sich für die Gruppe in Runde 1 wünschen. Das <b>Minimum</b> der Vorschläge, \(min(q_{min})\),
             wird als kollektiver <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 gesetzt. Sie entscheiden
             dann in Runde 1 über Ihren <b>Beitrag</b>, \(q\), zum gemeinsamen Projekt, wobei für jeden Spieler
-            \(q \geq min(q_{min})\) gilt.
-            <br>
-            <br>
-            Bitte beachten Sie, ab Runde 2 (Runde 2 bis 5) muss Ihr indiviueller Beitrag <b>mindestens so hoch</b> sein,
-            wie <b>Ihr individueller Beitrag in der Runde zuvor</b>. Der maximale Beitrag ist 100 LD.
-
+            \(q \geq min(q_{min})\) gilt. D.h., in <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie 
+            der kollektive Mindestbeitrag, den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt haben.
+            
             <br>
             <br>
 
@@ -86,12 +83,8 @@
             jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben. Über den Verlauf von fünf Runden bekommen
             Sie also insgesamt 500 LD pro Phase gutgeschrieben. Ihre Aufgabe, wie auch die Aufgabe Iher Mitspieler,
             besteht in jeder der Runden darin, zu entscheiden, wie viele LD Sie zu einem <b>gemeinsamen Projekt</b>
-            beitragen.
-            <br>
-            <br>
-            In <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie der kollektive Mindestbeitrag,
-            den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt haben. In allen <b>weiteren Runden</b>
-            (Runde 2 bis 5) muss Ihr individueller Mindestbeitrag <b>mindestens so hoch</b> sein wie <b>Ihr individueller
+            beitragen. In <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie der kollektive Mindestbeitrag.
+            In allen <b>weiteren Runden</b>(Runde 2 bis 5) muss Ihr individueller Mindestbeitrag <b>mindestens so hoch</b> sein wie <b>Ihr individueller
             Beitrag in der Runde zuvor</b>. Der maximale Beitrag ist 100 LD (nur ganze Zahlen).
             <br>
             <br>
