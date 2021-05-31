@@ -3,7 +3,7 @@
 
 
 {% block title %}
-    Ergebnis Mindestbeitrag
+    Ergebnis: Mindestbeitrag
 {% endblock %}
 
 {% block styles %}
@@ -21,13 +21,37 @@
 {% endblock %}
 
 {% block content %}
+<br>
+    <font size="4"><b>Mindestbeitragsentscheidungen der Spieler in Ihrer Gruppe</b></font>
+    <p>
+        <font size="3.6">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
+        <b>{{ Constants.players_per_group }}</font></b>
+    </p>
+    <table class="table table-light" style="width:50%;">
+        <caption><b>Hinweis</b>. Alle Angaben in <b>LaborDollar</b> (LD).</caption>
+        <tbody>
+         <thead class="table-dark">
+              <th align="center" style="text-align: center;"><b>Spieler 1</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 2</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 3</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 4</b></th>
+         </thead>
+        <tr>
+        <td align="center"><b>{{ p1_mc }}</b></td>
+        <td align="center"><b>{{ p2_mc }}</b></td>
+        <td align="center"><b>{{ p3_mc }}</b></td>
+        <td align="center"><b>{{ p4_mc }}</b></td>
+        </tr>
+        </tbody>
+        </table>
+        <br>
    <div class="a">
-        <p><b>Der ausgewählte Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b><br></p>
+        <p><b>Der niedrigste Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b><br></p>
     </div>
     <br>
     <p>Dies bedeutet, dass Sie und Ihre Mitspieler in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen müssen.<br></p>
+    <br>
 
-    
     {% next_button %}
 
 {% include Constants.chat_template %}

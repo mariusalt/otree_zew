@@ -516,6 +516,19 @@ class MinConRes(Page):
                 return False
         else:
             return False
+
+    @staticmethod
+    def vars_for_template(player):
+        p1_mc = player.group.get_player_by_id(1).mincon
+        p2_mc = player.group.get_player_by_id(2).mincon
+        p3_mc = player.group.get_player_by_id(3).mincon
+        p4_mc = player.group.get_player_by_id(4).mincon
+        return dict(
+            p1_mc=p1_mc,
+            p2_mc=p2_mc,
+            p3_mc=p3_mc,
+            p4_mc=p4_mc
+        )
     
 
 class NeuePhase(Page):
