@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    <b>Herzlichen Dank für Ihre Teilnahme am Experiment!</b>
+    <b>Auszahlungsvorgang</b>
 {% endblock %}
 
 {% block content %}
@@ -82,5 +82,10 @@
     Ihre übermittelten Daten an die OvGU werden nach Beendigung des Experimentes vollständig geschlöscht. Beachten Sie
     außerdem, dass sich die persönliche Barauszahlung aufgrund des Infektionsgeschehens verzögern kann. Wir werden Sie
     über die angegebene E-Mail-Adresse kontaktieren, sobald eine sichere Auszahlung gewährleistet werden kann.
+    <br>
+    <br>
+
+    {% next_button %}
+
     {% include Constants.chat_template %}
 {% endblock %}
