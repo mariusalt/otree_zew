@@ -21,9 +21,10 @@
 {% endblock %}
 
 {% block content %}
+<p align="center">
 <br>
-    <font size="4"><b>Mindestbeitragsentscheidungen der Spieler in Ihrer Gruppe</b></font>
-    <p>
+    <font size="4"><b>Vorschläge für den kollektiven Mindestbeitrag der Spieler in Ihrer Gruppe</b></font>
+    <p align="center">
         <font size="3.6">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
         <b>{{ Constants.players_per_group }}</font></b>
     </p>
@@ -45,6 +46,7 @@
         </tbody>
         </table>
         <br>
+    </p>
    <div class="a">
         <p>
             <b>Der kollektive Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b>
