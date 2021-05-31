@@ -2,17 +2,85 @@
 {% load otree %}
 
 {% block title %}
-    Auf Wiedersehen
+    <b>Herzlichen Dank für Ihre Teilnahme am Experiment!</b>
 {% endblock %}
 
 {% block content %}
-    <p style="text-align:center">
-        <b> Herzlichen Dank für Ihre Teilnahme am Experiment!</b>
+
+    <br>
+    <p>
+        <h2>Wichtige Informationen zur Auszahlung</h2>
     </p>
 
     <p>
-        Details zur Auszahlung ...
+        Mit Hilfe Ihres <b>Auszahlungscodes</b> können Sie nach Abschluss des Experiments Ihre Auszahlung anfordern.
+        Bitte schreiben Sie dazu eine <b>E-Mail</b> mit Ihrem Auszahlungscode an die folgende E-Mail-Addresse:
+        <a href="mailto:maxlab-auszahlung@ovgu.de">maxlab-auszahlung@ovgu.de</a>
     </p>
 
+    <br>
+
+    <p>
+        Je nach bevorzugter <b>Auszahlungsart</b> kopieren Sie bitte die jeweiligen Textvorlagen in Ihre E-Mail und
+        tragen alle relevanten Informationen ein.
+    </p>
+
+    <br>
+
+    <p>
+        <b> Auszahlung per Banküberweisung</b> (Ihre Textvorlage)
+    </p>
+
+    <div style="border-left: 4px solid darkgreen; padding-left: 10px;">
+        Ich möchte meine Auszahlung per Banküberweisung erhalten.
+        <br>
+        <br>
+        Auszahlungscode:
+        <br>
+        Name:
+        <br>
+        Vorname:
+        <br>
+        Anschrift (Straße + Hausnummer):
+        <br>
+        Postleitzahl:
+        <br>
+        Stadt:
+        <br>
+        <br>
+        Kontodaten
+        <br>
+        IBAN:
+        <br>
+        BIC:
+    </div>
+
+    <br>
+    <br>
+
+    <p>
+        <b>Persönliche Barauszahlung</b> (Ihre Textvorlage)
+    </p>
+
+    <div style="border-left: 4px solid darkblue; padding-left: 10px;">
+    Ich möchte meine Auszahlung persönlich an der Fakultät für Wirtschaftswissenschaften (OVGU) abholen.
+    <br>
+    <br>
+    Auszahlungscode:
+    <br>
+    Nachname:
+    <br>
+    Vorname:
+    <br>
+    E-Mail-Adresse (zur Kontaktaufnahme):
+    </div>
+
+    <br>
+    <br>
+    <b>Wichtige Informationen</b>
+    <br>
+    Ihre übermittelten Daten an die OvGU werden nach Beendigung des Experimentes vollständig geschlöscht. Beachten Sie
+    außerdem, dass sich die persönliche Barauszahlung aufgrund des Infektionsgeschehens verzögern kann. Wir werden Sie
+    über die angegebene E-Mail-Adresse kontaktieren, sobald eine sichere Auszahlung gewährleistet werden kann.
     {% include Constants.chat_template %}
 {% endblock %}
