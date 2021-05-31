@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    Beitragsentscheidung
+    {% if player.round_number < 3 %}Proberunden - Beitragsentscheidung {% else %} Beitragsentscheidung {% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -232,7 +232,7 @@
 
     <p align="center">
         {% if player.round_number < 3 %}
-        <b><font size="5"> Testrunde {{ player.round_number }} von 2</font></b>
+        <b><font size="5"> Proberunde: {{ player.round_number }} von 2</font></b>
         {% else %}
         <b><font size="5"> Phase {{ participant.phase }}: Runde {{ participant.phase_count }}
             von {{ Constants.rounds_phase }}</font></b>

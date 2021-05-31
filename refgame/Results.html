@@ -5,7 +5,7 @@
 {% block title %}
     <p align="center">
         {% if player.round_number < 3 %}
-        Ergebnisse: Testrunde {{ player.round_number }} von 2
+        Ergebnisse: Proberunde {{ player.round_number }} von 2
         {% else %}
         Ergebnisse: Runde {{ participant.phase_count }} von {{ Constants.rounds_phase }} (Phase {{ participant.phase }})
         {% endif %}
