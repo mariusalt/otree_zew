@@ -116,6 +116,14 @@ class Player(BasePlayer):
     cq_8 = models.IntegerField(  # control question 8 (cq_8)
     min=0, max = 100)
 
+    cq_9a = models.IntegerField(  # control question 9a (cq_9a)
+        min=0, max=100
+    )
+
+    cq_9b = models.IntegerField(  # control question 9b (cq_9b)
+        min=0, max=100
+    )
+
     # Contribution
     contribution = models.IntegerField(#initial=0,############!!!Delete "initial=0" before prodrun
         min=0, max=Constants.endowment, label="",
@@ -421,7 +429,26 @@ def contribution_error_message(player, value):  # error message cq_1
         if player.round_number>1 and (player.round_number-3) % Constants.rounds_phase != 0 and value < 100:
             if value <= player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
-               
+
+def cq_9a_error_message(player, value):  # error message cq_1
+    if value != 10:
+        if player.wrong_Q1==0:
+            player.wrong_Q1=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q1=+1
+            return '<b>Die korrekte Antwort ist 10</b>. Ihr Beitrag muss mindestens so hoch sein wie das Minimum der ' \
+                   'Angaben für den kollektiven Mindestbeitrag.'
+
+def cq_9b_error_message(player, value):  # error message cq_1
+    if value != 100:
+        if player.wrong_Q1==0:
+            player.wrong_Q1=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q1=+1
+            return '<b>Die korrekte Antwort ist 100</b>. Sie können maximal 100 LD zum gemeinsamen Projekt beitragen.'
+
 ################ PAGES
 
 class Willkommen(Page):  # welcome page
@@ -448,7 +475,7 @@ class Instruktionen(Page):  # Instructions
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
     if Constants.treatment != "vcm":
-        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8"]
+        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8", "cq_9a", "cq_9b"]
     else:
         form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
 
