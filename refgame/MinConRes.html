@@ -3,7 +3,7 @@
 
 
 {% block title %}
-    Ergebnis: Mindestbeitrag
+   Kollektiver Mindestbeitrag - Ergebnis
 {% endblock %}
 
 {% block styles %}
@@ -46,11 +46,18 @@
         </table>
         <br>
    <div class="a">
-        <p><b>Der niedrigste Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b><br></p>
+        <p>
+            <b>Der kollektive Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b>
+            <br>
+        </p>
     </div>
     <br>
-    <p>Dies bedeutet, dass Sie und Ihre Mitspieler in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen müssen.<br></p>
-    <br>
+    <p>
+        Sie und Ihre Mitspieler müssen in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen.
+        <br>
+    </p>
+
 
     {% next_button %}
 
