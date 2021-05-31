@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    <b>Herzlichen Dank für Ihre Teilnahme am Experiment!</b>
+    <b>Auszahlungsvorgang</b>
 {% endblock %}
 
 {% block content %}
@@ -84,12 +84,8 @@
     über die angegebene E-Mail-Adresse kontaktieren, sobald eine sichere Auszahlung gewährleistet werden kann.
     <br>
     <br>
-    <br>
-    Dies ist die letzte Seite des Experiments. Sobald Sie die entsprechende Textvorlage kopiert haben, können Sie das Browserfenster schließen und das Zoom-Meeting verlassen.
-    <br>
-    <br>
-    Vielen Dank für Ihre Teilnahme.
 
+    {% next_button %}
 
     {% include Constants.chat_template %}
 {% endblock %}

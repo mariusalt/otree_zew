@@ -6,7 +6,7 @@ SESSION_CONFIGS = [
        display_name="refgame",
        num_demo_participants=4,
        app_sequence=['refgame'],
-       use_browser_bots=True
+       use_browser_bots=False
     ),
 ]
 

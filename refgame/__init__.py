@@ -606,6 +606,11 @@ class GoodBye(Page): # good bye page
     def is_displayed(player): # only once
         return player.round_number == Constants.num_rounds
 
+class Ende(Page): # good bye page
+
+    def is_displayed(player): # only once
+        return player.round_number == Constants.num_rounds
+
 page_sequence = [Willkommen,
                  Instruktionen,
                  Kontrollfragen,
@@ -618,4 +623,5 @@ page_sequence = [Willkommen,
                  Results,
                  FinalResults,
                  Questionnaire,
-                 GoodBye]
+                 GoodBye,
+                 Ende]
