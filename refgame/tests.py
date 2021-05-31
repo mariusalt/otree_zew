@@ -29,13 +29,15 @@ class PlayerBot(Bot):
 			elif Constants.treatment == "nbminsRat":
 				yield	Submission(Kontrollfragen, dict(cq_1=294,cq_2=164,cq_3=15,cq_4=2,cq_5=90,cq_6=2,cq_7=21,cq_8=24,wrong=1),check_html=False)
 
+		if self.round_number==1 or (self.round_number-3) % Constants.rounds_phase == 0:
+			yield	(NeuePhase)
+
 		if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
 			if (self.round_number-3) % Constants.rounds_phase == 0 or self.round_number==1:
 				yield   Submission(MinCon, dict(mincon=random.randrange(0,101,1)),check_html=False)
 				yield	(MinConRes)
 
-		if self.round_number==1 or (self.round_number-3) % Constants.rounds_phase == 0:
-			yield	(NeuePhase)
+		
 
 		if Constants.treatment == "vcm":
 			yield   Submission(Beitragsentscheidung, dict(contribution=random.randrange(0,101,1)),check_html=False)
