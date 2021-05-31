@@ -27,7 +27,7 @@ class Constants(BaseConstants):
     num_phase = 5  # Anzahl an Phasen
     trial_rounds = 2
     num_rounds = rounds_phase*num_phase + trial_rounds
-    treatment = "minsRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+    treatment = "minwRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
 
 
 class Subsession(BaseSubsession):
