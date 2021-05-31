@@ -6,9 +6,27 @@
     Ergebnis Mindestbeitrag
 {% endblock %}
 
-{% block content %}
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 5px ;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-style: solid;
+        text-align: center;
+    }
 
-Minimum Contribution is: {{ group.mincon_group }}
+  </style>
+{% endblock %}
+
+{% block content %}
+   <div class="a">
+        <p><b>Der ausgewählte Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b><br></p>
+    </div>
+    <br>
+    <p>Dies bedeutet, dass Sie und Ihre Mitspieler in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen müssen.<br></p>
+
     
     {% next_button %}
 
