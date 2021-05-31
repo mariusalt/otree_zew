@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    Mindestbeitragsentscheidung
+    Kollektiver Mindestbeitrag - Entscheidung
 {% endblock %}
 
 {% block styles %}
@@ -18,10 +18,21 @@
 {% endblock %}
 
 {% block content %}
-	<p>Bei der Mindestbeitragsentscheidung besteht Ihre Aufgabe (wie auch die Aufgabe Ihrer Mitspieler) darin zu entscheiden,
-        wie viele LD Sie und Ihre Mitspieler mindestens in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen müssen.<br><br>
-       {% if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %} <b>Hinweis</b>: Der niedrigste Betrag unter den angegebenen Mindestbeitragsentscheidungen in Ihrer Gruppe wird als bindende Beitragsentscheidung für die gesamte Gruppe in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} ausgewählt.{% elif Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat" %}<b>Hinweis</b>: Der niedrigste Betrag unter den angegebenen Mindestbeitragsentscheidungen in Ihrer Gruppe wird als nicht-bindende Beitragsentscheidung für die gesamte Gruppe in Runde 1 {% if player.round_number < 3 %}der Testrunden{% else %}von Phase {{ participant.phase }}{% endif %} ausgewählt.{% endif %}</p>
+	<p>
+        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag, den jedes
+        Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen muss.
+    </p>
     {% formfield player.mincon label="" %}
+    <p>
+    {% if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %}
+        <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als bindender kollektiver
+        <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
+    {% elif Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat" %}
+         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als nicht-bindender kollektiver
+        <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
+    {% endif %}
+    </p>
     <br>
     {% next_button %}
 
