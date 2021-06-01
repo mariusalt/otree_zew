@@ -17,11 +17,112 @@
 </script>
 {% endblock %}
 
+{% block styles %}
+<style type="text/css">
+    #heading{
+        position: fixed;
+        right: 1.5%;
+        width: 13%;
+        top:7%;
+    }
+    #button1 {
+    padding: 10px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 36px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button1:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button1:active {
+
+    padding: 10px;
+    }
+ </style>
+{% endblock %}
+
+{% block scripts %}
+<script language="javascript" type="text/javascript">
+    document.getElementById("wong").style.visibility="hidden"
+    function store(){
+        Value = document.getElementById("wr").value;
+        console.log(Value++);
+        window.sessionStorage.setItem("wr", Value);
+    }
+
+     window.onload = function() {
+        if(sessionStorage.getItem("wr")>0){
+            document.getElementById("wr").value = sessionStorage.getItem("wr");
+        }else{
+        document.getElementById("wr").value = 0;
+        }
+    }
+
+    document.getElementById("cont").style.display="none";
+    function showhide(url)
+        {
+        var div = document.getElementById("cont");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        window.location='#cont';
+        document.getElementById('cont').id = 'cont'
+        } else {
+        window.location='#firstques';
+        div.style.display = "none";
+        }
+        }
+
+    function update(value) {
+    document.getElementById('screen').innerHTML += value;
+    }
+
+    function result() {
+        document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML);
+    }
+
+    function del() {
+        document.getElementById('screen').innerHTML = "";
+    }
+
+</script>
+
+{% endblock %}
+
 {% block content %}
 	<p>
-        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag, den jedes
+        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
         Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
         {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen muss.
+    </p>
+    <p>
+        Mein Vorschlag für den kollektiven Mindestbeitrag ist:
     </p>
     {% formfield player.mincon label="" %}
     <p>
@@ -33,8 +134,35 @@
         <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
     {% endif %}
     </p>
+     <p>
+        Bitte melden Sie sich, wenn Sie eine Frage haben. Nutzen Sie hierfür bitte unseren <b>Chat</b>, der Ihnen
+        unten rechts auf der Seite angezeigt wird. Wenn Sie Ihre Entscheidung getroffen haben und keine
+        Fragen haben, klicken Sie bitte auf <b>Weiter</b>.
+    </p>
     <br>
     {% next_button %}
+
+    <div style="height: 500px;" id="cont">
+        {% include Constants.instructions_template %}
+    </div>
+    <div style="height: 400px;"></div>
+
+    <div id='heading' ><strong>Help Desk:</strong>
+    <table>
+        <tbody>
+        <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center"><b>Instruktionen</b></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
+            <b>Bitte hier klicken</b></div></td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
 
 {% include Constants.chat_template %}
 {% endblock %}
