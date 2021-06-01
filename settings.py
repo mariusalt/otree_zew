@@ -2,12 +2,38 @@ from os import environ
 
 SESSION_CONFIGS = [
     dict(
-       name='refgame',
-       display_name="refgame",
+       name='refgame_vcm',
+       display_name="refgame_vcm",
        num_demo_participants=4,
        app_sequence=['refgame'],
-       use_browser_bots=False
+       use_browser_bots=False,
+       treatment="vcm"  #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
     ),
+    dict(
+       name='refgame_wRat',
+       display_name="refgame_wRat",
+       num_demo_participants=4,
+       app_sequence=['refgame'],
+       use_browser_bots=False,
+       treatment="wRat"  #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+    ),
+    dict(
+       name='refgame_minwRat',
+       display_name="refgame_minwRat",
+       num_demo_participants=4,
+       app_sequence=['refgame'],
+       use_browser_bots=False,
+       treatment="minwRat"  #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+    ),
+    dict(
+       name='refgame_nbminwRat',
+       display_name="refgame_nbminwRat",
+       num_demo_participants=4,
+       app_sequence=['refgame'],
+       use_browser_bots=False,
+       treatment="nbminwRat"  #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+    ),
+    
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs

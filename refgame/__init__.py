@@ -27,7 +27,8 @@ class Constants(BaseConstants):
     num_phase = 5  # Anzahl an Phasen
     trial_rounds = 2
     num_rounds = rounds_phase*num_phase + trial_rounds
-    treatment = "minwRat" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+ #   treatment = "vcm" #treatments: "vcm", "wRat","sRat", "minwRat","minsRat","nbminwRat","nbminsRat"
+
 
 
 class Subsession(BaseSubsession):
@@ -249,6 +250,8 @@ class Player(BasePlayer):
 
 ################# FUNCTIONS
 
+
+
 # Payoff function
 def set_mincon(group):
     players = group.get_players()
@@ -367,7 +370,7 @@ def cq_6_error_message(player, value):  # error message cq_6
             return 'Bitte beachten Sie, dass eine der fünf Phasen ausgelost und ausgezahlt wird.'
 
 def cq_7_error_message(player, value):  # error message cq_6
-    if Constants.treatment=="wRat" or Constants.treatment=="minwRat" or Constants.treatment=="nbminwRat":
+    if player.session.config['treatment']=="wRat" or player.session.config['treatment']=="minwRat" or player.session.config['treatment']=="nbminwRat":
         if value != 20:
             if player.wrong_Q7==0:
                 player.wrong_Q7=+1
@@ -375,7 +378,7 @@ def cq_7_error_message(player, value):  # error message cq_6
             else:
                 player.wrong_Q7=+1
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
-    elif Constants.treatment=="sRat" or Constants.treatment=="minsRat" or Constants.treatment=="nbsRat":
+    elif player.session.config['treatment']=="sRat" or player.session.config['treatment']=="minsRat" or player.session.config['treatment']=="nbsRat":
         if value != 21:
             if player.wrong_Q7==0:
                 player.wrong_Q7=+1
@@ -385,7 +388,7 @@ def cq_7_error_message(player, value):  # error message cq_6
                 return 'Bitte beachten Sie, dass Ihr Beitrag höher sein muss, als in der Runde zuvor.'
 
 def cq_8_error_message(player, value):  # error message cq_6
-    if Constants.treatment=="wRat" or Constants.treatment=="minwRat"  or Constants.treatment=="nbminwRat":
+    if player.session.config['treatment']=="wRat" or player.session.config['treatment']=="minwRat"  or player.session.config['treatment']=="nbminwRat":
         if value != 20:
             if player.wrong_Q8==0:
                 player.wrong_Q8=+1
@@ -393,7 +396,7 @@ def cq_8_error_message(player, value):  # error message cq_6
             else:
                 player.wrong_Q8=+1
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
-    elif Constants.treatment=="sRat" or Constants.treatment=="minsRat" or Constants.treatment=="nbminsRat":
+    elif player.session.config['treatment']=="sRat" or player.session.config['treatment']=="minsRat" or player.session.config['treatment']=="nbminsRat":
         if value != 24:
             if player.wrong_Q8==0:
                 player.wrong_Q8=+1
@@ -403,26 +406,26 @@ def cq_8_error_message(player, value):  # error message cq_6
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden jewils höher sein muss, als in der Runde zuvor.'
 
 def contribution_error_message(player, value):  # error message cq_1
-    if Constants.treatment=="wRat"  or Constants.treatment=="nbminwRat":
+    if player.session.config['treatment']=="wRat"  or player.session.config['treatment']=="nbminwRat":
         if player.round_number>1 and (player.round_number-3) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen' \
                        ' Runde. <br>Ihr Beitrag in der vorherigen Runde betrug '\
                        + str(player.in_round(player.round_number-1).contribution) +' LD.'
-    if Constants.treatment=="sRat" or Constants.treatment=="nbminsRat":
+    if player.session.config['treatment']=="sRat" or player.session.config['treatment']=="nbminsRat":
         if player.round_number>1 and (player.round_number-3) % Constants.rounds_phase != 0 and value < 100:
             if value <= player.in_round(player.round_number-1).contribution:
                 return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde. ' \
                        '<br>Ihr Beitrag in der vorherigen Runde betrug '\
                        + str(player.in_round(player.round_number-1).contribution) +' LD.'
-    if Constants.treatment=="minwRat":
+    if player.session.config['treatment']=="minwRat":
         if player.round_number==1 or (player.round_number-3) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
         if player.round_number>1 and (player.round_number-3) % Constants.rounds_phase != 0:
             if value < player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
-    if Constants.treatment=="minsRat":
+    if player.session.config['treatment']=="minsRat":
         if player.round_number==1 or (player.round_number-3) % Constants.rounds_phase == 0:
             if value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der mindestens so hoch ist, wie der Mindestbeitrag, welcher bei ' + str(player.participant.mincon_group) +' LD liegt.'
@@ -474,11 +477,7 @@ class Instruktionen(Page):  # Instructions
 # Kontrollfragen
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
-    if Constants.treatment != "vcm":
-        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8", "cq_9a", "cq_9b"]
-    else:
-        form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6"]
-
+    form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8", "cq_9a", "cq_9b"]
     def is_displayed(player):  # control questions only once
         return player.round_number == 1
 
@@ -487,7 +486,7 @@ class MinCon(Page):
     form_fields = ['mincon']
 
     def is_displayed(player):
-        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
+        if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat" or player.session.config['treatment'] == "nbminwRat" or player.session.config['treatment'] == "nbminsRat":
             if (player.round_number-3) % Constants.rounds_phase == 0 or player.round_number == 1:
                 return True
             else:
@@ -499,7 +498,7 @@ class MinConWaitPage(WaitPage):
     after_all_players_arrive = 'set_mincon'
 
     def is_displayed(player):
-        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
+        if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat" or player.session.config['treatment'] == "nbminwRat" or player.session.config['treatment'] == "nbminsRat":
             if (player.round_number-3) % Constants.rounds_phase == 0 or player.round_number == 1:
                 return True
             else:
@@ -509,7 +508,7 @@ class MinConWaitPage(WaitPage):
 
 class MinConRes(Page):
     def is_displayed(player):
-        if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
+        if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat" or player.session.config['treatment'] == "nbminwRat" or player.session.config['treatment'] == "nbminsRat":
             if (player.round_number-3) % Constants.rounds_phase == 0 or player.round_number == 1:
                 return True
             else:
@@ -551,7 +550,7 @@ class Beitragsentscheidung(Page):
     def vars_for_template(player):
         if player.round_number>1:
             disp_rat = (player.round_number-3) % Constants.rounds_phase != 0
-            if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" or Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat":
+            if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat" or player.session.config['treatment'] == "nbminwRat" or player.session.config['treatment'] == "nbminsRat":
                 if player.in_round(player.round_number-1).contribution >= player.participant.mincon_group:
                     last_con = player.in_round(player.round_number-1).contribution
                     last_con_s = player.in_round(player.round_number-1).contribution+1

@@ -20,7 +20,7 @@
 
     <!-- Allgemeiner Ablauf -->
     <p> 
-        {%  if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %} <!-- with min. stage -->
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
             <h5>Allgemeiner Ablfauf</h5>
             Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
             <b>Spiel</b>. Jedes der Spiele besteht aus <b>sechs Runden</b> (Runde 0 bis 5). In <b>Runde 0</b> entscheiden
@@ -64,7 +64,7 @@
 
     <!-- Details -->
     <p>
-        {%  if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %} <!-- with min. stage -->
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
             <h5>Details des Experimentes</h5>
             <b>Kollektiver Mindestbeitrag</b>: In <b>Runde 0</b> entscheiden Sie gemeinsam mit Ihren Gruppenmitgliedern
             über den kollektiven <b>Mindestbeitrag</b>, den jedes Gruppenmitglied in Runde 1 mindestens zum gemeinsamen
@@ -108,11 +108,11 @@
         {%  else %}  <!-- without min. stage -->
             Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
             <b>gemeinsamen Projekt</b> beitragen.
-            {% if Constants.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.
-            {% elif Constants.treatment == "wRat" or Constants.treatment == "minwRat" %} Ihr Beitrag kann in Runde 1
+            {% if session.config.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.
+            {% elif session.config.treatment == "wRat" or session.config.treatment == "minwRat" %} Ihr Beitrag kann in Runde 1
             zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag
             <b>mindestens so hoch</b> sein, wie <b>in der Runde zuvor</b>.
-            {% elif Constants.treatment == "sRat" or Constants.treatment == "minsRat" %} Ihr Beitrag kann in Runde 1
+            {% elif session.config.treatment == "sRat" or session.config.treatment == "minsRat" %} Ihr Beitrag kann in Runde 1
             zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag <b>höher</b> als
             <b>in der Runde zuvor</b> sein. {% endif %} Der maximale Beitrag ist 100 LD.
 

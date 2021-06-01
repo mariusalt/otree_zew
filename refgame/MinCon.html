@@ -25,10 +25,10 @@
     </p>
     {% formfield player.mincon label="" %}
     <p>
-    {% if Constants.treatment == "minwRat" or Constants.treatment == "minsRat" %}
+    {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %}
         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als bindender kollektiver
         <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
-    {% elif Constants.treatment == "nbminwRat" or Constants.treatment == "nbminsRat" %}
+    {% elif session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %}
          <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als nicht-bindender kollektiver
         <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
     {% endif %}
