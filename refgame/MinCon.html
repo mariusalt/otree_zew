@@ -70,46 +70,16 @@
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
-    document.getElementById("wong").style.visibility="hidden"
-    function store(){
-        Value = document.getElementById("wr").value;
-        console.log(Value++);
-        window.sessionStorage.setItem("wr", Value);
-    }
-
-     window.onload = function() {
-        if(sessionStorage.getItem("wr")>0){
-            document.getElementById("wr").value = sessionStorage.getItem("wr");
-        }else{
-        document.getElementById("wr").value = 0;
-        }
-    }
-
-    document.getElementById("cont").style.display="none";
-    function showhide(url)
-        {
+document.getElementById("cont").style.display="none";
+      function showhide()
+    {
         var div = document.getElementById("cont");
-        if (div.style.display === "none") {
+    if (div.style.display === "none") {
         div.style.display = "block";
-        window.location='#cont';
-        document.getElementById('cont').id = 'cont'
-        } else {
-        window.location='#firstques';
+      } else {
         div.style.display = "none";
-        }
-        }
-
-    function update(value) {
-    document.getElementById('screen').innerHTML += value;
-    }
-
-    function result() {
-        document.getElementById('screen').innerHTML = eval(document.getElementById('screen').innerHTML);
-    }
-
-    function del() {
-        document.getElementById('screen').innerHTML = "";
-    }
+      }
+    } 
 
 </script>
 
