@@ -3,13 +3,64 @@
 
 
 {% block title %}
-    Ergebnis Mindestbeitrag
+   Kollektiver Mindestbeitrag - Ergebnis
+{% endblock %}
+
+{% block styles %}
+  <style type="text/css">
+.a{
+        padding-top: 10px ;
+        padding-bottom: 5px ;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-style: solid;
+        text-align: center;
+    }
+
+  </style>
 {% endblock %}
 
 {% block content %}
+<p align="center">
+<br>
+    <font size="4"><b>Vorschläge für den kollektiven Mindestbeitrag der Spieler in Ihrer Gruppe</b></font>
+    <p align="center">
+        <font size="3.6">Sie sind <b>Spieler {{ player.id_in_group }}</b> von
+        <b>{{ Constants.players_per_group }}</font></b>
+    </p>
+    <table class="table table-light" style="width:50%;">
+        <caption><b>Hinweis</b>. Alle Angaben in <b>LaborDollar</b> (LD).</caption>
+        <tbody>
+         <thead class="table-dark">
+              <th align="center" style="text-align: center;"><b>Spieler 1</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 2</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 3</b></th>
+    			<th align="center" style="text-align: center;"><b>Spieler 4</b></th>
+         </thead>
+        <tr>
+        <td align="center"><b>{{ p1_mc }}</b></td>
+        <td align="center"><b>{{ p2_mc }}</b></td>
+        <td align="center"><b>{{ p3_mc }}</b></td>
+        <td align="center"><b>{{ p4_mc }}</b></td>
+        </tr>
+        </tbody>
+        </table>
+        <br>
+    </p>
+   <div class="a">
+        <p>
+            <b>Der kollektive Mindestbeitrag beträgt {{ group.mincon_group }}LD.</b>
+            <br>
+        </p>
+    </div>
+    <br>
+    <p>
+        Sie und Ihre Mitspieler müssen in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen.
+        <br>
+    </p>
 
-Minimum Contribution is: {{ group.mincon_group }}
-    
+
     {% next_button %}
 
 {% include Constants.chat_template %}

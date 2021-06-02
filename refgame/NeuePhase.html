@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block title %}
-    Phase {{ participant.phase }}
+   {% if player.round_number < 3 %}Proberunden{% else %} Phase {{ participant.phase }}{% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -117,6 +117,47 @@
 {% endblock %}
 
 {% block content %}
+{% if player.round_number < 3 %}
+<p>
+    In Kürze beginnen die zwei <b>Proberunden</b> des Experiments. Bitte beachten Sie, die zwei Proberunden sind nicht
+    auszahlungsrelevant. Bitte klicken Sie auf <b>Weiter</b>, um die Proberunden zu <b>starten</b>.
+    </p>
+
+
+    <!-- {% next_button %} -->
+
+
+    <button id="id_submit_button" onclick="store()" class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Weiter</button>
+
+    <div id=wong>
+        <input type="number" id="wr" name="wrong"  size=1>
+    </div>
+
+    <div style="height: 500px;" id="cont">
+        {% include Constants.instructions_template %}
+    </div>
+    <div style="height: 400px;"></div>
+
+    <div id='heading' ><strong>Help Desk:</strong>
+    <table>
+        <tbody>
+        <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center"><b>Instruktionen</b></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
+            <b>Bitte hier klicken</b></div></td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+
+ {% include Constants.chat_template %}
+{% else %}
 
     <p>
         In Kürze beginnt <b>Phase {{ participant.phase }}</b> des Experiments. Bitte klicken Sie auf <b>Weiter</b>, um diese Phase
@@ -157,4 +198,5 @@
     </div>
 
  {% include Constants.chat_template %}
+ {% endif %}
 {% endblock %}

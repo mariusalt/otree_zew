@@ -13,59 +13,129 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <!-- I guess / fear, we need something like this to show formulars -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- <p id="rules" style="text-align:center">
-        <b>Regeln des Experiments</b>
-    </p> 
-    -->
-    <p> 
+    <p>
         Am Experiment nehmen insgesamt <b>vier Spieler</b> teil, d.h. neben Ihnen noch drei weitere Spieler. Die drei
         Teilnehmer, mit denen Sie interagieren, sind über den gesamten Verlauf des Experiments die gleichen.
     </p>
 
+    <!-- Allgemeiner Ablauf -->
     <p> 
-        Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche <b>Spiel</b>.
-        Jedes der Spiele besteht aus <b>fünf Runden</b>. Insgesamt spielen Sie also 5 x 5 = 25 Runden. Zu Beginn jeder
-        Runde bekommen Sie und Ihre drei Mitspieler jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben.
-        Über den Verlauf von fünf Runden bekommen Sie also insgesamt 500 LD pro Phase gutgeschrieben.
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
+            <h5>Allgemeiner Ablfauf</h5>
+            Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
+            <b>Spiel</b>. Jedes der Spiele besteht aus <b>sechs Runden</b> (Runde 0 bis 5). In <b>Runde 0</b> entscheiden
+            Sie stets gemeinsam mit Ihren Gruppenmitgliedern über einen <b>kollektiven Mindestbeitrag</b>, den jedes
+            Mitglied Ihrer Gruppe in Runde 1 mindestens zu einem gemeinsamen Projekt beitragen muss. Ab Runde 1
+            entscheiden Sie über ihren individuellen Beitrag zum gemeinsamen Projekt. In <b>Runde 1</b> muss Ihr
+            Individueller Beitrag <b>mindestens so hoch</b> sein, wie der <b>kollektive Mindestbeitrag</b>, den Sie
+            gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt haben. In <b>allen weiteren Runden</b> (Runde
+            2 bis 5) muss Ihr individueller Beitrag mindestens so hoch sein, wie <b>Ihr individueller Beitrag in der
+            Runde zuvor</b>.
+            <br>
+            <br>
+            Bitte beachten Sie noch einmal: Wie in der Abbildung unten dargestellt, besteht das Experiment aus fünf
+            Phasen (Phase I bis V) mit je sechs Runden (Runde 0 bis 5). Die Phasen sind unabhängig voneinander, d.h.,
+            zu Beginn einer neuen Phase können Sie stets frei entscheiden.
+            <br>
+            <br>
+            <img class=im5 style="margin-bottom:40px;height:8%;" src="{% static "refgame/instr_abb.png" %}" />
+            <br>
+            <br>
+            <div style="border-left: 4px solid steelblue; padding-left: 20px;">
+                <b>Kollektiver Mindestbeitrag</b>: In Runde 0 entscheiden Sie stets gemeinsam mit Ihren
+                Gruppenmitgliedern über den kollektiven Mindestbeitrag, den jedes Gruppenmitglied in Runde 1 mindestens
+                zum gemeinsamen Projekt beitragen muss.
+            </div>
+            <br>
+            <div style="border-left: 4px solid steelblue; padding-left: 20px;">
+                 <b>Individueller Beitrag</b>: Ab Runde 1 entscheiden Sie über Ihren individuellen Beitrag zum
+                 gemeinsamen Projekt. Hierbei gilt: In Runde 1 muss Ihr individueller Mindestbeitrag mindestens so hoch
+                 sein wie der kollektive Mindestbeitrag. Ab Runde 2 (Runde 2 bis 5) muss Ihr individueller Beitrag
+                 mindestens so hoch sein, wie Ihr individueller Beitrag in der Runde zuvor.
+            </div>
+            <br>
+        {% else %} <!-- without min. stage -->
+            Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
+            <b>Spiel</b>. Jedes der Spiele besteht aus <b>fünf Runden</b>. Insgesamt spielen Sie also 5 x 5 = 25 Runden.
+            Zu Beginn jeder Runde bekommen Sie und Ihre drei Mitspieler jeweils eine <b>Anfangsausstattung von 100 LD</b>
+            gutgeschrieben. Über den Verlauf von fünf Runden bekommen Sie also insgesamt 500 LD pro Phase gutgeschrieben.
+        {% endif %}
     </p>
 
+    <!-- Details -->
     <p>
-        Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
-        <b>gemeinsamen Projekt</b> beitragen.
-        {% if Constants.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.
-        {% elif Constants.treatment == "wRat" or Constants.treatment == "minwRat" %} Ihr Beitrag kann in Runde 1
-        zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag
-        <b>mindestens so hoch</b> sein, wie <b>in der Runde zuvor</b>.
-        {% elif Constants.treatment == "sRat" or Constants.treatment == "minsRat" %} Ihr Beitrag kann in Runde 1
-        zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag <b>höher</b> als
-        <b>in der Runde zuvor</b> sein. {% endif %} Der maximale Beitrag ist 100 LD.
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
+            <h5>Details des Experimentes</h5>
+            <b>Kollektiver Mindestbeitrag</b>: In <b>Runde 0</b> entscheiden Sie gemeinsam mit Ihren Gruppenmitgliedern
+            über den kollektiven <b>Mindestbeitrag</b>, den jedes Gruppenmitglied in Runde 1 mindestens zum gemeinsamen
+            Projekt beitragen muss. Sie schlagen vor, welchen <b>Mindestbeitrag</b>, \(q_{min}\), jeder Spieler in
+            Runde 1 zum Projekt beitragen muss. Auch die anderen Spieler in Ihrer Gruppe geben an, welchen Mindesbeitrag,
+            \(q_{min}\), sie sich für die Gruppe in Runde 1 wünschen. Das <b>Minimum</b> der Vorschläge, \(min(q_{min})\),
+            wird als kollektiver <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 gesetzt. Sie entscheiden
+            dann in Runde 1 über Ihren <b>Beitrag</b>, \(q\), zum gemeinsamen Projekt, wobei für jeden Spieler
+            \(q \geq min(q_{min})\) gilt. D.h., in <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie 
+            der kollektive Mindestbeitrag, den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt haben.
+            
+            <br>
+            <br>
+
+            <b>Individuelle Beiträge</b>: Ab <b>Runde 1</b> bekommen Sie und Ihre drei Mitspieler zu Beginn jeder Runde
+            jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben. Über den Verlauf von fünf Runden bekommen
+            Sie also insgesamt 500 LD pro Phase gutgeschrieben. Ihre Aufgabe, wie auch die Aufgabe Iher Mitspieler,
+            besteht in jeder der Runden darin, zu entscheiden, wie viele LD Sie zu einem <b>gemeinsamen Projekt</b>
+            beitragen. In <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie der kollektive Mindestbeitrag.
+            In allen <b>weiteren Runden</b>(Runde 2 bis 5) muss Ihr individueller Mindestbeitrag <b>mindestens so hoch</b> sein wie <b>Ihr individueller
+            Beitrag in der Runde zuvor</b>. Der maximale Beitrag ist 100 LD (nur ganze Zahlen).
+            <br>
+            <br>
+            <b>Ihre Auszahlung in den Runden 1 bis 5</b> ergibt sich folgendermaßen:
+            $$\begin{equation}
+                4.4(100 - Ihr \enspace Beitrag) - 0.02(100 - Ihr \enspace Beitrag)^2 + (Ihr \enspace Beitrag + Beiträge \enspace
+                der \enspace anderen \enspace drei \enspace Spieler) - 100
+            \end{equation}$$
+            <br>
+            Das heißt, wenn beispielsweise alle anderen drei Spieler pro Runde durchschnittlich 30 LD und Sie 90 LD zum
+            Projekt beitragen, dann ist <b>Ihre Auszahlung</b>:
+            $$\begin{equation}
+                4.4(100 - 90) - 0.02(100 - 90)^2 + (90 + 3 * 30) - 100 = 44 - 2 + 180 -100 = 122
+            \end{equation}$$
+            <br>
+            Wenn dagegen alle anderen Spieler durchschnittlich 30 LD beitragen und Sie nichts, ist <b>Ihre Auszahlung</b>:
+            $$\begin{equation}
+                4.4(100 - 0) - 0.02(100 - 0)^2 + (0 + 3 * 30) - 100 = 440 - 200 + 90 -100 = 230
+            \end{equation}$$
+
+        {%  else %}  <!-- without min. stage -->
+            Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler, besteht darin, zu entscheiden, wie viele LD Sie zu einem
+            <b>gemeinsamen Projekt</b> beitragen.
+            {% if session.config.treatment == "vcm" %} Ihr Beitrag kann pro Runde zwischen 0 und 100 LD (nur ganze Zahlen) liegen.
+            {% elif session.config.treatment == "wRat" or session.config.treatment == "minwRat" %} Ihr Beitrag kann in Runde 1
+            zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag
+            <b>mindestens so hoch</b> sein, wie <b>in der Runde zuvor</b>.
+            {% elif session.config.treatment == "sRat" or session.config.treatment == "minsRat" %} Ihr Beitrag kann in Runde 1
+            zwischen 0 und 100 LD (nur ganze Zahlen) liegen. In allen weiteren Runden muss Ihr Beitrag <b>höher</b> als
+            <b>in der Runde zuvor</b> sein. {% endif %} Der maximale Beitrag ist 100 LD.
+
+            <br>
+            <br>
+            <b>Ihre Auszahlung pro Runde</b> ergibt sich folgendermaßen:
+            $$\begin{equation}
+                4.4(100 - Ihr \enspace Beitrag) - 0.02(100 - Ihr \enspace Beitrag)^2 + (Ihr \enspace Beitrag + Beiträge \enspace
+                der \enspace anderen \enspace drei \enspace Spieler) - 100
+            \end{equation}$$
+            <br>
+            Das heißt, wenn beispielsweise alle anderen drei Spieler pro Runde durchschnittlich 30 LD und Sie 90 LD zum
+            Projekt beitragen, dann ist <b>Ihre Auszahlung</b>:
+            $$\begin{equation}
+                4.4(100 - 90) - 0.02(100 - 90)^2 + (90 + 3 * 30) - 100 = 44 - 2 + 180 -100 = 122
+            \end{equation}$$
+            <br>
+            Wenn dagegen alle anderen Spieler durchschnittlich 30 LD beitragen und Sie nichts, ist <b>Ihre Auszahlung</b>:
+            $$\begin{equation}
+                4.4(100 - 0) - 0.02(100 - 0)^2 + (0 + 3 * 30) - 100 = 440 - 200 + 90 -100 = 230
+            \end{equation}$$
+        {% endif %}
     </p>
-
-    <p> 
-        <b>Ihre Auszahlung pro Runde</b> ergibt sich folgendermaßen:
-    </p>
-
-    $$\begin{equation}
-        4.4(100 - Ihr \enspace Beitrag) - 0.02(100 - Ihr \enspace Beitrag)^2 + (Ihr \enspace Beitrag + Beiträge \enspace
-        der \enspace anderen \enspace drei \enspace Spieler) - 100
-    \end{equation}$$
-
-    <p>
-        Das heißt, wenn beispielsweise alle anderen drei Spieler pro Runde durchschnittlich 30 LD und Sie 90 LD zum
-        Projekt beitragen, dann ist <b>Ihre Auszahlung</b>:
-    </p>
-
-    $$\begin{equation}
-        4.4(100 - 90) - 0.02(100 - 90)^2 + (90 + 3 * 30) - 100 = 44 - 2 + 180 -100 = 122
-    \end{equation}$$
-
-    <p>
-        Wenn dagegen alle anderen Spieler durchschnittlich 30 LD beitragen und Sie nichts, ist <b>Ihre Auszahlung</b>:
-    </p>
-
-    $$\begin{equation}
-        4.4(100 - 0) - 0.02(100 - 0)^2 + (0 + 3 * 30) - 100 = 440 - 200 + 90 -100 = 230
-    \end{equation}$$
 
     <p>
         Um Ihnen die Berechnung Ihrer Auszahlung zu erleichtern, finden Sie am rechten Rand des Bildschirms unseren
@@ -93,5 +163,5 @@
 
     </p>
 
-</div>
+    </div>
 </div>

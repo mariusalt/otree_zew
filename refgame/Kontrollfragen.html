@@ -286,16 +286,38 @@
     </p>
     {% formfield player.cq_6 label="" %}  <!-- field for cq_6 -->
     <br>
-    {% if Constants.treatment != "vcm" %}  
+    {% if session.config.treatment != "vcm" %}  
     <p>
-        <b>Frage 7</b>.     Angenommen Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel müssen Sie in Runde 2 der Phase mindestens zum gemeinsamen Projekt beitragen?
+        <b>Frage 7</b>. Angenommen Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel
+        müssen Sie in Runde 2 der Phase mindestens zum gemeinsamen Projekt beitragen?
     </p>
     {% formfield player.cq_7 label="" %}  <!-- field for cq_7 -->
     <br>
     <p>
-        <b>Frage 8</b>.     Angenommen Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel müssen Sie in Runde 5, d.h. in der letzten Runde der Phase, mindestens zum gemeinsamen Projekt beitragen?
+        <b>Frage 8</b>. Angenommen Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel
+        müssen Sie in Runde 5, d.h. in der letzten Runde der Phase, mindestens zum gemeinsamen Projekt beitragen?
     </p>
     {% formfield player.cq_8 label="" %}  <!-- field for cq_8 -->
+    {% else %}
+    <input type="hidden" label="" name="cq_7" value=20>
+    <input type="hidden" label="" name="cq_8" value=24>
+    {% endif %}
+    {% if session.config.treatment == "minwRat" %}
+        <br>
+        <p>
+            <b>Frage 9</b>. Angenomme, die vier Spieler einer Gruppe haben in Runde 0 für den kollektiven Mindestbeitrag
+            in Runde 1 jeweils 10, 30, 50 und 70 LD angegeben. In welchem Bereich muss Ihr individueller Beitrag zum
+            Projekt in Runde 1 liegen?
+            <br>
+            <br>
+            Größer gleich (in LD) {% formfield player.cq_9a label="" %}
+            <br>
+            Kleiner gleich (in LD) {% formfield player.cq_9b label="" %}
+        </p>
+    {% else %}
+    <input type="hidden" label="" name="cq_9a" value=10>
+    <input type="hidden" label="" name="cq_9b" value=100>
+
     {% endif %}
     <br>
     <p>
