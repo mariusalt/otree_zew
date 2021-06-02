@@ -245,12 +245,13 @@
         
     </p>
     <p>
-        <b>Hinweis</b>: Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen.
+        Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen.
         {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}
-        <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie ihr Beitrag aus der vorherigen Runde.</b>
+        <b>Beachten Sie zusätzlich, dass Ihr Beitrag mindestens so hoch sein muss wie ihr Beitrag aus der vorherigen
+            Runde.</b>
         {% endif %} {% endif %}
         {% if session.config.treatment == "sRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminsRat" %} {% if disp_rat == True %}
-        <b>Beachten Sie, dass Ihr Beitrag höher sein muss als ihr Beitrag aus der vorherigen Runde.</b>
+        <b>Beachten Sie zusätzlich, dass Ihr Beitrag höher sein muss als ihr Beitrag aus der vorherigen Runde.</b>
         {% endif %} {% endif %}
 
         {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
@@ -266,19 +267,31 @@
     </p>
 
     
-         {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}  <p>
-        <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }} LD beigetragen. Nun müssen Sie also mindestens {{ last_con }} LD beitragen.</b></p>
+         {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}
+         <p>
+             <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }} LD beigetragen</b>.
+             Nun müssen Sie also mindestens {{ last_con }} LD beitragen.
+         </p>
         {% endif %} {% endif %} 
 
-        {% if session.config.treatment == "sRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminsRat" %} {% if disp_rat == True %}  <p>
-        <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }} LD beigetragen. Nun müssen Sie also mindestens {{ last_con_s }} LD beitragen.</b></p>
+        {% if session.config.treatment == "sRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminsRat" %} {% if disp_rat == True %}
+        <p>
+            <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }} LD beigetragen</b>.
+            Nun müssen Sie also mindestens {{ last_con_s }} LD beitragen.
+        </p>
         {% endif %}{% endif %} 
 
-        {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}<p>
-        <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD. Nun müssen Sie also mindestens {{ participant.mincon_group }} LD beitragen.</b></p>
+        {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
+        <p>
+            <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
+            Nun müssen Sie also mindestens {{ participant.mincon_group }} LD beitragen.
+        </p>
         {% endif %} {% endif %} 
-        {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}<p>
-        <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD. Dieser ist für Ihre Beitragsentscheidung nicht bindend.</b></p>
+        {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
+        <p>
+            <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
+            Dieser ist für Ihre Beitragsentscheidung nicht bindend.
+        </p>
         {% endif %} {% endif %} 
     
     <br>
