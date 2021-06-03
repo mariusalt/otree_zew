@@ -377,7 +377,8 @@ def cq_7_error_message(player, value):  # error message cq_6
                 return 'Die Antwort ist leider nicht korrekt.'
             else:
                 player.wrong_Q7=+1
-                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+                return '<b>Die korrekte Antwort ist 20 LD</b>. Bitte beachten Sie, dass Ihr Beitrag in allen weiteren' \
+                       ' Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
     elif player.session.config['treatment']=="sRat" or player.session.config['treatment']=="minsRat" or player.session.config['treatment']=="nbsRat":
         if value != 21:
             if player.wrong_Q7==0:
@@ -395,7 +396,8 @@ def cq_8_error_message(player, value):  # error message cq_6
                 return 'Die Antwort ist leider nicht korrekt.'
             else:
                 player.wrong_Q8=+1
-                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
+                return '<b>Die korrekte Antwort ist 20 LD</b>.Bitte beachten Sie, dass Ihr Beitrag in allen weiteren ' \
+                       'Runden mindestens so hoch sein muss, wie in der Runde zuvor.'
     elif player.session.config['treatment']=="sRat" or player.session.config['treatment']=="minsRat" or player.session.config['treatment']=="nbminsRat":
         if value != 24:
             if player.wrong_Q8==0:
@@ -403,7 +405,8 @@ def cq_8_error_message(player, value):  # error message cq_6
                 return 'Die Antwort ist leider nicht korrekt.'
             else:
                 player.wrong_Q8=+1
-                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden jewils höher sein muss, als in der Runde zuvor.'
+                return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden jewils höher sein muss, ' \
+                       'als in der Runde zuvor.'
 
 def contribution_error_message(player, value):  # error message cq_1
     if player.session.config['treatment']=="wRat"  or player.session.config['treatment']=="nbminwRat":

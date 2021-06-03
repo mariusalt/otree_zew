@@ -86,6 +86,16 @@ document.getElementById("cont").style.display="none";
 {% endblock %}
 
 {% block content %}
+
+        <p align="center">
+        {% if player.round_number < 3 %}
+        <b><font size="5"> Proberunde: 0 von 2</font></b>
+        {% else %}
+        <b><font size="5"> Phase {{ participant.phase }}: Runde 0
+            von {{ Constants.rounds_phase }}</font></b>
+        {% endif %}
+    </p>
+
 	<p>
         Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
         Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
