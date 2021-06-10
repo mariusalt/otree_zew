@@ -355,7 +355,7 @@ slider2.oninput = function() {
  <br>
     <!-- Second block: risk and trust -->
     <p>
-        <b>Frage 5</b>. Wie schätzen Sie sich persönlich ein: Sind Sie im allgemeinen ein risikobereiter Mensch oder
+        <b>Frage 5</b>. Wie schätzen Sie sich persönlich ein: Sind Sie im Allgemeinen ein risikobereiter Mensch oder
         versuchen Sie, Risiken zu vermeiden?
         <br>
         (<i>Antworten Sie bitte anhand der folgenden Skala. Der Wert 0 bedeutet: "gar nicht risikobereit". Der Wert 10
@@ -373,8 +373,8 @@ slider2.oninput = function() {
         
     </p>
     <p>
-        <b>Bitte geben Sie an, ab welcher Wahrscheinlichkeit für die hohe
-        Auszahlung der Lotterie Sie sich für die Lotterie entscheiden würden.<br><br>
+        <b>Wie hoch müsste die Wahrscheinlichkeit des Gewinns der hohen Auszahlung (30 Euro) sein,
+            damit Sie sich für die Lotterie und nicht für die sichere Auszahlung (20 Euro) entscheiden? <br><br>
         
     </p>
     <br>
@@ -412,7 +412,7 @@ slider2.oninput = function() {
     <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterie, wenn die Auszahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Wahrscheinlichkeit würden Sie es bevorzugen, 20 Euro sicher zu haben.<br>
+Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterie, wenn die Auszahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Gewinnwahrscheinlichkeit würden Sie eine sichere Auszahlung von 20 Euro der Lotterie vorziehen.<br>
 
     <br>
     <br>
@@ -433,7 +433,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
         <b>Frage 8</b>. Glauben Sie, die meisten Menschen würden Sie ausnutzen, sobald sich ihnen eine Möglichkeit
         bietet? Oder glauben Sie, die meisten Menschen würden sich fair verhalten?
         <br>
-        (<i>Antworten Sie bitte anhand der folgende Skala. Der Wert 0 bedeutet: "Die Menschen nutzen einen aus". Der
+        (<i>Antworten Sie bitte anhand der folgenden Skala. Der Wert 0 bedeutet: "Die Menschen nutzen einen aus". Der
         Wert 10 bedeutet: "Die Menschen verhalten sich fair". Mit den Werten dazwischen können Sie Ihre Einschätzung
         abstufen.)</i>
     </p>
@@ -441,17 +441,17 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
 
  
     
-    <p align="justify"><b>Frage 9</b>. Bei dieser Frage bitten wir Sie, sich die hypothetische Entscheidungssituation im
-        unteren Bild vorzustellen:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
+    <p align="justify"><b>Frage 9</b>. Stellen Sie sich die hypothetische Entscheidungssituation im
+        unteren Bild vor:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
         zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out"
-        wählen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" wählen, hängt das Ergebnis von der
+        wählen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" wählen, hängt die Auszahlung von der
         Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt dann zwischen "Links" oder "Rechts". Wenn er/sie "Links"
         wählt, erhalten Sie und Ihr Gegenüber jeweils 15 Euro. Wenn er/sie stattdessen "Rechts" wählt, erhalten Sie
         8 Euro und Ihr Gegenüber 22 Euro.
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig zugeteilt aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie. Da diese Teilnehmenden bereits ihre Entscheidung bezüglich der Optionen "Links" und "Rechts" getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, die Option "Links" gewählt haben.<br></p>
-    <b>Bitte geben Sie an, ab welchem Anteil an "Personen B", die Option "Links" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie zugeteilt. Da diese Teilnehmenden ihre Entscheidung bezüglich der Optionen "Links" und "Rechts" bereits getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, welche die Option "Links" gewählt haben.<br></p>
+    <b>Ab welchem Anteil an "Personen B", welche die Option "Links" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
     <br>
     <br>
 
@@ -500,7 +500,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
         Flughafen aus können Sie zwischen zwei Taxiunternehmen wählen, um Ihr endgültiges Ziel zu erreichen, für das Sie
         die genaue Route nicht kennen. Unternehmen A berechnet Ihnen einen Festpreis von 12 Euro. Unternehmen B rechnet nach
         dem Taxameter ab. Wenn der Fahrer den direkten Weg nimmt, kostet es Sie 8 Euro. 1 von 5 Fahrern nimmt jedoch Umwege,
-        um mehr Geld aus Ihnen herauszuholen, und der Fahrpreis beträgt dann 16 Euro.
+        um mehr Geld aus Ihnen herauszuholen und der Fahrpreis beträgt dann 16 Euro.
         <br>
         Geben Sie unten bitte an, welches Taxiunternehmen Sie wählen würden.
     </p>
@@ -508,10 +508,28 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
 
     <br>
 
+        <b>Frage 11</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments werden zusammen in eine Gruppe gelost.
+        Sie erhalten 20 Euro vom Experimentator. Von diesen 20 Euro können Sie dem
+        anderen Teilnehmer einen Beitrag X in Euro abgeben.
+    </p>
+        <ul>
+            <li>Wenn Sie dem anderen Teilnehmer X Euro <b>abgeben</b>, erhalten Sie (20 - X) Euro.</li>
+        </ul>
     <p>
-        <b>Frage 11</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments werden zusammen in eine Gruppe
-        gelost. Der andere Teilnehmer erhält 20 Euro vom Experimentator. Von diesen 20 Euro kann nun der andere
-        Teilnehmer Ihnen einen Beitrag X in Euro abgeben. Sie können diesen Vorschlag annehmen oder ablehnen.
+        Beide Teilnehmer kennen die Regeln des Spiels. Welchen Beitrag X in Euro würden Sie dem anderen Teilnehmer
+        abgeben?
+    </p>
+    <p>
+        Ihr Beitrag (<i>Bitte geben Sie einen Euro-Betrag in ganzen Zahlen ein</i>):
+        {% formfield player.q_1_5 label="" %}
+    </p> <!-- field for q_1_5 -->
+
+
+    <p>
+        <b>Frage 12</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments (ein anderer Teilnehmer als in Frage 11)
+        werden zusammen in eine Gruppe gelost. Der andere Teilnehmer erhält 20 Euro vom Experimentator.
+        Von diesen 20 Euro kann nun der andere Teilnehmer Ihnen einen Beitrag X in Euro abgeben.
+        Sie können diesen Vorschlag annehmen oder ablehnen.
     </p>
         <ul>
             <li>Wenn Sie diesen Vorschlag <b>annehmen</b>, erhalten Sie X Euro und der andere Teilnehmer (20 - X)
@@ -526,23 +544,6 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
 
     <p>
         Mindestvorschlag des anderen Teilnehmers (<i>Bitte geben Sie einen Euro-Betrag in ganzen Zahlen ein</i>):
-        {% formfield player.q_1_5 label="" %}
-    </p> <!-- field for q_1_5 -->
-
-    <p>
-        <b>Frage 12</b>. Angenommen, Sie und ein anderer Teilnehmer des Experiments (eine andere Person als in Frage 11)
-        werden zusammen in eine Gruppe gelost. Sie erhalten 20 Euro vom Experimentator. Von diesen 20 Euro können Sie dem
-        anderen Teilnehmer einen Beitrag X in Euro abgeben.
-    </p>
-        <ul>
-            <li>Wenn Sie dem anderen Teilnehmer X Euro <b>abgeben</b>, erhalten Sie (20 - X) Euro.</li>
-        </ul>
-    <p>
-        Beide Teilnehmer kennen die Regeln des Spiels. Welchen Beitrag X in Euro würden Sie dem anderen Teilnehmer
-        abgeben?
-    </p>
-    <p>
-        Ihr Beitrag (<i>Bitte geben Sie einen Euro-Betrag in ganzen Zahlen ein</i>):
         {% formfield player.q_1_6 label="" %}
     </p> <!-- field for q_1_6 -->
 
