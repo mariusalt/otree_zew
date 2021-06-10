@@ -253,15 +253,15 @@
 
     <p>
         <b>Frage 1</b>. Angenommen, der durchschnittliche Beitrag aller anderen Spieler sei 50 LD. Ihr Beitrag zum
-        Projekt beträgt 20 LD. Wie hoch ist Ihre Auszahlung (in LD) in dieser Runde?
+        Projekt beträgt 20 LD. Wie hoch ist Ihre Auszahlung in dieser Runde?
     </p>
-    <p> Meine Auszahlung ist: {% formfield player.cq_1 label="" %} </p>
+    <p> Meine Auszahlung (in LD) ist: {% formfield player.cq_1 label="" %} </p>
 
     <p>
         <b>Frage 2</b>. Angenommen, der durchschnittliche Beitrag aller anderen Spieler sei 20 LD. Ihr Beitrag zum
-        Projekt beträgt 60 LD. Wie hoch ist Ihre Auszahlung (in LD) in dieser Runde?
+        Projekt beträgt 60 LD. Wie hoch ist Ihre Auszahlung in dieser Runde?
     </p>
-    <p> Meine Auszahlung ist: {% formfield player.cq_2 label="" %} </p>
+    <p> Meine Auszahlung (in LD) ist: {% formfield player.cq_2 label="" %} </p>
 
     <p>
         <b>Frage 3</b>. Angenommen, der durchschnittliche Beitrag aller anderen Spieler sei 15 LD, mit welchem der
@@ -289,13 +289,13 @@
     {% if session.config.treatment != "vcm" %}  
     <p>
         <b>Frage 7</b>. Angenommen, Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel
-        müssen Sie in Runde 2 der Phase mindestens zum gemeinsamen Projekt beitragen?
+        müssen Sie in Runde 2 der Phase mindestens zum gemeinsamen Projekt beitragen (in LD)?
     </p>
     {% formfield player.cq_7 label="" %}  <!-- field for cq_7 -->
     <br>
     <p>
         <b>Frage 8</b>. Angenommen, Sie haben in Runde 1 einer Phase 20 LD zum gemeinsamen Projekt beigetragen, wie viel
-        müssen Sie in Runde 5, d.h. in der letzten Runde der Phase, mindestens zum gemeinsamen Projekt beitragen?
+        müssen Sie in Runde 5, d.h. in der letzten Runde der Phase, mindestens zum gemeinsamen Projekt beitragen (in LD)?
     </p>
     {% formfield player.cq_8 label="" %}  <!-- field for cq_8 -->
     {% else %}
