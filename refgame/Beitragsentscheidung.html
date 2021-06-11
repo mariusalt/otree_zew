@@ -140,6 +140,9 @@
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
+    $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
     document.getElementById("cont").style.display="none";
     function showhide(url)
         {
@@ -212,13 +215,12 @@
         document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
       } else{
         document.getElementById(dieid).style.backgroundColor = original;
-        document.getElementById("result").innerHTML=k;
+        document.getElementById("result").innerHTML=k +"<br><span style='font-weight:normal; font-size:12px;'>Das Ergebnis kann in der Tabelle unten auf der Seite nachvollzogen werden.</span>";
         document.getElementById("table1").style.display="block";
-        window.location='#table1';
+        
         dieid="tabval"+String(k)+String(own);
         original=document.getElementById(dieid).style.backgroundColor;
         document.getElementById(dieid).style.backgroundColor = "#fca4a4";
-
 
       }
       }
@@ -303,14 +305,16 @@
     <br>
     {% next_button %}
 
-    <div style="height: 500px;" id="cont">
+    <div>
+    <div style="height: 50%;" id="cont">
         {% include Constants.instructions_template %}
     </div>
-<div style="height: 400px;"></div>
 
-    <div style="height: 500px;" id="table1">
+
+    <div style="height: 50%;" id="table1">
         {% include Constants.payofftable_template %}
     </div>
+</div>
 <div style="height: 500px;"></div>
 
     <div id='heading' ><strong>Help Desk:</strong>

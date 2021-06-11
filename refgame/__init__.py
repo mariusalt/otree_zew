@@ -79,6 +79,9 @@ class Player(BasePlayer):
         min=0)
     wrong_Q8 = models.IntegerField(initial=0,  # num incorrect answers control questions
         min=0)
+    wrong_Q9a = models.IntegerField(initial=0,  # num incorrect answers control questions
+        min=0)
+
 
     cq_1 = models.IntegerField(  # control question 1 (cq_1)
         min=0)
@@ -121,9 +124,6 @@ class Player(BasePlayer):
         min=0, max=100
     )
 
-    cq_9b = models.IntegerField(  # control question 9b (cq_9b)
-        min=0, max=100
-    )
 
     # Contribution
     contribution = models.IntegerField(#initial=0,############!!!Delete "initial=0" before prodrun
@@ -165,11 +165,7 @@ class Player(BasePlayer):
             [2, "500 bis 1.000 Euro"],
             [3, "bis unter 1.500 Euro"],
             [4, "1.500 bis unter 2.000 Euro"],
-            [5, "2.000 bis unter 2.500 Euro"],
-            [6, "2.500 bis unter 3.000 Euro"],
-            [7, "3.000 bis unter 3.500 Euro"],
-            [8, "über 3.500 Euro"],
-            [9, "Keine Antwort"]
+            [5, "über 2.000 Euro"]
         ]
     )
 
@@ -408,6 +404,16 @@ def cq_8_error_message(player, value):  # error message cq_6
                 return 'Bitte beachten Sie, dass Ihr Beitrag in allen weiteren Runden jewils höher sein muss, ' \
                        'als in der Runde zuvor.'
 
+def cq_9a_error_message(player, value):  # error message cq_1
+    if value != 10:
+        if player.wrong_Q9a==0:
+            player.wrong_Q9a=+1
+            return 'Die Antwort ist leider nicht korrekt.'
+        else:
+            player.wrong_Q9a=+1
+            return '<b>Die korrekte Antwort ist 10</b>. Ihr Beitrag muss mindestens so hoch sein wie das Minimum der ' \
+                   'Angaben für den kollektiven Mindestbeitrag.'
+
 def contribution_error_message(player, value):  # error message cq_1
     if player.session.config['treatment']=="wRat"  or player.session.config['treatment']=="nbminwRat":
         if player.round_number>1 and (player.round_number-3) % Constants.rounds_phase != 0:
@@ -436,24 +442,9 @@ def contribution_error_message(player, value):  # error message cq_1
             if value <= player.in_round(player.round_number-1).contribution or value < player.participant.mincon_group:
                 return 'Sie müssen einen Beitrag wählen, der höher ist, als Ihr Beitrag aus der vorherigen Runde.<br>Ihr Beitrag in der vorherigen Runde betrug ' + str(player.in_round(player.round_number-1).contribution) +' LD.'
 
-def cq_9a_error_message(player, value):  # error message cq_1
-    if value != 10:
-        if player.wrong_Q1==0:
-            player.wrong_Q1=+1
-            return 'Die Antwort ist leider nicht korrekt.'
-        else:
-            player.wrong_Q1=+1
-            return '<b>Die korrekte Antwort ist 10</b>. Ihr Beitrag muss mindestens so hoch sein wie das Minimum der ' \
-                   'Angaben für den kollektiven Mindestbeitrag.'
 
-def cq_9b_error_message(player, value):  # error message cq_1
-    if value != 100:
-        if player.wrong_Q1==0:
-            player.wrong_Q1=+1
-            return 'Die Antwort ist leider nicht korrekt.'
-        else:
-            player.wrong_Q1=+1
-            return '<b>Die korrekte Antwort ist 100</b>. Sie können maximal 100 LD zum gemeinsamen Projekt beitragen.'
+
+
 
 ################ PAGES
 
@@ -480,7 +471,7 @@ class Instruktionen(Page):  # Instructions
 # Kontrollfragen
 class Kontrollfragen(Page):  # Control questions
     form_model = "player"
-    form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8", "cq_9a", "cq_9b"]
+    form_fields = ["wrong","cq_1", "cq_2", "cq_3", "cq_4", "cq_5", "cq_6", "cq_7", "cq_8", "cq_9a"]
     def is_displayed(player):  # control questions only once
         return player.round_number == 1
 

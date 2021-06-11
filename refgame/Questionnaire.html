@@ -270,6 +270,9 @@
 {% endblock %}
 {% block scripts %}
 <script language="javascript" type="text/javascript"> 
+$(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
 
 function updateTextInput1(val) {
           document.getElementById('textInput1').value=val; 
@@ -322,11 +325,29 @@ var output3 = document.getElementById("win");
 var output4 = document.getElementById("lose")
 
 slider2.oninput = function() {
-  output2.innerHTML = 'Anteil an Personen B, die Option "Links" auswählen: ' + this.value + " Personen";
+  output2.innerHTML = 'Anteil an Personen B, die Option "Gleichverteilung" auswählen: ' + this.value + " Personen";
   k=20-this.value
-  output3.innerHTML = '<b>Sie und Person B bekommen 15 Euro</b> falls Sie eine der  <b>' + this.value + ' Personen</b> zugelost bekommen, die Option "Links" auswählen.';
-  output4.innerHTML = '<b>Sie bekommen 8 Euro</b> und <b>Person B bekommt 22 Euro</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Rechts" auswählen.';
+  output3.innerHTML = '<b>Sie und Person B bekommen 15 Euro</b> falls Sie eine der  <b>' + this.value + ' Personen</b> zugelost bekommen, die Option "Gleichverteilung" auswählen.';
+  output4.innerHTML = '<b>Sie bekommen 8 Euro</b> und <b>Person B bekommt 22 Euro</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Ungleichverteilung" auswählen.';
 
+}
+
+function store() {
+    if(document.getElementById("textInput1").value!=""){
+      slider1 = document.getElementById("slider1").value;
+      window.sessionStorage.setItem("slider1", slider1);
+    }
+    if(document.getElementById("textInput2").value!=""){
+      slider2 = document.getElementById("slider2").value;
+      window.sessionStorage.setItem("slider2", slider2);
+    }
+}
+
+window.onload = function() {
+    document.getElementById("textInput1").value = sessionStorage.getItem("slider1");
+    document.getElementById("textInput2").value = sessionStorage.getItem("slider2");
+    document.getElementById("slider1").value = sessionStorage.getItem("slider1");
+    document.getElementById("slider2").value = sessionStorage.getItem("slider2");
 }
 </script>
 {% endblock %}
@@ -445,13 +466,13 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
         unteren Bild vor:  Sie sind "Person A" und werden zufällig mit einer anderen Person aus dieser Studie
         zusammengebracht: "Person B". Sie werden mit zwei Alternativen konfrontiert, "In" oder "Out".  Wenn Sie "Out"
         wählen, erhalten Sie und Ihr Gegenüber jeweils 10 Euro. Wenn Sie "In" wählen, hängt die Auszahlung von der
-        Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt dann zwischen "Links" oder "Rechts". Wenn er/sie "Links"
-        wählt, erhalten Sie und Ihr Gegenüber jeweils 15 Euro. Wenn er/sie stattdessen "Rechts" wählt, erhalten Sie
+        Entscheidung Ihres Gegenübers ab. Ihr Gegenüber wählt dann zwischen "Gleichverteilung" oder "Ungleichverteilung". Wenn er/sie "Gleichverteilung"
+        wählt, erhalten Sie und Ihr Gegenüber jeweils 15 Euro. Wenn er/sie stattdessen "Ungleichverteilung" wählt, erhalten Sie
         8 Euro und Ihr Gegenüber 22 Euro.
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
-    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie zugeteilt. Da diese Teilnehmenden ihre Entscheidung bezüglich der Optionen "Links" und "Rechts" bereits getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, welche die Option "Links" gewählt haben.<br></p>
-    <b>Ab welchem Anteil an "Personen B", welche die Option "Links" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
+    <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie zugeteilt. Da diese Teilnehmenden ihre Entscheidung bezüglich der Optionen "Gleichverteilung" und "Ungleichverteilung" bereits getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, welche die Option "Gleichverteilung" gewählt haben.<br></p>
+    <b>Ab welchem Anteil an "Personen B", welche die Option "Gleichverteilung" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
     <br>
     <br>
 
@@ -489,7 +510,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
     <input name="betr"  type="hidden" id="textInput2" value="" size="1" style="text-align:center;">
     <div id="inf"></div>
 
-<b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Links" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Links" entscheiden, würden Sie Option "Out" auswählen.<br>
+<b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Gleichverteilung" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Gleichverteilung" entscheiden, würden Sie Option "Out" auswählen.<br>
     <br>
     <br>
 

@@ -140,6 +140,9 @@
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
+    $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
     document.getElementById("wong").style.visibility="hidden"
     function store(){
         Value = document.getElementById("wr").value;
@@ -229,9 +232,9 @@
         document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
       } else{
         document.getElementById(dieid).style.backgroundColor = original;
-        document.getElementById("result").innerHTML=k;
+        document.getElementById("result").innerHTML=k +"<br><span style='font-weight:normal; font-size:12px;'>Das Ergebnis kann in der Tabelle unten auf der Seite nachvollzogen werden.</span>";
         document.getElementById("table1").style.display="block";
-        window.location='#table1';
+        
         dieid="tabval"+String(k)+String(own);
         original=document.getElementById(dieid).style.backgroundColor;
         document.getElementById(dieid).style.backgroundColor = "#fca4a4";
@@ -306,17 +309,14 @@
         <br>
         <p>
             <b>Frage 9</b>. Angenommen, die vier Spieler einer Gruppe haben in Runde 0 für den kollektiven Mindestbeitrag
-            in Runde 1 jeweils 10, 30, 50 und 70 LD angegeben. In welchem Bereich muss Ihr individueller Beitrag zum
-            Projekt in Runde 1 liegen?
+            in Runde 1 jeweils 10, 30, 50 und 70 LD angegeben. Wie hoch muss Ihr individueller Beitrag zum
+            Projekt in Runde 1 mindestens sein?
             <br>
             <br>
             Größer gleich (in LD) {% formfield player.cq_9a label="" %}
-            <br>
-            Kleiner gleich (in LD) {% formfield player.cq_9b label="" %}
         </p>
     {% else %}
     <input type="hidden" label="" name="cq_9a" value=10>
-    <input type="hidden" label="" name="cq_9b" value=100>
 
     {% endif %}
     <br>
@@ -333,15 +333,16 @@
         <input type="number" id="wr" name="wrong"  size=1>
 
 </div>
-
-    <div style="height: 500px;" id="cont">
+<div>
+    <div style="height: 50%;" id="cont">
         {% include Constants.instructions_template %}
     </div>
-<div style="height: 400px;"></div>
 
-    <div style="height: 500px;" id="table1">
+
+    <div style="height: 50%;" id="table1">
         {% include Constants.payofftable_template %}
     </div>
+</div>
 <div style="height: 500px;"></div>
 
     <div id='heading' ><strong>Help Desk:</strong>

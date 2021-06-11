@@ -65,11 +65,55 @@
 
     padding: 10px;
     }
+    #button2 {
+    
+    padding: 10px;
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 36px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+    }
+    #button2:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+    background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+    background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+    background-color:#7c858f;
+    }
+    #button2:active {
+    
+    padding: 10px;
+    }
  </style>
 {% endblock %}
 
 {% block scripts %}
 <script language="javascript" type="text/javascript">
+    $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
 document.getElementById("cont").style.display="none";
       function showhide()
     {
@@ -80,6 +124,51 @@ document.getElementById("cont").style.display="none";
         div.style.display = "none";
       }
     } 
+
+    document.getElementById("table1").style.display="none";
+    function showhide1()
+        {
+        var div = document.getElementById("table1");
+        if (div.style.display === "none") {
+        div.style.display = "block";
+        window.location='#table1';
+        } else {
+        window.location='#rules';
+        div.style.display = "none";
+        }
+        }
+
+    var original = "white"
+    var dieid ="tabval1400"
+     function ch1(){
+      own=document.getElementById("textInput1").value;
+      oth=document.getElementById("textInput2").value;
+      if(own<0 | own>100 | oth<0 | oth>100){
+        document.getElementById("result").innerHTML="Die angegebenen Beiträge müssen<br>a) zwischen 0 und 100 sein <br>b) in Fünferschritten angegeben werden (5,10,15...100)";
+      }else if(oth % 5 != 0 | own % 5 != 0){
+      var k=Math.round((4.4*(100-parseInt(own))-0.02*(100-parseInt(own))**2+(parseInt(own)+parseInt(oth)+parseInt(oth)+parseInt(oth))-100)*10)/10;
+      if (Number.isNaN(k)==true){
+        document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
+      } else{
+        document.getElementById(dieid).style.backgroundColor = original;
+        document.getElementById("result").innerHTML=k;
+      }}else{
+      var k=Math.round((4.4*(100-parseInt(own))-0.02*(100-parseInt(own))**2+(parseInt(own)+parseInt(oth)+parseInt(oth)+parseInt(oth))-100)*10)/10;
+      if (Number.isNaN(k)==true){
+        document.getElementById("result").innerHTML="Bitte geben Sie Beiträge an";
+      } else{
+        document.getElementById(dieid).style.backgroundColor = original;
+        document.getElementById("result").innerHTML=k +"<br><span style='font-weight:normal; font-size:12px;'>Das Ergebnis kann in der Tabelle unten auf der Seite nachvollzogen werden.</span>";
+        document.getElementById("table1").style.display="block";
+        
+        dieid="tabval"+String(k)+String(own);
+        original=document.getElementById(dieid).style.backgroundColor;
+        document.getElementById(dieid).style.backgroundColor = "#fca4a4";
+
+      }
+      }
+
+    }
 
 </script>
 
@@ -139,6 +228,68 @@ document.getElementById("cont").style.display="none";
         <tr>
         <td align="center"><div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
             <b>Bitte hier klicken</b></div></td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+    <div>
+    <div style="height: 50%;" id="cont">
+        {% include Constants.instructions_template %}
+    </div>
+
+
+    <div style="height: 50%;" id="table1">
+        {% include Constants.payofftable_template %}
+    </div>
+</div>
+<div style="height: 500px;"></div>
+
+    <div id='heading' ><strong>Help Desk:</strong>
+    <table >
+        <tbody>
+            <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center"><b>Instruktionen</b></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button1'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide()">
+                <b>Bitte hier klicken</b></div></td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center"><b>Payoff-Tabelle</b></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button2'  valign="center" style="text-align:center;vertical-align: middle;" onclick="showhide1()">
+                <b>Bitte hier klicken</b></div></td>
+        </tr>
+        <tr>
+        <td>&nbsp;</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><b>Payoff-Simulator</b></td>
+        </tr>
+        <tr>
+        <td align="center">Durchschn. Beitrag aller<br>anderen Gruppenmitglieder:</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><input name="othcon"  type="number"  min="0" max="100" id="textInput2" value="" size="1" style="text-align:center;"></td>
+        </tr>
+        <tr>
+        <td align="center">Ihr Beitrag:</td>
+        </tr>
+        <tr>
+        <td align="center" style="padding-bottom:10px;"><input name="owncon"  type="number" id="textInput1" value="" size="1" style="text-align:center;"></td>
+        </tr>
+        <tr>
+        <td align="center"><div id='button2' id="b1" onclick="ch1()">Berechnen</div></td>
+        </tr>
+          <tr>
+        <td align="center"><div id="result"  ></div></td>
         </tr>
         </tbody>
         </table>
