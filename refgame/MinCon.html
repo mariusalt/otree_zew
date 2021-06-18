@@ -186,9 +186,16 @@ document.getElementById("cont").style.display="none";
     </p>
 
 	<p>
+    {% if session.config.treatment == "minwRat" %}
         Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
         Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
         {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen muss.
+    {% endif %}
+    {% if session.config.treatment == "nbminwRat" %}
+        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
+        Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen soll.
+    {% endif %}
     </p>
     <p>
         Mein Vorschlag für den kollektiven Mindestbeitrag ist:
@@ -199,8 +206,9 @@ document.getElementById("cont").style.display="none";
         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als bindender kollektiver
         <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
     {% elif session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %}
-         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als nicht-bindender kollektiver
-        <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
+         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als <b>kollektiver
+        Mindestbeitrag</b> für alle Gruppenmitglieder in Runde 1 angesetzt. Der <b>kollektive Mindestbeitrag</b> ist
+        nicht bindend.
     {% endif %}
     </p>
      <p>
@@ -216,7 +224,7 @@ document.getElementById("cont").style.display="none";
     </div>
     <div style="height: 400px;"></div>
 
-    <div id='heading' ><strong>Help Desk:</strong>
+    <!--<div id='heading' ><strong>Help Desk:</strong>
     <table>
         <tbody>
         <tr>
@@ -232,13 +240,8 @@ document.getElementById("cont").style.display="none";
         </tbody>
         </table>
     </div>
-    <div>
-    <div style="height: 50%;" id="cont">
-        {% include Constants.instructions_template %}
-    </div>
-
-
-    <div style="height: 50%;" id="table1">
+    <div>-->
+     <div style="height: 50%;" id="table1">
         {% include Constants.payofftable_template %}
     </div>
 </div>

@@ -55,9 +55,17 @@
     </div>
     <br>
     <p>
+    {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %}
         Sie und Ihre Mitspieler müssen in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
         {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen.
         <br>
+    {% endif %}
+    {% if session.config.treatment == "nbminwRat" %}
+        Sie und Ihre Mitspieler sollen in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        {{ participant.phase }}{% endif %} mindestens {{ group.mincon_group }}LD zum gemeinsamen Projekt beitragen.
+        Bitte beachten Sie, der <b>kollektive Mindestbeitrag</b> ist nicht bindend.
+        <br>
+    {% endif %}
     </p>
 
 
