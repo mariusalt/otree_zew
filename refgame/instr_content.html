@@ -17,28 +17,43 @@
         Am Experiment nehmen insgesamt <b>vier Spieler</b> teil, d.h. neben Ihnen noch drei weitere Spieler. Die drei
         Teilnehmer, mit denen Sie interagieren, sind über den gesamten Verlauf des Experiments die gleichen.
     </p>
-
-    <!-- Allgemeiner Ablauf -->
-    <p> 
-        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
+    <p> <!-- Allgemeiner Ablauf --> <!-- with min. stage -->
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminwRat" %}
             <h5>Allgemeiner Ablauf</h5>
             Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
             <b>Spiel</b>. Jedes der Spiele besteht aus <b>sechs Runden</b> (Runde 0 bis 5). Hierbei gilt:
+        {% endif %}
             <br>
             <br>
             <div style="border-left: 4px solid steelblue; padding-left: 20px;">
+                {%  if session.config.treatment == "minwRat" %}
                 In <b>Runde 0</b> entscheiden Sie stets gemeinsam mit Ihren Gruppenmitgliedern über einen
                 <b>kollektiven Mindestbeitrag</b>, den jedes Mitglied Ihrer Gruppe in Runde 1 mindestens zu einem
                 gemeinsamen Projekt beitragen muss.
+                {% endif %}
+                {%  if session.config.treatment == "nbminwRat" %}
+                In <b>Runde 0</b> entscheiden Sie stets gemeinsam mit Ihren Gruppenmitgliedern über einen
+                <b>kollektiven Mindestbeitrag</b>, den jedes Mitglied Ihrer Gruppe in Runde 1 mindestens zu einem
+                gemeinsamen Projekt beitragen soll. Bitte beachten Sie, der <b>kollektive Mindestbeitrag</b> ist
+                nicht bindend.
+                {% endif %}
             </div>
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminwRat" %}
             <br>
             Ab Runde 1 entscheiden Sie über Ihren individuellen Beitrag zum gemeinsamen Projekt.
             <br>
             <br>
             <div style="border-left: 4px solid steelblue; padding-left: 20px;">
+                {%  if session.config.treatment == "minwRat" %}
                 In <b>Runde 1</b> muss Ihr individueller Beitrag <b>mindestens so hoch</b> sein wie der
                 <b>kollektive Mindestbeitrag</b>, den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt
                 haben.
+                {% endif %}
+                {%  if session.config.treatment == "nbminwRat" %}
+                In <b>Runde 1</b> soll Ihr individueller Beitrag <b>mindestens so hoch</b> sein wie der
+                <b>kollektive Mindestbeitrag</b>, den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt
+                haben. Bitte beachten Sie, der <b>kollektive Mindestbeirag</b> ist nicht bindend.
+                {% endif %}
             </div>
             <br>
             <div style="border-left: 4px solid steelblue; padding-left: 20px;">
@@ -51,7 +66,6 @@
             <br>
             <br>
             <img class=im5 style="margin-bottom:40px;height:8%;" src="{% static "refgame/instr_abb.png" %}" />
-
             <br>
         {% else %} <!-- without min. stage -->
             Das Experiment besteht aus <b>fünf Phasen</b>. In jeder der fünf Phasen spielen Sie immer das gleiche
@@ -62,9 +76,11 @@
     </p>
 
     <!-- Details -->
-    <p>
-        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- with min. stage -->
+    <p> <!-- with min. stage -->
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminwRat"%}
             <h5>Details des Experiments</h5>
+        {% endif %}
+        {%  if session.config.treatment == "minwRat" %}
             <b>Kollektiver Mindestbeitrag</b>: In <b>Runde 0</b> entscheiden Sie gemeinsam mit Ihren Gruppenmitgliedern
             über den kollektiven <b>Mindestbeitrag</b>, den jedes Gruppenmitglied in Runde 1 mindestens zum gemeinsamen
             Projekt beitragen muss. Sie schlagen vor, welchen <b>Mindestbeitrag</b>, \(q_{min}\), jeder Spieler in
@@ -74,10 +90,8 @@
             dann in Runde 1 über Ihren <b>Beitrag</b>, \(q\), zum gemeinsamen Projekt, wobei für jeden Spieler
             \(q \geq min(q_{min})\) gilt. D.h., in <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie 
             der kollektive Mindestbeitrag, den Sie gemeinsam mit Ihren Gruppenmitgliedern in Runde 0 festgelegt haben.
-            
             <br>
             <br>
-
             <b>Individuelle Beiträge</b>: Ab <b>Runde 1</b> bekommen Sie und Ihre drei Mitspieler zu Beginn jeder Runde
             jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben. Über den Verlauf von fünf Runden bekommen
             Sie also insgesamt 500 LD pro Phase gutgeschrieben. Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler,
@@ -85,6 +99,27 @@
             beitragen. In <b>Runde 1</b> muss Ihr individueller Beitrag mindestens so hoch sein wie der kollektive Mindestbeitrag.
             In allen <b>weiteren Runden</b> (Runde 2 bis 5) muss Ihr individueller Mindestbeitrag <b>mindestens so hoch</b> sein wie <b>Ihr individueller
             Beitrag in der Runde zuvor</b>. Der maximale Beitrag ist 100 LD (nur ganze Zahlen).
+        {% endif %}
+        {%  if session.config.treatment == "nbminwRat" %}
+            <b>Kollektiver Mindestbeitrag</b>: In <b>Runde 0</b> entscheiden Sie gemeinsam mit Ihren Gruppenmitgliedern
+            über den kollektiven <b>Mindestbeitrag</b>, den jedes Gruppenmitglied in Runde 1 mindestens zum gemeinsamen
+            Projekt beitragen soll. Sie schlagen vor, welchen <b>Mindestbeitrag</b>, \(q_{min}\), jeder Spieler in
+            Runde 1 zum Projekt beitragen soll. Auch die anderen Spieler in Ihrer Gruppe geben an, welchen Mindesbeitrag,
+            \(q_{min}\), sie sich für die Gruppe in Runde 1 wünschen. Das <b>Minimum</b> der Vorschläge, \(min(q_{min})\),
+            wird als kollektiver <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 gesetzt. Sie entscheiden
+            dann in Runde 1 über Ihren <b>Beitrag</b>, \(q\), zum gemeinsamen Projekt, wobei für jeden Spieler
+            \(q \geq 0\) gilt. D.h., der <b>kollektive Mindestbeitrag</b> ist nicht bindend.
+            <br>
+            <br>
+            <b>Individuelle Beiträge</b>: Ab <b>Runde 1</b> bekommen Sie und Ihre drei Mitspieler zu Beginn jeder Runde
+            jeweils eine <b>Anfangsausstattung von 100 LD</b> gutgeschrieben. Über den Verlauf von fünf Runden bekommen
+            Sie also insgesamt 500 LD pro Phase gutgeschrieben. Ihre Aufgabe, wie auch die Aufgabe Ihrer Mitspieler,
+            besteht in jeder der Runden darin, zu entscheiden, wie viele LD Sie zu einem <b>gemeinsamen Projekt</b>
+            beitragen. In <b>Runde 1</b> soll Ihr individueller Beitrag mindestens so hoch sein wie der kollektive Mindestbeitrag.
+            In allen <b>weiteren Runden</b> (Runde 2 bis 5) muss Ihr individueller Mindestbeitrag <b>mindestens so hoch</b> sein wie <b>Ihr individueller
+            Beitrag in der Runde zuvor</b>. Der maximale Beitrag ist 100 LD (nur ganze Zahlen).
+        {% endif %}
+        {%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminwRat"%}
             <br>
             <br>
             <b>Ihre Auszahlung in den Runden 1 bis 5</b> ergibt sich folgendermaßen:
