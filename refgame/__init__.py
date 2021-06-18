@@ -556,7 +556,7 @@ class Beitragsentscheidung(Page):
     def vars_for_template(player):
         if player.round_number>1:
             disp_rat = (player.round_number-3) % Constants.rounds_phase != 0
-            if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat" or player.session.config['treatment'] == "nbminwRat" or player.session.config['treatment'] == "nbminsRat":
+            if player.session.config['treatment'] == "minwRat" or player.session.config['treatment'] == "minsRat":
                 if player.in_round(player.round_number-1).contribution >= player.participant.mincon_group:
                     last_con = player.in_round(player.round_number-1).contribution
                     last_con_s = player.in_round(player.round_number-1).contribution+1

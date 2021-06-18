@@ -257,10 +257,11 @@
         {% endif %} {% endif %}
 
         {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
-        <b>Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie der Mindestbeitrag.</b>
+        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie der <b>kollektive Mindestbeitrag</b>.
         {% endif %} {% endif %} 
         {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
-        <b>Beachten Sie, dass der erhobene Mindestbeitrag für Ihre Beitragsentscheidung nicht binded ist.</b>
+        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein soll wie der <b>kollektive Mindestbeitrag</b>. Der
+        kollektive Mindestbeitrag ist nicht bindend.
         {% endif %} {% endif %} 
     </p>
 
@@ -291,8 +292,8 @@
         {% endif %} {% endif %} 
         {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
         <p>
-            <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
-            Dieser ist für Ihre Beitragsentscheidung nicht bindend.
+            <b>Hinweis: Der kollektive Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
+            Der kollektive Mindestbeitrag ist nicht bindend.
         </p>
         {% endif %} {% endif %} 
     
