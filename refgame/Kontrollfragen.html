@@ -319,6 +319,20 @@
     <input type="hidden" label="" name="cq_9a" value=10>
 
     {% endif %}
+    {% if session.config.treatment == "nbminwRat" %}
+        <br>
+        <p>
+            <b>Frage 9</b>. Angenommen, die vier Spieler einer Gruppe haben in Runde 0 für den kollektiven Mindestbeitrag
+            in Runde 1 jeweils 10, 30, 50 und 70 LD angegeben. Wie hoch muss Ihr individueller Beitrag zum
+            Projekt in Runde 1 mindestens sein?
+            <br>
+            <br>
+            Größer gleich (in LD) {% formfield player.cq_9b label="" %}
+        </p>
+    {% else %}
+    <input type="hidden" label="" name="cq_9b" value=0>
+
+    {% endif %}
     <br>
     <p>
         Bitte melden Sie sich, wenn Sie eine Frage haben. Nutzen Sie hierfür bitte unseren <b>Chat</b>, der Ihnen unten
