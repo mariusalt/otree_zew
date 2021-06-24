@@ -204,10 +204,10 @@ document.getElementById("cont").style.display="none";
     <p>
     {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} <!-- binding min. cont. stage -->
         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als bindender <b>kollektiver
-        Mindestbeitrag</b> für alle Gruppenmitglieder in Runde 1 festgelegt.
+        Mindestbeitrag</b> für aller Gruppenmitglieder in Runde 1 festgelegt.
     {% elif session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} <!-- non-binding min. cont. stage -->
          <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als gemeinsamer Vorschlag für den
-        <b>kollektiven Mindestbeitrag</b> alle Gruppenmitglieder in Runde 1 festgelegt. Inwieweit Sie dem Vorschlag
+        <b>kollektiven Mindestbeitrag</b> aller Gruppenmitglieder in Runde 1 festgelegt. Inwieweit Sie dem Vorschlag
         folgen, können Sie selbst entscheiden.
     {% endif %}
     </p>

@@ -2,7 +2,7 @@
 {% load otree %}
 
 {% block title %}
-    {% if player.round_number < 3 %}Proberunden - Beitragsentscheidung {% else %} Beitragsentscheidung {% endif %}
+    {% if player.round_number < 3 %}Beitragsentscheidung {% else %} Beitragsentscheidung {% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -234,7 +234,7 @@
 
     <p align="center">
         {% if player.round_number < 3 %}
-        <b><font size="5"> Proberunde: {{ player.round_number }} von 2</font></b>
+        <b><font size="5"> Probephase: Runde {{ player.round_number }} von 2</font></b>
         {% else %}
         <b><font size="5"> Phase {{ participant.phase }}: Runde {{ participant.phase_count }}
             von {{ Constants.rounds_phase }}</font></b>
@@ -247,21 +247,20 @@
         
     </p>
     <p>
-        Ihr Beitrag kann zwischen <b>0</b> und <b>100</b> LD liegen.
+        Ihr <b>individueller Beitrag</b> kann zwischen <b>0</b> und <b>100</b> LD liegen.
         {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}
-        <b>Beachten Sie zusätzlich, dass Ihr Beitrag mindestens so hoch sein muss wie ihr Beitrag aus der vorherigen
-            Runde.</b>
+        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie ihr Beitrag aus der vorherigen Runde.
         {% endif %} {% endif %}
         {% if session.config.treatment == "sRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminsRat" %} {% if disp_rat == True %}
         <b>Beachten Sie zusätzlich, dass Ihr Beitrag höher sein muss als ihr Beitrag aus der vorherigen Runde.</b>
         {% endif %} {% endif %}
-
+        <!-- binding min. cont. stage -->
         {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
         Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie der <b>kollektive Mindestbeitrag</b>.
-        {% endif %} {% endif %} 
+        {% endif %} {% endif %}
+        <!-- non-binding min. cont. stage -->
         {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
-        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein soll wie der <b>kollektive Mindestbeitrag</b>. Der
-        kollektive Mindestbeitrag ist nicht bindend.
+        Beachten Sie, Ihr Beitrag sollte mindestens so hoch sein wie der kollektive Mindestbeitrag.
         {% endif %} {% endif %} 
     </p>
 
@@ -272,7 +271,7 @@
     
          {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}
          <p>
-             <b>Hinweis: In der Runde zuvor haben Sie {{ last_con }} LD beigetragen</b>.
+             <b>Zur Erinnerung</b>: In der Runde zuvor haben Sie {{ last_con }} LD zum Projekt beigetragen.
              Nun müssen Sie also mindestens {{ last_con }} LD beitragen.
          </p>
         {% endif %} {% endif %} 
@@ -283,17 +282,21 @@
             Nun müssen Sie also mindestens {{ last_con_s }} LD beitragen.
         </p>
         {% endif %}{% endif %} 
-
+        <!-- binding min. cont. level -->
         {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
         <p>
-            <b>Hinweis: Der Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
-            Nun müssen Sie also mindestens {{ participant.mincon_group }} LD beitragen.
+            <b>Zur Erinnerung</b>: Sie und Ihre Mitspieler haben einen kollektiven Mindestbeitrag für alle Mitglieder Ihrer
+            Gruppe in Runde 1 {% if player.round_number < 3 %}der Probephase{% else %}von Phase
+            {{ participant.phase }}{% endif %} von je {{ group.mincon_group }}LD festgelegt.
         </p>
-        {% endif %} {% endif %} 
+        {% endif %} {% endif %}
+        <!-- non-binding min. cont. stage -->
         {% if session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
         <p>
-            <b>Hinweis: Der kollektive Mindestbeitrag liegt bei {{ participant.mincon_group }} LD</b>.
-            Der kollektive Mindestbeitrag ist nicht bindend.
+            <b>Zur Erinnerung</b>: Sie und Ihre Mitspieler haben einen kollektiven Mindestbeitrag für alle Mitglieder Ihrer
+            Gruppe in Runde 1 {% if player.round_number < 3 %}der Probephase{% else %}von Phase
+            {{ participant.phase }}{% endif %} von je {{ group.mincon_group }}LD festgelegt. Inwieweit Sie diesem
+            Vorschlag folgen, können Sie selbst entscheiden.
         </p>
         {% endif %} {% endif %} 
     
