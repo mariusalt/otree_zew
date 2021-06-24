@@ -178,7 +178,7 @@ document.getElementById("cont").style.display="none";
 
         <p align="center">
         {% if player.round_number < 3 %}
-        <b><font size="5"> Proberunde: 0 von 2</font></b>
+        <b><font size="5"> Probephase: Runde 0 von 2</font></b>
         {% else %}
         <b><font size="5"> Phase {{ participant.phase }}: Runde 0
             von {{ Constants.rounds_phase }}</font></b>
@@ -191,24 +191,24 @@ document.getElementById("cont").style.display="none";
         Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
         {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen muss.
     {% endif %}
-    {% if session.config.treatment == "nbminwRat" %}
-        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
-        Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
-        {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen soll.
+    {% if session.config.treatment == "nbminwRat" %} <!-- non-binding min. cont. stage -->
+        Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den <b>kollektiven Mindestbeitrag</b> (in LD),
+        den jedes Mitglied Ihrer Gruppe in Runde 1 {% if player.round_number < 3 %}der Probephase{% else %} von Phase
+        {{ participant.phase }}{% endif %} zum gemeinsamen Projekt beitragen sollte.
     {% endif %}
     </p>
     <p>
-        Mein Vorschlag für den kollektiven Mindestbeitrag ist:
+        Mein Vorschlag für den kollektiven Mindestbeitrag (in LD) ist:
     </p>
     {% formfield player.mincon label="" %}
     <p>
     {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %}
         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als bindender kollektiver
         <b>Mindestbeitrag für alle Gruppenmitglieder</b> in Runde 1 angesetzt.
-    {% elif session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %}
-         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als <b>kollektiver
-        Mindestbeitrag</b> für alle Gruppenmitglieder in Runde 1 angesetzt. Der <b>kollektive Mindestbeitrag</b> ist
-        nicht bindend.
+    {% elif session.config.treatment == "nbminwRat" or session.config.treatment == "nbminsRat" %} <!-- non-binding min. cont. stage -->
+         <b>Hinweis</b>: Bitte beachten Sie, das <b>Minimum</b> der Angaben wird als gemeinsamer Vorschlag für den
+        <b>kollektiven Mindestbeitrag</b> alle Gruppenmitglieder in Runde 1 festgelegt. Inwieweit Sie dem Vorschlag
+        folgen, können Sie selbst entscheiden.
     {% endif %}
     </p>
      <p>
