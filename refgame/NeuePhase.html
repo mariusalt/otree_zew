@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block title %}
-   {% if player.round_number < 3 %}Proberunden{% else %} Phase {{ participant.phase }}{% endif %}
+   {% if player.round_number < 3 %}Probephase{% else %} Phase {{ participant.phase }}{% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -119,9 +119,9 @@
 {% block content %}
 {% if player.round_number < 3 %}
 <p>
-    In Kürze beginnen die <b>Proberunden</b> (Runde 0 bis 2) des Experiments. Bitte beachten Sie, die Proberunden sind nicht
-    auszahlungsrelevant. Bitte klicken Sie auf <b>Weiter</b>, um die Proberunden zu <b>starten</b>.
-    </p>
+    In Kürze beginnen die kruze <b>Probephase</b> (Runde 0 bis 2) des Experiments. Bitte beachten Sie, die Probephase ist
+    nicht auszahlungsrelevant. Bitte klicken Sie auf <b>Weiter</b>, um die Probephase zu <b>starten</b>.
+</p>
 
 
     <!-- {% next_button %} -->
