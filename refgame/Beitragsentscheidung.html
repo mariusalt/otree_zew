@@ -249,10 +249,10 @@
     <p>
         Ihr <b>individueller Beitrag</b> kann zwischen <b>0</b> und <b>100</b> LD liegen.
         {% if session.config.treatment == "wRat" or session.config.treatment == "minwRat" or session.config.treatment == "nbminwRat" %} {% if disp_rat == True %}
-        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie ihr Beitrag aus der vorherigen Runde.
+        Beachten Sie, dass Ihr Beitrag mindestens so hoch sein muss wie Ihr Beitrag aus der vorherigen Runde.
         {% endif %} {% endif %}
         {% if session.config.treatment == "sRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminsRat" %} {% if disp_rat == True %}
-        <b>Beachten Sie zusätzlich, dass Ihr Beitrag höher sein muss als ihr Beitrag aus der vorherigen Runde.</b>
+        <b>Beachten Sie zusätzlich, dass Ihr Beitrag höher sein muss als Ihr Beitrag aus der vorherigen Runde.</b>
         {% endif %} {% endif %}
         <!-- binding min. cont. stage -->
         {% if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" %} {% if player.round_number == 1 or disp_rat == False  %}
