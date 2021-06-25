@@ -188,7 +188,7 @@ document.getElementById("cont").style.display="none";
 	<p>
     {% if session.config.treatment == "minwRat" %}
         Sie entscheiden gemeinsam mit Ihren Gruppenmitgliedern über den kollektiven Mindestbeitrag (in LD), den jedes
-        Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Proberunden{% else %}von Phase
+        Gruppenmitglied in Runde 1 {% if player.round_number < 3 %}der Probephase{% else %}von Phase
         {{ participant.phase }}{% endif %} zum <b>gemeinsamen Projekt</b> beitragen muss.
     {% endif %}
     {% if session.config.treatment == "nbminwRat" %} <!-- non-binding min. cont. stage -->
