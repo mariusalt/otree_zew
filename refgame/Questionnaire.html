@@ -26,6 +26,17 @@
     outline: none;
     z-index:20;
 }
+#buttonfin {
+  background-color:#4f75ff;
+  border-color:#4f75ff;
+  }
+  #buttonfin:hover {
+  background-color:#3c5ccf;
+  }
+  #buttonfin:focus {
+    outline: 0;
+    box-shadow: 0 0 4px blue;
+  }
 
 .slider1::-webkit-slider-runnable-track {
     width: 100%;
@@ -266,6 +277,89 @@
     margin-top: -14px !important;
     z-index:20;
 }
+
+#buttonvier {
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 16px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+  }
+
+#buttonvier:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+  background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+  background-color:#7c858f;
+  }
+  #buttonvier:active {
+  }
+
+
+
+#buttonvier1 {
+    -moz-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    box-shadow:inset 0px 1px 0px 0px #c7cbd6;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b7bac2), color-stop(1, #7c858f));
+    background:-moz-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-webkit-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-o-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:-ms-linear-gradient(top, #b7bac2 5%, #7c858f 100%);
+    background:linear-gradient(to bottom, #b7bac2 5%, #7c858f 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b7bac2', endColorstr='#7c858f',GradientType=0);
+    background-color:#b7bac2;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #7c7f87;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:14px;
+    padding:5px 16px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #1c2847;
+  }
+
+#buttonvier1:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #7c858f), color-stop(1, #b7bac2));
+  background:-moz-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-webkit-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-o-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:-ms-linear-gradient(top, #7c858f 5%, #b7bac2 100%);
+  background:linear-gradient(to bottom, #7c858f 5%, #b7bac2 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c858f', endColorstr='#b7bac2',GradientType=0);
+  background-color:#7c858f;
+  }
+  #buttonvier1:active {
+  }
+
+
+
 </style>
 {% endblock %}
 {% block scripts %}
@@ -273,6 +367,8 @@
 $(document).on("wheel", "input[type=number]", function (e) {
     $(this).blur();
 });
+
+document.getElementById("wong").style.visibility="hidden"
 
 function updateTextInput1(val) {
           document.getElementById('textInput1').value=val; 
@@ -332,23 +428,88 @@ slider2.oninput = function() {
 
 }
 
+
 function store() {
-    if(document.getElementById("textInput1").value!=""){
+    if(document.getElementById("textInput1").value==""){
+      Value5 = document.getElementById("id_wrsl1").value;
+      Value5=0
+      document.getElementById("id_wrsl1").value = Value5;
+    } else {
+    Value5 = document.getElementById("id_wrsl1").value;
+      Value5=1
+      document.getElementById("id_wrsl1").value = Value5;
       slider1 = document.getElementById("slider1").value;
       window.sessionStorage.setItem("slider1", slider1);
     }
-    if(document.getElementById("textInput2").value!=""){
+
+    id_wrsl1 = document.getElementById("id_wrsl1").value;
+    window.sessionStorage.setItem("id_wrsl1", id_wrsl1);
+
+
+
+    if(document.getElementById("textInput2").value==""){
+      Value6 = document.getElementById("id_wrsl2").value;
+      Value6=0
+      document.getElementById("id_wrsl2").value = Value6;
+    } else {
+    Value6 = document.getElementById("id_wrsl2").value;
+      Value6=1
+      document.getElementById("id_wrsl2").value = Value6;
       slider2 = document.getElementById("slider2").value;
       window.sessionStorage.setItem("slider2", slider2);
     }
+
+    id_wrsl2 = document.getElementById("id_wrsl2").value;
+   window.sessionStorage.setItem("id_wrsl2", id_wrsl2);
 }
 
 window.onload = function() {
     document.getElementById("textInput1").value = sessionStorage.getItem("slider1");
-    document.getElementById("textInput2").value = sessionStorage.getItem("slider2");
     document.getElementById("slider1").value = sessionStorage.getItem("slider1");
+    document.getElementById("id_wrsl1").value = sessionStorage.getItem("id_wrsl1");
+    if(document.getElementById("id_wrsl1").value==1)
+      {$('.slider1').addClass('myclass');
+        document.getElementById("show1").style.display="block";
+        output12.innerHTML = 'Wahrscheinlichkeit der hohen Auszahlung: ' + sessionStorage.getItem("slider1") + "%";
+        k=100-sessionStorage.getItem("slider1")
+        output13.innerHTML = '<b>Sie bekommen 30 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + sessionStorage.getItem("slider1") +"%" ;
+        output14.innerHTML = '<b>Sie bekommen 16 Euro</b> mit einer Wahrscheinlichkeit von  <b>' + k +"%" ;
+    }
+
+    document.getElementById("textInput2").value = sessionStorage.getItem("slider2");
     document.getElementById("slider2").value = sessionStorage.getItem("slider2");
+    document.getElementById("id_wrsl2").value = sessionStorage.getItem("id_wrsl2");
+    if(document.getElementById("id_wrsl2").value==1)
+      {$('.slider2').addClass('myclass');
+        document.getElementById("show2").style.display="block";
+        output2.innerHTML = 'Anteil an Personen B, die Option "Gleichverteilung" auswählen: ' + sessionStorage.getItem("id_wrsl2") + " Personen";
+      k=20-sessionStorage.getItem("id_wrsl2")
+      output3.innerHTML = '<b>Sie und Person B bekommen 15 Euro</b> falls Sie eine der  <b>' + sessionStorage.getItem("id_wrsl2") + ' Personen</b> zugelost bekommen, die Option "Gleichverteilung" auswählen.';
+      output4.innerHTML = '<b>Sie bekommen 8 Euro</b> und <b>Person B bekommt 22 Euro</b> falls Sie eine der <b>' + k + '  Personen </b> zugelost bekommen, die Option "Ungleichverteilung" auswählen.';
+    }
 }
+
+document.getElementById("hideit").style.display="none";
+      function shownow()
+    {
+        var div = document.getElementById("hideit");
+    if (div.style.display === "none") {
+        div.style.display = "block";
+      } else {
+        div.style.display = "none";
+      }
+    } 
+
+document.getElementById("hideit1").style.display="none";
+      function shownow1()
+    {
+        var div = document.getElementById("hideit1");
+    if (div.style.display === "none") {
+        div.style.display = "block";
+      } else {
+        div.style.display = "none";
+      }
+    }
 </script>
 {% endblock %}
 {% block content %}
@@ -430,11 +591,29 @@ window.onload = function() {
         </tr>
     </tbody>
 </table>
-    <input name="risk"  type="hidden" id="textInput1" value="" size="1" style="text-align:center;">
+    
     <div id="inf"></div>
 
 Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lotterie, wenn die Auszahlung von 30 Euro mit einer Wahrscheinlichkeit von mindestens 60% eintritt. Bei einer geringeren Gewinnwahrscheinlichkeit würden Sie eine sichere Auszahlung von 20 Euro der Lotterie vorziehen.<br>
-
+<br>
+<div id='buttonvier' onclick="shownow()">Falls Slider nicht bewegbar, bitte hier klicken</div>
+<div id="hideit">
+  <b>Manuell einstellen:</b><br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "40%">
+         <thead>
+          <tr>
+  <td>Wahrscheinlichkeit der hohen Auszahlung:
+  </td>
+  <td>
+<input name="risk"  type="text" id="textInput1" value="" size="1" style="text-align:center;">
+</td>
+ <td style="text-align:left;">
+%
+</td>
+</tr>
+  </thead>
+</table>
+</div>
     <br>
     <br>
    <br>
@@ -507,10 +686,29 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
         </tr>
     </tbody>
 </table>
-    <input name="betr"  type="hidden" id="textInput2" value="" size="1" style="text-align:center;">
+    
     <div id="inf"></div>
 
 <b>Beispiel:</b> Angenommen, Sie geben "12 Personen" an. In diesem Fall bevorzugen Sie die Option "In", wenn die mindestens 12 von 20 Personen Option "Gleichverteilung" auswählen. Bei einer geringeren Anzahl an "Personen B", die sich für Option "Gleichverteilung" entscheiden, würden Sie Option "Out" auswählen.<br>
+<br>
+<div id='buttonvier1' onclick="shownow1()">Falls Slider nicht bewegbar, bitte hier klicken</div>
+<div id="hideit1">
+  <b>Manuell einstellen:</b><br>
+  <table class="centerTable" style="border-collapse: collapse; border-style: hidden;"  width = "56%">
+         <thead>
+          <tr>
+  <td>Anteil an Personen B, die Option "Gleichverteilung" auswählen:
+  </td>
+  <td>
+<input name="betr"  type="text" id="textInput2" value="" size="1" style="text-align:center;">
+</td>
+ <td style="text-align:left;">
+%
+</td>
+</tr>
+  </thead>
+</table>
+</div>
     <br>
     <br>
 
@@ -576,7 +774,10 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
     </p>
     <br>
 
-    {% next_button %}
-
+    <button id="buttonfin" style="margin-top:10px;" onclick="store()" class="answer btn btn-success"  >Antworten abgeben</button>
+<div id=wong> 
+    {% formfield player.wrsl1 label="" %}
+    {% formfield player.wrsl2 label="" %}
+    </div>
 {% include Constants.chat_template %}
 {% endblock %}

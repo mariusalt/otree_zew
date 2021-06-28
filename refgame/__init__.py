@@ -243,7 +243,8 @@ class Player(BasePlayer):
 
     
 
-
+    wrsl1 = models.IntegerField(initial=0, blank=True)
+    wrsl2 = models.IntegerField(initial=0, blank=True)
 
 
 
@@ -639,7 +640,7 @@ class Questionnaire(Page):  # welcome page
     form_fields = ["q_1_1", "q_1_2", "q_1_3", "q_1_4",
                    "q_2_1",
                      "q_2_2", "q_2_3", "risk",
-                   "betr","taxi", "q_1_5", "q_1_6"]
+                   "betr","taxi", "q_1_5", "q_1_6","wrsl1","wrsl2"]
     
 
     def is_displayed(player):  # only once
