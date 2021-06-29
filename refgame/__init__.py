@@ -425,7 +425,7 @@ def cq_9b_error_message(player, value):  # error message cq_9b
             return 'Die Antwort ist leider nicht korrekt.'
         else:
             player.wrong_Q9a=+1
-            return '<b>Die korrekte Antwort ist 0</b>. Inwieweit Sie dem gemeinsamen nicht-verpflichtenden Vorschlag für den kollektiven Mindestbeitrag folgen (hier = 10), können Sie selbst entscheiden.'
+            return '<b>Die korrekte Antwort ist 0</b>. Inwieweit Sie dem Vorschlag für den kollektiven Mindestbeitrag folgen (hier = 10), können Sie selbst entscheiden.'
 
 def contribution_error_message(player, value):  # error message cq_1
     if player.session.config['treatment']=="wRat"  or player.session.config['treatment']=="nbminwRat":
