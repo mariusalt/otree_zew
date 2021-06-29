@@ -118,11 +118,17 @@
 
 {% block content %}
 {% if player.round_number < 3 %}
+{%  if session.config.treatment == "minwRat" or session.config.treatment == "minsRat" or session.config.treatment == "nbminwRat" %}
 <p>
     In Kürze beginnt die kurze <b>Probephase</b> (Runde 0 bis 2) des Experiments. Bitte beachten Sie, die Probephase ist
     nicht auszahlungsrelevant. Bitte klicken Sie auf <b>Weiter</b>, um die Probephase zu <b>starten</b>.
 </p>
-
+{% else %}
+<p>
+    In Kürze beginnt die kurze <b>Probephase</b> (Runde 1 und 2) des Experiments. Bitte beachten Sie, die Probephase ist
+    nicht auszahlungsrelevant. Bitte klicken Sie auf <b>Weiter</b>, um die Probephase zu <b>starten</b>.
+</p>
+{% endif %}
 
     <!-- {% next_button %} -->
 
