@@ -7,6 +7,10 @@
 
 {% block styles %}
 <style type="text/css">
+    .errorlist
+    {
+        color: red;
+    }
       img.im5 {
       max-width:50%;
       max-height:50%;
@@ -614,6 +618,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
   </thead>
 </table>
 </div>
+{{ formfield_errors 'risk' }}
     <br>
     <br>
    <br>
@@ -651,7 +656,7 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
     </p>
         <img class=im5 style="margin-bottom:40px;" src="{% static "refgame/betr_aver.png" %}" />
     <p align="justify">Ihr Gegenüber, "Person B", wird Ihnen zufällig aus einer Gruppe von 20 anderen Teilnehmenden dieser Studie zugeteilt. Da diese Teilnehmenden ihre Entscheidung bezüglich der Optionen "Gleichverteilung" und "Ungleichverteilung" bereits getroffen haben, können wir Ihnen den genauen Anteil an "Personen B" mitteilen, welche die Option "Gleichverteilung" gewählt haben.<br></p>
-    <b>Ab welchem Anteil an "Personen B", welche die Option "Gleichverteilung" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
+    <b>Ab welcher Anteil an "Personen B", welche die Option "Gleichverteilung" auswählen (15 Euro für Sie, 15 Euro für Person B), würden Sie sich für Option "In" entscheiden (15 Euro oder 8 Euro für Sie)?</b>
     <br>
     <br>
 
@@ -703,12 +708,13 @@ Beispiel:</b> Angenommen, Sie geben 60% an. In diesem Fall bevorzugen Sie die Lo
 <input name="betr"  type="text" id="textInput2" value="" size="1" style="text-align:center;">
 </td>
  <td style="text-align:left;">
-%
+Personen
 </td>
 </tr>
   </thead>
 </table>
 </div>
+{{ formfield_errors 'betr' }}
     <br>
     <br>
 

@@ -70,7 +70,7 @@ class PlayerBot(Bot):
 
 		if self.round_number==Constants.num_rounds:
 			yield	(FinalResults)	
-			yield Submission(Questionnaire, dict(q_1_1=random.randrange(1,80,1), q_1_2=random.randrange(1,5,1), q_1_3=random.randrange(1,4,1), q_1_4=random.randrange(1,10,1),q_2_1=random.randrange(1,12,1),q_2_2=random.randrange(1,12,1), q_2_3=random.randrange(1,12,1), risk=str(random.randrange(1,101,1)),betr=str(random.randrange(1,101,1)),taxi=random.randrange(1,3,1), q_1_5=random.randrange(1,21,1), q_1_6=random.randrange(1,21,1)),check_html=False)
+			yield Submission(Questionnaire, dict(q_1_1=random.randrange(1,80,1), q_1_2=random.randrange(1,5,1), q_1_3=random.randrange(1,4,1), q_1_4=random.randrange(1,5,1),q_2_1=random.randrange(1,12,1),q_2_2=random.randrange(1,12,1), q_2_3=random.randrange(1,12,1), risk=str(random.randrange(1,101,1)),betr=str(random.randrange(1,101,1)),taxi=random.randrange(1,3,1), q_1_5=random.randrange(1,21,1), q_1_6=random.randrange(1,21,1)),check_html=False)
 			yield	(GoodBye)
 			yield   (Ende)
 
